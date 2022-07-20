@@ -1,0 +1,26 @@
+<section id="projects" class="background-alt">
+  <h2 class="heading">Proyectos</h2>
+
+      <div class="projects-timeline" *ngFor="let proyecto of proyectosList">
+          <div class="project">
+              <div class="project-image">
+                  <div class="img-proyect">
+                      <img [src]="proyecto.urlProyecto" alt="Imágen representativa de proyecto" />
+                  </div>
+
+              </div>
+              <!-- End .project-image -->
+              <div class="project-info">
+                  <h3>{{proyecto.nombre}}</h3>
+                  <span><time>{{proyecto.fechaInicio}}</time>&nbsp;-&nbsp;<time>{{proyecto.fechaFin}}</time></span>
+
+                  <p>
+                      {{proyecto.descripcion}}
+                  </p>
+                  <span class="link-repo">
+                      <a [href]="proyecto.urlRepositorio" target="_blank">Ir a ropositorio en GitHub</a>
+                  </span>
+              </div>
+          </div>
+      </div>
+</section>

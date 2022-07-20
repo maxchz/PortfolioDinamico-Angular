@@ -1,0 +1,55 @@
+<section id="experience" class="background-alt">
+  <h2 class="heading">Experiencia</h2>
+  <div id="experience-timeline"  *ngFor="let experiencia of miExperiencia">
+
+      <div class="experience-job">
+          <span>{{experiencia.fechaInicio}}&nbsp;-&nbsp;{{experiencia.fechaFin}}</span>
+
+          <div class="experience-data">
+              <h3>{{experiencia.nombreEmpresa}}</h3>
+              <h4>{{experiencia.posicion}}</h4>
+              <p>
+                  {{experiencia.descripcion}}
+              </p>
+          </div>
+
+      </div>
+
+      <!-- <div class="experience-job">
+          <span>Enero 2018 - Junio 2019</span>
+          <div class="experience-data">
+
+              <h3>Trabajador Autónomo</h3>
+              <h4>Ingeniero civil</h4>
+              <p>
+                  Proyecto y dirección de obras residenciales.
+              </p>
+          </div>
+      </div>
+
+      <div class="experience-job">
+          <span>Agosto 2015 - Diciembre 2017</span>
+          <div class="experience-data">
+
+              <h3>Electroingenieria ICSSA</h3>
+              <h4>Responsable de proyectos de obras civiles</h4>
+              <p>
+                  Proyecto, cálculo y diseño de obras civiles para subestaciones de 132kv.Desempeño en obras
+                  electromecanicas. Cálculo de cantidades, solicitudes de presupuestos y prevision de materiales para ejecución de obras.
+                  Control de documentacion SGI de obra.
+              </p>
+          </div>
+      </div>
+
+      <div class="experience-job">
+          <span>Diciembre 2013 - Junio 2014</span>
+          <div class="experience-data">
+              <h3>Municipalidad de Córdoba-Dirección de Arquitectura</h3>
+              <h4>Pasante</h4>
+              <p>
+                  Relevamiento de obras. Informes técnicos, desarrollo de proyectos estructurales y digitalización de planos.
+              </p>
+          </div>
+      </div> -->
+  </div>
+  </section>

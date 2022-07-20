@@ -1,0 +1,27 @@
+<section id="skill">
+  <h2 class="heading">Habilidades</h2>
+
+  <div >
+      <h3>Habilidades Duras/Tecnologías usadas</h3>
+      <div class="container" >
+              <div class="card" *ngFor="let habilidades of habilidadesList">
+                  <div class="box-logo">
+                      <img [src]="habilidades.urlTecLogo" alt="logo de tecnología usada"/>
+                  </div>
+                  <div class="box-text">
+                      <div class="text"><span >{{habilidades.tecnologia}}</span></div>
+                      <div class="number"><span >{{habilidades.progreso | percent}}</span></div>
+                  </div>
+              </div>
+      </div>
+      <div class="skill-soft">
+          <h3>Habilidades Blandas</h3>
+          <div class="skills">
+            <ul *ngFor="let habilidades of habilidadesBlandasList">
+              <li>{{habilidades.habilidadBlanda}}</li>
+            </ul>
+          </div>
+
+      </div>
+  </div>
+</section>
