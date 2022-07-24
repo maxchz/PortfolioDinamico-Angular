@@ -19,6 +19,9 @@ import { InterceptorService } from './service/interceptor.service';
 import { DatosPortfoliosService } from './service/datos-portfolios.service';
 import { HomeComponent } from './components/home/home.component';
 import { RegistroUsuarioComponent } from './components/registro-usuario/registro-usuario.component';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
 
 @NgModule({
   declarations: [
@@ -41,7 +44,9 @@ import { RegistroUsuarioComponent } from './components/registro-usuario/registro
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSliderModule,
+    MatTooltipModule
   ],
   providers: [DatosPortfoliosService,
    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true},],

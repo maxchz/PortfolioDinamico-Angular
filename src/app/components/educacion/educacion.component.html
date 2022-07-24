@@ -3,8 +3,13 @@
   <div id="education-timeline">
 
       <div class="education-block" *ngFor="let educacion of educationList">
-
-            <span><time>{{educacion.fechaInicio}}</time> - <time>{{educacion.fechaFin}}</time></span>
+            <div class="education-date">
+              <span><time>{{educacion.fechaInicio}}</time> - <time>{{educacion.fechaFin}}</time></span>
+              <div class="container-edit">
+                <i class="fa-solid fa-pencil" matTooltip="Editar" matTooltipPosition="left"></i>
+                <i class="fa-regular fa-trash-can" matTooltip="Eliminar" matTooltipPosition="right"></i>
+              </div>
+            </div>
             <!-- <div class="img-logo">
               <img [src]="educacion.url_logo" alt="logo de institución">
             </div> -->
@@ -15,6 +20,10 @@
               <p>
                 {{educacion.descripcion}}
               </p>
+              <div class="container-edit">
+                <i class="fa-solid fa-pencil" matTooltip="Editar" matTooltipPosition="left"></i>
+                <i class="fa-regular fa-trash-can" matTooltip="Eliminar" matTooltipPosition="right"></i>
+              </div>
           </div>
       </div>
   </div>

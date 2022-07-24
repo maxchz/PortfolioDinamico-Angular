@@ -9,6 +9,8 @@ import { throwError as observableThrowError } from 'rxjs';
 })
 export class RegistroUsuarioService {
 
+  errorType: number = 0;
+
 
   url="http://localhost:8080/nuevo/usuario";
 
@@ -41,8 +43,13 @@ export class RegistroUsuarioService {
   //Método para manejar los errores (falla en la conexion, no autorizado, etc)
 
   errorHandler(error: HttpErrorResponse): Observable<any>{
-    return observableThrowError(error.message);
+    this.errorType = error.status;
+    return observableThrowError(error);
 
+  }
+
+  get ErrType(){
+    return (this.errorType);
   }
 
 

@@ -48,6 +48,11 @@
   </form>
   <!-- <span class="message-succes">Ocurrió un error en tú registro, inténtalo nuevamente.</span> -->
   <span class="message-success" *ngIf="statusResponse" routerLink="/iniciar-sesion">Tú registro se realizó con éxito, ya puedes iniciar sesión.</span>
-  <span class="message-error" *ngIf="statusResponse !=false">Ocurrió un error en tú registro, inténtalo nuevamente.</span>
+  <div [ngSwitch]= "errType">
+    <span class="message-error" *ngSwitchCase= "'400'">Solicitud mal confeccionada, dirección URL no válida o problemas con la conexión de internet. Revisar si los datos proporcionados y conexión a internet, intentar nuevamente.</span>
+    <span class="message-error" *ngSwitchCase= "'401'">No autorizado, es necesario autentificarse para obtener respuesta a la solicitud enviada</span>
+    <span class="message-error" *ngSwitchCase= "'500'">El servidor no puede procesar su solicitud. Intente en otro momento.</span>
+    <span class="message-error" *ngSwitchCase= "'503'">El servidor no está listo para manejar la petición. Intente en otro momento.</span>
+  </div>
 </body>
 

@@ -15,7 +15,10 @@ export class RegistroUsuarioComponent implements OnInit {
 
   //Variable para manejar errores
   errorMessage: String = "";
+  errType: number = 0;
+
   statusResponse: boolean=false;
+
 
   constructor( private formBuilder: FormBuilder, private registroUserService: RegistroUsuarioService, private ruta: Router) {
 
@@ -68,9 +71,11 @@ export class RegistroUsuarioComponent implements OnInit {
       },
 
 
-      (error: Error)=>{
-        this.errorMessage = error.message;
-        console.log(this.errorMessage);
+      (error)=>{
+
+        this.errType = this.registroUserService.ErrType;
+
+        console.log(error);
 
 
           // Si backend responde un ok, mostrat tooltip de registro exitoso
