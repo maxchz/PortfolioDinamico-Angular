@@ -2,8 +2,16 @@
   <div class="iconHome">
     <i class="fa-solid fa-house-chimney" routerLink="/home"></i>
   </div>
-  <form  [formGroup]= "form" class="m-4" (ngSubmit)= "onEnviar($event)">
-    <h2>Iniciar Sesión</h2>
+  <form  [formGroup]= "form" class="m-4" (ngSubmit)= "onEnviarRegistro($event)">
+    <h2>Registro de usuarios</h2>
+    <!-- <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control" formControlName="nombre" id="nombre" placeholder="Ingresa tu nombre" autocomplete="off" required>
+    </div>
+    <div class="mb-3">
+      <label for="apellido" class="form-label">Apellido</label>
+      <input type="text" class="form-control" formControlName="apellido" id="apellido" placeholder="Ingresa tu apellido" autocomplete="off" required>
+    </div> -->
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Email</label>
       <input type="email" formControlName="email" placeholder="Ingresá tu email" autocomplete="off"
@@ -34,10 +42,12 @@
 
     </div>
 
-    <button type="submit" class="botonLogin">Enviar</button>
-    <span class="text-registro">¿No tenes una cuenta? <strong routerLink="/registrar-usuario">Registrate</strong></span>
-    <span class="text-recupero">¿Olvidaste tu contraseña?</span>
+    <button type="submit" class="botonLogin">Registrar</button>
+    <span class="text-registro">¿Ya tenes una cuenta? <strong routerLink="/iniciar-sesion">Iniciar sesión</strong></span>
 
   </form>
+  <!-- <span class="message-succes">Ocurrió un error en tú registro, inténtalo nuevamente.</span> -->
+  <span class="message-success" *ngIf="statusResponse" routerLink="/iniciar-sesion">Tú registro se realizó con éxito, ya puedes iniciar sesión.</span>
+  <span class="message-error" *ngIf="statusResponse !=false">Ocurrió un error en tú registro, inténtalo nuevamente.</span>
 </body>
 

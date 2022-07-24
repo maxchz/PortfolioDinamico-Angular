@@ -1,6 +1,6 @@
 body{
   height: 100%;
-  background-image: radial-gradient(circle at 50% -18.7%, #ef53ff 0, #b549ff 25%, #783cf2 50%, #312ece 75%, #0023ac 100%);
+  background-image: radial-gradient(circle at 50% 5.69%, #003362 0, #003164 7.14%, #002f65 14.29%, #002d65 21.43%, #002a63 28.57%, #0c2761 35.71%, #24235d 42.86%, #321f59 50%, #3d1a54 57.14%, #46154e 64.29%, #4d1047 71.43%, #520a40 78.57%, #560439 85.71%, #590131 92.86%, #5b002a 100%);
   /* background: url(./../../../assets/images/imgLogin1.jpg);
   background-position: center center;
   background-repeat: no-repeat;
@@ -45,7 +45,7 @@ body h2{
   align-items: center;
   margin-left:auto !important;
   margin-right:auto !important;
-  margin-top:8% !important;
+  margin-top:2% !important;
   padding: 20px 50px;
   display:grid;
   background: #00000099;
@@ -65,7 +65,7 @@ body h2{
 .form-control{
   width:100%;
   font-size: 16px;
-  border:1px solid #00000050;
+  border:1px solid #57565685;
   padding: 5px 10px;
   background:#ffffff00;
   color:#fff;
@@ -110,3 +110,55 @@ strong, .text-recupero{
 .text-registro{
   margin-top:15px;
 }
+
+.message-err{
+  color:red;
+  font-weight: bold;
+
+}
+
+.message-succ{
+  color:rgb(20, 177, 20);
+  font-weight: bold;
+}
+
+.message-success{
+  box-sizing: border-box;
+  margin: auto;
+  padding:10px 15px;
+  line-height: 20px;
+  width:38%;
+  height:62px;
+  text-align: center;
+  align-items: center;
+  vertical-align: center;
+  justify-content:center;
+  background-color: #78f107a4;
+  border-radius: 10px;
+  color:white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.message-success:hover {
+  background-color: #78f107c7;
+}
+
+.message-error{
+  box-sizing: border-box;
+  margin: auto;
+  padding:10px 15px;
+  line-height: 20px;
+  width:38%;
+  height:62px;
+  text-align: center;
+  align-items: center;
+  vertical-align: center;
+  justify-content:center;
+  background-color: #f15d07a4;
+  border-radius: 10px;
+  color:white;
+  font-weight: bold;
+}
+
+

@@ -19,8 +19,10 @@ export class GuardGuard implements CanActivate {
       if (currentUser && currentUser.accessToken){
         return true;
       }else{
-        //si no existe lo redireccionamos al formulario de iniciar sesión
-        this.rutas.navigate(['/iniciar-sesion']);
+        //si no existe lo redireccionamos al formulario de iniciar sesión o pagina de home
+         this.rutas.navigate(['/home']);
+
+        // this.rutas.navigate(['/iniciar-sesion']);
         return false;
       }
 

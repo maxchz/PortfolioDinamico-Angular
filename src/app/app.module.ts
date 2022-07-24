@@ -17,6 +17,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InterceptorService } from './service/interceptor.service';
 import { DatosPortfoliosService } from './service/datos-portfolios.service';
+import { HomeComponent } from './components/home/home.component';
+import { RegistroUsuarioComponent } from './components/registro-usuario/registro-usuario.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { DatosPortfoliosService } from './service/datos-portfolios.service';
     ContactoComponent,
     IniciarSesionComponent,
     PortfolioComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent,
+    RegistroUsuarioComponent
   ],
   imports: [
     BrowserModule,
