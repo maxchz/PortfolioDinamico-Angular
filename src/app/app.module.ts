@@ -20,7 +20,14 @@ import { DatosPortfoliosService } from './service/datos-portfolios.service';
 import { HomeComponent } from './components/home/home.component';
 import { RegistroUsuarioComponent } from './components/registro-usuario/registro-usuario.component';
 import { MatSliderModule } from '@angular/material/slider';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { EditDialogComponent } from './components/meterial/edit-dialog/edit-dialog.component';
+import {MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 
 
 @NgModule({
@@ -38,7 +45,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     PortfolioComponent,
     FooterComponent,
     HomeComponent,
-    RegistroUsuarioComponent
+    RegistroUsuarioComponent,
+    EditDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -46,10 +54,18 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     HttpClientModule,
     ReactiveFormsModule,
     MatSliderModule,
-    MatTooltipModule
+    MatTooltipModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule
+
   ],
   providers: [DatosPortfoliosService,
-   { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true},],
+   { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true},
+   {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}},
+  ],
 
   bootstrap: [AppComponent]
 })
