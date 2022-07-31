@@ -1,17 +1,24 @@
 <section id="lead">
-  <div id="lead-content">
-      <h1>{{miPortfolio.nombre}}&nbsp;{{miPortfolio.apellido}}</h1>
-      <h2>{{miPortfolio.posicionDev}}</h2>
-      <div class="container-edit">
-        <i class="fa-solid fa-plus" matTooltip="Agregar" matTooltipPosition="below"></i>
-        <i class="fa-solid fa-pencil" matTooltip="Editar" matTooltipPosition="below"></i>
-        <i class="fa-regular fa-trash-can" matTooltip="Eliminar" matTooltipPosition="below"></i>
-      </div>
-
+  <div id="lead-content" *ngIf="miPortfolio == null; else bannerConEdit">
+    <div class="container-editonly">
+      <span>Bienvenido, pulsa el siguiente botón para empezar a crear tu perfil.</span>
+      <i class="fa-solid fa-plus" matTooltip="Agregar" matTooltipPosition="below" (click)="openDialogCreaPerfil()"></i>
+    </div>
+  </div>
+  <ng-template #bannerConEdit>
+    <div id="lead-content">
+        <h1>{{miPortfolio.nombre}}&nbsp;{{miPortfolio.apellido}}</h1>
+        <h2>{{miPortfolio.posicionDev}}</h2>
+        <div class="container-edit">
+          <i class="fa-solid fa-pencil" matTooltip="Editar" matTooltipPosition="below" (click)="openDialogEditaPerfil()"></i>
+          <i class="fa-regular fa-trash-can" matTooltip="Eliminar" matTooltipPosition="below"></i>
+        </div>
       <a href="#" >
         <button class="btn-descarga-cv" type="button">Descargar CV</button>
       </a>
-  </div>
+    </div>
+  </ng-template>
+
   <!-- Fin #lead-content -->
 
   <div id="lead-overlay"></div>

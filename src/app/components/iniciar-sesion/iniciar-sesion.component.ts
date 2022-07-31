@@ -37,6 +37,10 @@ export class IniciarSesionComponent implements OnInit {
     return this.form.get('password');
   }
 
+  get EmailUser(){
+    return this.form.value('email');
+  }
+
   //Método para enviar los datos a la API y obtener el token
   onEnviar(event:Event){
     //cancela el evento normal del formulario
@@ -46,12 +50,14 @@ export class IniciarSesionComponent implements OnInit {
     // y estan asociados al modelo
     this.autenticacionService.IniciarSesion(this.form.value).subscribe(data=>{
       //imprimimos los datos en consola, deberia ser el token que envia el backend
-      console.log("DATA: "+JSON.stringify(data));
+      console.log("Los datos del usuario son: "+JSON.stringify(data));
 
       //redirigimos al usuario a una nueva ruta, que es la del portfolio, usando el servicio de Router
       this.ruta.navigate(['/portfolio']);
     })
   }
+
+
 
 
 }

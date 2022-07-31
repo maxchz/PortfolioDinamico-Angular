@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DatosPortfoliosService } from 'src/app/service/datos-portfolios.service';
+import { CreaSobreMiDialogComponent } from '../meterial/crea-sobre-mi-dialog/crea-sobre-mi-dialog.component';
 import { EditDialogComponent } from '../meterial/edit-dialog/edit-dialog.component';
 
 
@@ -34,6 +35,15 @@ export class SobreMiComponent implements OnInit {
     //   console.log('The dialog was closed');
     //   this.animal = result;
     // });
+  }
+
+  openDialogAgregarSobreMi(): void {
+    const dialogRef = this.dialog.open(CreaSobreMiDialogComponent, {
+      width: '450px',
+
+    });
+
+
   }
 
 

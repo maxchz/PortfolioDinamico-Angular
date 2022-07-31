@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class InterceptorService implements HttpInterceptor {
 
+  // public emailUser:String = ' ';
+
   constructor(private autenticacionServicio: AutenticacionService) { }
 
 
@@ -29,10 +31,20 @@ export class InterceptorService implements HttpInterceptor {
         }
       })
 
-    }
+    };
+
+    // this.emailUsuario = JSON.stringify(currentUser).email;
+    // var datosUser = currentUser.email;
+    // this.emailUser = currentUser.email.toString();
     console.log("Interceptor está corriendo " + JSON.stringify(currentUser));
+    // console.log('El email es: ' + this.emailUser);
+
 
     //Para que érmita seguir su curso a la API
     return next.handle(req);
   }
+
+  // get EmailUser(){
+  //   return this.emailUser;
+  // }
 }

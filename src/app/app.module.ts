@@ -27,6 +27,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { EditDialogComponent } from './components/meterial/edit-dialog/edit-dialog.component';
 import {MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CreaUsuarioDialogComponent } from './components/meterial/crea-usuario-dialog/crea-usuario-dialog.component';
+import { ToastrModule } from 'ngx-toastr';
+import { EditarUsuarioDialogComponent } from './components/meterial/editar-usuario-dialog/editar-usuario-dialog.component';
+import { CreaSobreMiDialogComponent } from './components/meterial/crea-sobre-mi-dialog/crea-sobre-mi-dialog.component';
+import { MensajePantallaComponent } from './components/mensaje-pantalla/mensaje-pantalla.component';
+
 
 
 
@@ -46,7 +54,12 @@ import { MatInputModule } from '@angular/material/input';
     FooterComponent,
     HomeComponent,
     RegistroUsuarioComponent,
-    EditDialogComponent
+    EditDialogComponent,
+    CreaUsuarioDialogComponent,
+    EditarUsuarioDialogComponent,
+    CreaSobreMiDialogComponent,
+    MensajePantallaComponent
+
   ],
   imports: [
     BrowserModule,
@@ -59,7 +72,12 @@ import { MatInputModule } from '@angular/material/input';
     MatDialogModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    ScrollingModule,
+    MatProgressSpinnerModule,
+    ToastrModule.forRoot(),
+
+
 
   ],
   providers: [DatosPortfoliosService,

@@ -158,6 +158,39 @@ a{
   color:black;
   padding:6px;
 }
+.container-editonly{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+}
+.container-editonly span{
+  color:white;
+  font-size: 30px;
+  line-height: 35px;
+  margin-bottom: 30px;
+}
+.container-editonly i{
+  margin:auto;
+  width: 36px;
+  height: 36px;
+  padding:auto;
+  font-size: 18px;
+  color:black;
+  background:rgba(224, 224, 224, 0.575);;
+  border:1px solid black;
+  border-radius: 8px;
+  cursor: pointer;
+  line-height:36px;
+
+}
+
+#lead-content .container-editonly i:hover{
+  background: rgba(22, 22, 22, 0.568);
+  border:1px solid white;
+  color:white;
+  transform: scale(1.2);
+}
 
 
 

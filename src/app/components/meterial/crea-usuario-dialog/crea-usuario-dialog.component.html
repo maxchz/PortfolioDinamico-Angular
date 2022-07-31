@@ -1,0 +1,102 @@
+<div class="container-dialogCreaUsuario" *ngIf= "showSpinner != true; else spinner">
+  <h2>Crear nuevo Perfil</h2>
+  <p class="ref-aster">* El asterisco indica que es obligatorio</p>
+  <form  [formGroup]= "form" (ngSubmit)= "onEnviarNuevoUsuario($event)" class="form-dialogCreaUsuario">
+    <mat-dialog-content>
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder="Ingrese su nombre completo" formControlName="nombre" type="text" required>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Apellido</mat-label>
+          <input matInput placeholder="Ingese apellido completo" formControlName="apellido" type="text" required>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Domicilio</mat-label>
+          <input matInput placeholder="ciudad, Provincia - País" formControlName="domicilio" type="text" required>
+          <mat-hint>Agrege una nueva ciudad - país</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Fecha de Nacimiento</mat-label>
+          <input matInput placeholder="dd-mm-aa" formControlName="fechaNac" type="date" required>
+          <mat-hint>Ingrese su fecha de nacimiento</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Teléfono de Contacto</mat-label>
+          <input matInput placeholder="XXXYYYXXX" formControlName="telefono" type="text" required>
+          <mat-hint>Ingrese su teléfono personal (celular o fijo)</mat-hint>
+        </mat-form-field>
+      </p>
+      <p class="p-emailUsuario">
+        <mat-form-field appearance="standard">
+          <mat-label>Correo</mat-label>
+          <input matInput placeholder="user@user.com" formControlName="correo" type="date" required >
+          <mat-hint>Ingrese su fecha de nacimiento</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Descripción</mat-label>
+          <textarea matInput placeholder="Descripción" formControlName="sobreMi" required></textarea>
+          <mat-hint>Agrege una nueva descripción</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Posición - Cargo</mat-label>
+          <input matInput placeholder="Ingrese su cargo o pisición actual" formControlName="posicionDev" type="text" required>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Imagen perfil</mat-label>
+          <input matInput placeholder="Link - url" formControlName="imagenPerfil" type="text" required>
+          <mat-hint>Agrege la url de su imagen de perfil</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p class="p-idUsuario">
+        <mat-form-field appearance="standard">
+          <mat-label>Id</mat-label>
+          <input matInput placeholder="Id user" formControlName="usuario_id" type="number" required >
+          <mat-hint></mat-hint>
+        </mat-form-field>
+      </p>
+
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions align= "end">
+    <section>
+      <div class="example-button-row">
+        <button mat-raised-button  mat-dialog-close color="warn">Cancelar</button>
+        <button mat-raised-button color="primary" type="submit" >Guardar</button>
+      </div>
+    </section>
+  </mat-dialog-actions>
+
+ </form>
+</div>
+
+<ng-template #spinner>
+  <div class="container-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>
+
