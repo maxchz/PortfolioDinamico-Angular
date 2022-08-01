@@ -17,9 +17,13 @@ export class BannerComponent implements OnInit {
 
   miPortfolio: any;
 
+  datosUsuario: any;
+
   datosUsuarioLogin: any;
 
   emailUser: String ='';
+
+  // id_usuario: number = 0;
 
 
 
@@ -40,18 +44,14 @@ export class BannerComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.datosPortafolio.obtenerDatos().subscribe(data =>{
-      this.miPortfolio=data;
-      console.log("Los datos de la persona son: ");
-      console.log(this.miPortfolio);
 
-    });
 
-    // this.datosPortafolio.ObtenerDatosUsuarioPorEmail(this.emailUser).subscribe(data =>{
-    //   this.datosUsuarioLogin = data;
-    //   console.log("Los datos del usuario son: ");
-    //   console.log(JSON.stringify(data));
-    // })
+    // this.datosPortafolio.obtenerDatos().subscribe(data =>{
+    //   this.miPortfolio=data;
+    //   console.log("Los datos de la persona son: ");
+    //   console.log(this.miPortfolio);
+    // });
+
 
   }
 
@@ -60,11 +60,51 @@ export class BannerComponent implements OnInit {
   }
 
   openDialogCreaPerfil(): void {
-    const dialogRef = this.dialog.open(CreaUsuarioDialogComponent, {
+    let dialogRef = this.dialog.open(CreaUsuarioDialogComponent, {
       width: '480px',
       disableClose: true,
 
+    }).afterClosed().subscribe(()=>{
+
+      this.autenticacionServicio.DatosNuevoUsuario().subscribe(data =>{
+        this.datosUsuario = data;
+        var id_usuario = data.id;
+
+        this.datosPortafolio.obtenerDatosPersonaPorIdUsuario(id_usuario).subscribe(data =>{
+          this.miPortfolio=data;
+          console.log("Los datos de la persona son: ");
+          console.log(this.miPortfolio);
+        });
+        console.log("Id desde banner component:" + id_usuario);
+      });
+
+      // this.datosPortafolio.obtenerDatosPersonaPorIdUsuario(this.id_usuario).subscribe(data=>{
+      //    this.miPortfolio=data;
+
+      // });
+
     });
+
+
+
+
+
+
+    // .subscribe(data =>{
+    //   this.datosUsuario =  this.autenticacionServicio.DatosNuevoUsuario();
+    //   this.id_usuario = this.datosUsuario.id;
+    //   console.log("Id desde banner component:" + this.id_usuario);
+    //    });
+
+
+
+
+
+
+    // this.datosPortafolio.obtenerDatosPersonaPorIdUsuario(this.id_usuario).subscribe(data => {
+    //   this.miPortfolio=data;
+    // });
+
 
 
 

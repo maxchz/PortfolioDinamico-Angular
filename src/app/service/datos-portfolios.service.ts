@@ -13,6 +13,7 @@ export class DatosPortfoliosService {
   //creamos una variable con la url de la api, que devuelve los datos que seran inmpresos en el front
 
   emailUser: String ='';
+  // id_usuario: number = 0;
 
 
   constructor(private http:HttpClient, private autenticacionServicio: AutenticacionService ) {
@@ -32,6 +33,9 @@ export class DatosPortfoliosService {
     //return this.http.get('./../../assets/data/data.json');
 
     // console.log('El servicio Portafolio está corriendo');
+  }
+  obtenerDatosPersonaPorIdUsuario(id_usuario: number) :Observable <any>{
+    return this.http.get<any>(`http://localhost:8080/ver/persona-idUsuario/${id_usuario}`);
   }
 
   //Método para obtener datos de experiencia según id de usuario

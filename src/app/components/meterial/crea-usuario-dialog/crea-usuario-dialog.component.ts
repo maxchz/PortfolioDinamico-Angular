@@ -22,7 +22,7 @@ export class CreaUsuarioDialogComponent implements OnInit {
 
   form: FormGroup;
   // datosUsuarioLogin:any;
-  // id_usuario: number = 0;
+  id_usuario: number = 0;
 
   // email_usuario: string ='';
   showSpinner: boolean = false;
@@ -38,7 +38,7 @@ export class CreaUsuarioDialogComponent implements OnInit {
     // console.log('Datos Usuario desde Constructor crea-usuario-dialog: '+JSON.stringify(this.dataUser));
     this.datosPortafolio.ObtenerDatosUsuarioPorEmail().subscribe(data =>{
         //  this.datosUsuarioLogin = data;
-        //  this.id_usuario = data.id;
+         this.id_usuario = data.id;
         //  this.email_usuario = data.email;
          this.form.patchValue({
           correo: data.email,
@@ -113,9 +113,10 @@ export class CreaUsuarioDialogComponent implements OnInit {
   //   this.email = emailUser.Email;
   // }
 
-  // get ShowMessage(){
-  //   return this.showMessage;
-  // }
+  get IdUsuario(){
+    return this.id_usuario;
+  }
+
   showSuccess() {
     this.toastr.success('Se ha guardado con exito.', ' ', {
       tapToDismiss: true,

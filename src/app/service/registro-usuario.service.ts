@@ -3,6 +3,8 @@ import  { HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http
 import { BehaviorSubject, Observable } from 'rxjs';
 import { catchError } from'rxjs/operators';
 import { throwError as observableThrowError } from 'rxjs';
+import { AutenticacionService } from './autenticacion.service';
+import { DatosPortfoliosService } from './datos-portfolios.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,17 +12,24 @@ import { throwError as observableThrowError } from 'rxjs';
 export class RegistroUsuarioService {
 
   errorType: number = 0;
+  // emailUser: String ='';
 
 
   url="http://localhost:8080/nuevo/usuario";
-  // url_dataUsuario= "http://localhost:8080/ver/usuario";
 
   //El objeto observable BehaviorSubject guarda los estados
   currentUserSubject: BehaviorSubject<any>;
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              /*private autenticacionServicio: AutenticacionService,
+              private datosPortafolio: DatosPortfoliosService*/) {
+
     console.log("El servicio de registro está corriendo");
+
+    // this.emailUser = this.autenticacionServicio.UsuarioAutenticado.email;
+    // console.log("Email del usuario desde el servicio registro usuario es:");
+    // console.log(this.emailUser);
 
     //Siempre debemos inicializar un observable BehaviorSubject ya que siempre va a devolver el último estado de un objeto
     //Los datos almacenados en el storage local lo convertimos a un formato JSON, si no hay nada, obtiene un JSON vacio
@@ -55,15 +64,7 @@ export class RegistroUsuarioService {
     return (this.errorType);
   }
 
-  // //Obtengo los datos del usuario
-  // ObtenerDatosNuevoUsuario():Observable<any>{
-  //   return this.http.get<any>(this.url_dataUsuario);
-
-  // }
-
-
-
-
+  //Obtengo los datos del usuario por su email de registro
 
 
 

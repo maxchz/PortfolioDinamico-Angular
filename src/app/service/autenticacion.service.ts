@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import  { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { DatosPortfoliosService } from './datos-portfolios.service';
 
 
 @Injectable({
@@ -10,6 +11,9 @@ import { map } from 'rxjs/operators';
 export class AutenticacionService {
 
   url="http://localhost:8080/auth/login";
+
+  id_usuario: number = 0;
+
 
   //El objeto observable BehaviorSubject guarda los estados
   currentUserSubject: BehaviorSubject<any>;
@@ -45,6 +49,9 @@ export class AutenticacionService {
     sessionStorage.clear();
    }
 
+   DatosNuevoUsuario(): Observable<any>{
+    return this.http.get<any>(`http://localhost:8080/ver/usuario/${this.UsuarioAutenticado.email}`);
+   }
 
 
 
