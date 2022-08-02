@@ -4,10 +4,10 @@
  </header>
  <!-- Fin header -->
  <main>
-           <app-banner></app-banner>
+           <app-banner (miPortfolioEmit)="portfolio = $event"></app-banner>
            <!-- Fin #lead -->
 
-           <app-sobre-mi></app-sobre-mi>
+           <app-sobre-mi [miPortfolio]="portfolio"></app-sobre-mi>
            <!-- Fin #about -->
 
            <app-experiencia></app-experiencia>

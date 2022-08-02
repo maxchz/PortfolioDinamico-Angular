@@ -297,6 +297,9 @@ a{
   height: 170px;
   padding: 0px ;
   margin-bottom: 5%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
 }
 .img-perfil img{
   width: 100%;
@@ -306,6 +309,11 @@ a{
   object-fit: cover;
 }
 
+.about-titulo .img-perfil i{
+  font-size: 140px;
+  margin:auto;
+  padding: auto;
+}
 
 
 

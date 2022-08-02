@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { DatosPortfoliosService } from 'src/app/service/datos-portfolios.service';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
@@ -14,6 +14,9 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./banner.component.css'],
 })
 export class BannerComponent implements OnInit {
+
+  @Output()
+  miPortfolioEmit: EventEmitter<any> = new EventEmitter<any>();
 
   miPortfolio: any;
 
@@ -45,6 +48,18 @@ export class BannerComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.autenticacionServicio.DatosNuevoUsuario().subscribe(data =>{
+      this.datosUsuario = data;
+      var idUsuario = data.id;
+      this.datosPortafolio.obtenerDatosPersonaPorIdUsuario(idUsuario).subscribe(data =>{
+        this.miPortfolio=data;
+        this.miPortfolioEmit.emit(data);
+        // console.log("Los datos de la persona son: ");
+        // console.log(this.miPortfolio);
+      });
+
+    });
+
 
     // this.datosPortafolio.obtenerDatos().subscribe(data =>{
     //   this.miPortfolio=data;
@@ -72,6 +87,7 @@ export class BannerComponent implements OnInit {
 
         this.datosPortafolio.obtenerDatosPersonaPorIdUsuario(id_usuario).subscribe(data =>{
           this.miPortfolio=data;
+          this.miPortfolioEmit.emit(data);
           console.log("Los datos de la persona son: ");
           console.log(this.miPortfolio);
         });
