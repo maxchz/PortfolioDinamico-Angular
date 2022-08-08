@@ -1,0 +1,80 @@
+<div class="container-dialogCreaUsuario" *ngIf= "showSpinner != true; else spinner">
+  <h2>Modificar datos de experiencia</h2>
+  <p class="ref-aster">* El asterisco indica que es obligatorio</p>
+  <form  [formGroup]= "form" (ngSubmit)= "onEnviarModificaExperiencia($event)" class="form-dialogCreaUsuario">
+    <mat-dialog-content>
+
+      <p class="p-id">
+        <mat-form-field appearance="standard">
+          <mat-label>Id</mat-label>
+          <input matInput placeholder="Id" formControlName="id" type="number" required >
+          <mat-hint></mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Empresa</mat-label>
+          <input matInput placeholder="Ingrese el nombre de la empresa" formControlName="nombreEmpresa" type="text" required>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Posición</mat-label>
+          <input matInput placeholder="Ingese su posición o puesto" formControlName="posicion" type="text" required>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Fecha Inicio</mat-label>
+          <input matInput placeholder="dd-mm-aa" formControlName="fechaInicio" type="date" required>
+          <mat-hint>Ingrese fecha de inicio</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Fecha Fin</mat-label>
+          <input matInput placeholder="dd-mm-aa" formControlName="fechaFin" type="date" required>
+          <mat-hint>Ingrese fecha de finalización</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Descripción</mat-label>
+          <textarea matInput placeholder="Descripción" formControlName="descripcion" required></textarea>
+          <mat-hint>Agrege descripción de tareas realizadas - Hasta 800 caracteres</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p class="p-idUsuario">
+        <mat-form-field appearance="standard">
+          <mat-label>Persona Id</mat-label>
+          <input matInput placeholder="Id persona" formControlName="persona_id" type="number" required >
+          <mat-hint></mat-hint>
+        </mat-form-field>
+      </p>
+
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions align= "end">
+    <section>
+      <div class="example-button-row">
+        <button mat-raised-button  mat-dialog-close color="warn">Cancelar</button>
+        <button mat-raised-button color="primary" type="submit" >Modificar</button>
+      </div>
+    </section>
+  </mat-dialog-actions>
+
+ </form>
+</div>
+
+<ng-template #spinner>
+  <div class="container-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>
+

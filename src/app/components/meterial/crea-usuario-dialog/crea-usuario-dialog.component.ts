@@ -2,15 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
-import { Observable } from 'rxjs';
-import { NotificacionToastService } from 'src/app/service/alertas/notificacion-toast.service';
-import { AutenticacionService } from 'src/app/service/autenticacion.service';
 import { DatosPortfoliosService } from 'src/app/service/datos-portfolios.service';
 import { RegistroPersonaService } from 'src/app/service/registro-persona.service';
-import { RegistroUsuarioService } from 'src/app/service/registro-usuario.service';
-import { BannerComponent } from '../../banner/banner.component';
-import { IniciarSesionComponent } from '../../iniciar-sesion/iniciar-sesion.component';
-import { MensajePantallaComponent } from '../../mensaje-pantalla/mensaje-pantalla.component';
+
 
 
 @Component({
@@ -21,13 +15,11 @@ import { MensajePantallaComponent } from '../../mensaje-pantalla/mensaje-pantall
 export class CreaUsuarioDialogComponent implements OnInit {
 
   form: FormGroup;
-  // datosUsuarioLogin:any;
+
   id_usuario: number = 0;
 
-  // email_usuario: string ='';
   showSpinner: boolean = false;
 
-  // public showMessage: boolean = false;
 
   constructor(private formBuilder: FormBuilder,
               public dialog: MatDialog,

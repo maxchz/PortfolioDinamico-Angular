@@ -1,33 +1,112 @@
-<div class="container-dialogEdit">
-  <h2>Editar datos de usuario</h2>
-  <p>
-    <mat-form-field appearance="legacy">
-      <mat-label>Nombre</mat-label>
-      <input matInput placeholder=" " type="text">
-      <mat-hint>Ingrese un nuevo nombre</mat-hint>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field appearance="standard">
-      <mat-label>Apellido</mat-label>
-      <input matInput placeholder=" " type="text">
-      <mat-hint>Ingrese su nuevo apellido</mat-hint>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field appearance="fill">
-      <mat-label>Posición - Cargo</mat-label>
-      <input matInput placeholder=" " type="text">
-      <mat-hint>Ingrese su nuevo puesto o cargo</mat-hint>
-    </mat-form-field>
-  </p>
+<div class="container-dialogCreaUsuario" *ngIf= "showSpinner != true; else spinner">
+  <h2>Editar perfil de usuario</h2>
+  <p class="ref-aster">* El asterisco indica que es obligatorio</p>
+  <form  [formGroup]= "form" (ngSubmit)= "onEnviarEditarUsuario($event)" class="form-dialogCreaUsuario">
+    <mat-dialog-content>
+      <p class="p-idPersona">
+        <mat-form-field appearance="standard">
+          <mat-label>Id Persona</mat-label>
+          <input matInput placeholder="Id persona" formControlName="id" type="number" required >
+          <mat-hint></mat-hint>
+        </mat-form-field>
+      </p>
 
-  <section>
-    <!-- <div class="example-label">Basic</div> -->
-    <div class="example-button-row">
-      <button mat-raised-button  mat-dialog-close color="warn">Cancelar</button>
-      <button mat-raised-button color="primary">Enviar</button>
-    </div>
-  </section>
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder="Ingrese nuevo nombre" formControlName="nombre" type="text" required>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Apellido</mat-label>
+          <input matInput placeholder="Ingese nuevo apellido" formControlName="apellido" type="text" required>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Domicilio</mat-label>
+          <input matInput placeholder="ciudad, Provincia - País" formControlName="domicilio" type="text" required>
+          <mat-hint>Agrege una nueva ciudad - país</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Fecha de Nacimiento</mat-label>
+          <input matInput placeholder="dd-mm-aa" formControlName="fechaNac" type="date" required>
+          <mat-hint>Ingrese su fecha de nacimiento</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Teléfono de Contacto</mat-label>
+          <input matInput placeholder="XXXYYYXXX" formControlName="telefono" type="text" required>
+          <mat-hint>Ingrese su teléfono personal (celular o fijo)</mat-hint>
+        </mat-form-field>
+      </p>
+      <p class="p-emailUsuario">
+        <mat-form-field appearance="standard">
+          <mat-label>Correo</mat-label>
+          <input matInput placeholder="user@user.com" formControlName="correo" type="date" required >
+          <mat-hint>Ingrese su fecha de nacimiento</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Descripción</mat-label>
+          <textarea matInput placeholder="Ingrese nueva descripción" formControlName="sobreMi" required></textarea>
+          <mat-hint>Agrege una nueva descripción</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Posición - Cargo</mat-label>
+          <input matInput placeholder="Ingrese su nuevo cargo o pisición actual" formControlName="posicionDev" type="text" required>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Imagen perfil</mat-label>
+          <input matInput placeholder="Link - url" formControlName="imagenPerfil" type="text" required>
+          <mat-hint>Agrege la url de su imagen de perfil</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p class="p-idUsuario">
+        <mat-form-field appearance="standard">
+          <mat-label>Id</mat-label>
+          <input matInput placeholder="Id user" formControlName="usuario_id" type="number" required >
+          <mat-hint></mat-hint>
+        </mat-form-field>
+      </p>
+
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions align= "end">
+    <section>
+      <div class="example-button-row">
+        <button mat-raised-button  mat-dialog-close color="warn">Cancelar</button>
+        <button mat-raised-button color="primary" type="submit" >Actualizar</button>
+      </div>
+    </section>
+  </mat-dialog-actions>
+
+ </form>
 </div>
+
+<ng-template #spinner>
+  <div class="container-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>
+
+
 

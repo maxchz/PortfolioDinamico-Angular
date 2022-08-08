@@ -39,9 +39,26 @@ export class DatosPortfoliosService {
   }
 
   //Método para obtener datos de experiencia según id de usuario
-  obtenerDatosExperiencia(): Observable<any>{
-    return this.http.get<any>('http://localhost:8080/ver/experiencia-usuario/6');
+  // obtenerDatosExperienciaPorIdPersona(id_persona: number): Observable<any>{
+  //   const headers = {'content-type' : 'application/json'}
+  //   return this.http.get<any>(`http://localhost:8080/ver/experiencia-usuario/${id_persona}`);
+  // }
+
+  obtenerDatosExperienciaPorIdPersona(id_persona: number): Observable<any>{
+    const headers = {'content-type' : 'application/json'}
+    return this.http.get<any>(`http://localhost:8080/ver/experiencia-usuario/${id_persona}`,{observe: 'response'});
   }
+
+  obtenerDatosEducacionPorIdPersona(id_persona: number): Observable<any>{
+    const headers = {'content-type' : 'application/json'}
+    return this.http.get<any>(`http://localhost:8080/ver/educacion-usuario/${id_persona}`,{observe: 'response'});
+  }
+
+  obtenerDatosProyectoPorIdPersona(id_persona: number): Observable<any>{
+    const headers = {'content-type' : 'application/json'}
+    return this.http.get<any>(`http://localhost:8080/ver/proyecto-usuario/${id_persona}`,{observe: 'response'});
+  }
+
 
   //Método para obtener datos de educación según id de usuario
   obtenerDatosEducacion(): Observable<any>{
@@ -69,5 +86,8 @@ export class DatosPortfoliosService {
     return this.http.get<any>(`http://localhost:8080/ver/usuario/${this.emailUser}`);
 
   }
+
+
+
 
 }

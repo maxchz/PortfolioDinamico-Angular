@@ -11,7 +11,16 @@ export class RegistroPersonaService {
 
   errorType: number = 0;
 
-  url="http://localhost:8080/nueva/persona";
+  url_creaPersona="http://localhost:8080/nueva/persona";
+
+  url_creaExperiencia="http://localhost:8080/nueva/experiencia";
+
+  url_creaEducacion="http://localhost:8080/nueva/educacion";
+
+  url_creaProyecto="http://localhost:8080/nuevo/proyecto";
+
+
+
 
   //El objeto observable BehaviorSubject guarda los estados
   currentUserSubject: BehaviorSubject<any>;
@@ -27,16 +36,54 @@ export class RegistroPersonaService {
   CrearPersona(datosUsuario: any): Observable<any>{
     const headers = {'content-type' : 'application/json'}
     return this.http
-               .post<any>(this.url, datosUsuario,{'headers': headers, observe: 'response'})
+               .post<any>(this.url_creaPersona, datosUsuario,{'headers': headers, observe: 'response'})
                .pipe(
                   catchError((error)=>{
                     // return error;
                   return this.errorHandler(error);
                   })
                 );
-
-
   }
+
+   //Método para hacer la llamada a la API, crea una nueva experiencia
+  CrearExperiencia(datosExperiencia: any): Observable<any>{
+    const headers = {'content-type' : 'application/json'}
+    return this.http
+               .post<any>(this.url_creaExperiencia, datosExperiencia,{'headers': headers, observe: 'response'})
+               .pipe(
+                  catchError((error)=>{
+                    // return error;
+                  return this.errorHandler(error);
+                  })
+                );
+  }
+
+   //Método para hacer la llamada a la API, crea una nueva experiencia
+   CrearEducacion(datosEducacion: any): Observable<any>{
+    const headers = {'content-type' : 'application/json'}
+    return this.http
+               .post<any>(this.url_creaEducacion, datosEducacion,{'headers': headers, observe: 'response'})
+               .pipe(
+                  catchError((error)=>{
+                    // return error;
+                  return this.errorHandler(error);
+                  })
+                );
+  }
+
+  //Método para hacer la llamada a la API, crea una nuevo proyecto
+  CrearProyecto(datosProyecto: any): Observable<any>{
+    const headers = {'content-type' : 'application/json'}
+    return this.http
+               .post<any>(this.url_creaProyecto, datosProyecto, {'headers': headers, observe: 'response'})
+               .pipe(
+                  catchError((error)=>{
+                    // return error;
+                  return this.errorHandler(error);
+                  })
+                );
+  }
+
   //Método para manejar los errores (falla en la conexion, no autorizado, etc)
 
   errorHandler(error: HttpErrorResponse): Observable<any>{

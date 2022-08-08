@@ -34,6 +34,15 @@ import { ToastrModule } from 'ngx-toastr';
 import { EditarUsuarioDialogComponent } from './components/meterial/editar-usuario-dialog/editar-usuario-dialog.component';
 import { CreaSobreMiDialogComponent } from './components/meterial/crea-sobre-mi-dialog/crea-sobre-mi-dialog.component';
 import { MensajePantallaComponent } from './components/mensaje-pantalla/mensaje-pantalla.component';
+import { CreaExperienciaDialogComponent } from './components/meterial/crea-experiencia-dialog/crea-experiencia-dialog.component';
+import { EditaExperienciaDialogComponent } from './components/meterial/edita-experiencia-dialog/edita-experiencia-dialog.component';
+import { EliminaExperienciaDialogComponent } from './components/meterial/elimina-experiencia-dialog/elimina-experiencia-dialog.component';
+import { CreaEducacionDialogComponent } from './components/meterial/crea-educacion-dialog/crea-educacion-dialog.component';
+import { EditaEducacionDialogComponent } from './components/meterial/edita-educacion-dialog/edita-educacion-dialog.component';
+import { EliminaEducacionDialogComponent } from './components/meterial/elimina-educacion-dialog/elimina-educacion-dialog.component';
+import { CreaProyectoDialogComponent } from './components/meterial/crea-proyecto-dialog/crea-proyecto-dialog.component';
+import { EditaProyectoDialogComponent } from './components/meterial/edita-proyecto-dialog/edita-proyecto-dialog.component';
+import { EliminaProyectoDialogComponent } from './components/meterial/elimina-proyecto-dialog/elimina-proyecto-dialog.component';
 
 
 
@@ -58,7 +67,16 @@ import { MensajePantallaComponent } from './components/mensaje-pantalla/mensaje-
     CreaUsuarioDialogComponent,
     EditarUsuarioDialogComponent,
     CreaSobreMiDialogComponent,
-    MensajePantallaComponent
+    MensajePantallaComponent,
+    CreaExperienciaDialogComponent,
+    EditaExperienciaDialogComponent,
+    EliminaExperienciaDialogComponent,
+    CreaEducacionDialogComponent,
+    EditaEducacionDialogComponent,
+    EliminaEducacionDialogComponent,
+    CreaProyectoDialogComponent,
+    EditaProyectoDialogComponent,
+    EliminaProyectoDialogComponent
 
   ],
   imports: [

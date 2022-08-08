@@ -19,50 +19,22 @@ export class SobreMiComponent implements OnInit {
   miPortfolio: any;
 
 
-  constructor(private datosPortafolio: DatosPortfoliosService,
-              public dialog: MatDialog,
-              private autenticacionServicio: AutenticacionService) { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
-
-    // this.autenticacionServicio.DatosNuevoUsuario().subscribe(data =>{
-    //   this.datosUsuario = data;
-    //   var idUsuario = data.id;
-    //   this.datosPortafolio.obtenerDatosPersonaPorIdUsuario(idUsuario).subscribe(data =>{
-    //     this.miPortfolio=data;
-
-    //   });
-
-    // });
-    // this.datosPortafolio.obtenerDatos().subscribe(data =>{
-    // this.miPortfolio=data;
-
 
   }
 
   openDialogEdit(): void {
     const dialogRef = this.dialog.open(EditDialogComponent, {
       width: '450px',
-
-      // data: {name: this.name, animal: this.animal},
     });
-
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('The dialog was closed');
-    //   this.animal = result;
-    // });
   }
 
   openDialogAgregarSobreMi(): void {
     const dialogRef = this.dialog.open(CreaSobreMiDialogComponent, {
       width: '450px',
-
     });
-
-
   }
-
-
-
 
 }

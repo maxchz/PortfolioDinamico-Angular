@@ -1,0 +1,79 @@
+<div class="container-dialogCreaUsuario" *ngIf= "showSpinner != true; else spinner">
+  <h2>Crear educación</h2>
+  <p class="ref-aster">* El asterisco indica que es obligatorio</p>
+  <form  [formGroup]= "form" (ngSubmit)= "onEnviarNuevaEducacion($event)" class="form-dialogCreaUsuario">
+    <mat-dialog-content>
+
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Institución</mat-label>
+          <input matInput placeholder="Ingrese el nombre de la institución" formControlName="institucion" type="text" required>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Título</mat-label>
+          <input matInput placeholder="Ingese su titulación" formControlName="titulo" type="text" required>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Fecha Inicio</mat-label>
+          <input matInput placeholder="dd-mm-aa" formControlName="fechaInicio" type="date" required>
+          <mat-hint>Ingrese fecha de inicio</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Fecha Fin</mat-label>
+          <input matInput placeholder="dd-mm-aa" formControlName="fechaFin" type="date" required>
+          <mat-hint>Ingrese fecha de finalización</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Descripción</mat-label>
+          <textarea matInput placeholder="Descripción" formControlName="descripcion" required></textarea>
+          <mat-hint>Agrege descripción de carrera, tecnicatura, etc.- Hasta 800 caracteres</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p class="p-url_logo">
+        <mat-form-field appearance="standard">
+          <mat-label>Logo institución</mat-label>
+          <input matInput placeholder="Ingese url" formControlName="url_logo" type="text" required>
+        </mat-form-field>
+      </p>
+
+      <p class="p-idUsuario">
+        <mat-form-field appearance="standard">
+          <mat-label>Persona Id</mat-label>
+          <input matInput placeholder="Id persona" formControlName="persona_id" type="number" required >
+          <mat-hint></mat-hint>
+        </mat-form-field>
+      </p>
+
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions align= "end">
+    <section>
+      <div class="example-button-row">
+        <button mat-raised-button  mat-dialog-close color="warn">Cancelar</button>
+        <button mat-raised-button color="primary" type="submit" >Guardar</button>
+      </div>
+    </section>
+  </mat-dialog-actions>
+
+ </form>
+</div>
+
+<ng-template #spinner>
+  <div class="container-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>
+

@@ -1,6 +1,5 @@
 <section id="about">
   <div class="container-about" *ngIf="miPortfolio == null; else sobreMi">
-          <!-- <div *ngIf="miPortfolio == null; else sobreMi"> -->
             <div class="about-titulo">
               <div class="img-perfil">
                 <i class="fa-solid fa-circle-user"></i>
@@ -19,11 +18,6 @@
 
             </div>
 
-            <!-- <div class="container-editonly">
-              <span>Bienvenido, pulsa el siguiente botón para empezar a crear tu perfil.</span>
-              <i class="fa-solid fa-plus" matTooltip="Agregar" matTooltipPosition="below" (click)="openDialogAgregarSobreMi()"></i>
-            </div> -->
-          <!-- </div> -->
   </div>
 
   <ng-template #sobreMi>
@@ -43,11 +37,10 @@
           <p>
             {{miPortfolio.sobreMi}}
           </p>
-          <div class="container-edit">
-            <!-- <i class="fa-solid fa-plus" matTooltip="Agregar" matTooltipPosition="below" (click)="openDialogAgregarSobreMi()"></i> -->
+          <!-- <div class="container-edit">
             <i class="fa-solid fa-pencil" matTooltip="Editar" matTooltipPosition="below" (click)="openDialogEdit()"></i>
             <i class="fa-regular fa-trash-can" matTooltip="Eliminar" matTooltipPosition="below"></i>
-          </div>
+          </div> -->
       </div>
     </div>
   </ng-template>

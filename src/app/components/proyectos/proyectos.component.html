@@ -1,31 +1,68 @@
-<section id="projects" class="background-alt">
+<section id="projects" class="background-alt" *ngIf="miPortfolioProyecto == null; else proyecto">
   <h2 class="heading">Proyectos</h2>
 
-      <div class="projects-timeline" *ngFor="let proyecto of proyectosList">
+      <div class="projects-timeline">
           <div class="project">
               <div class="project-image">
                   <div class="img-proyect">
-                      <img [src]="proyecto.urlProyecto" alt="Imágen representativa de proyecto" />
+                    <i class="fa-solid fa-image"></i>
                   </div>
 
               </div>
               <!-- End .project-image -->
               <div class="project-info">
-                  <h3>{{proyecto.nombre}}</h3>
-                  <span><time>{{proyecto.fechaInicio}}</time>&nbsp;-&nbsp;<time>{{proyecto.fechaFin}}</time></span>
+                  <h3>Nombre de proyecto</h3>
+                  <span><time>Fecha inicio</time>&nbsp;-&nbsp;<time>Fecha fin</time></span>
 
                   <p>
-                      {{proyecto.descripcion}}
+                      Descripción del proyecto
                   </p>
                   <span class="link-repo">
-                      <a [href]="proyecto.urlRepositorio" target="_blank">Ir a ropositorio en GitHub</a>
+                    Link de repositorio
                   </span>
-                  <div class="container-edit">
-                    <i class="fa-solid fa-plus" matTooltip="Agregar" matTooltipPosition="below"></i>
-                    <i class="fa-solid fa-pencil" matTooltip="Editar" matTooltipPosition="below"></i>
-                    <i class="fa-regular fa-trash-can" matTooltip="Eliminar" matTooltipPosition="below"></i>
-                  </div>
+
               </div>
           </div>
       </div>
+      <div class="container-edit">
+        <i class="fa-solid fa-plus" matTooltip="Agregar" matTooltipPosition="below" (click)="openDialogAgregarProyecto()"></i>
+      </div>
 </section>
+
+<ng-template #proyecto>
+  <section id="projects" class="background-alt">
+    <h2 class="heading">Proyectos</h2>
+
+        <div class="projects-timeline" *ngFor="let proyecto of miPortfolioProyecto; let indice=index">
+            <div class="project">
+                <div class="project-image">
+                    <div class="img-proyect">
+                        <img [src]="proyecto.urlProyecto" alt="Imágen representativa de proyecto" />
+                    </div>
+
+                </div>
+                <!-- End .project-image -->
+                <div class="project-info">
+                    <h3>{{proyecto.nombre}}</h3>
+                    <span><time>{{proyecto.fechaInicio}}</time>&nbsp;-&nbsp;<time>{{proyecto.fechaFin}}</time></span>
+
+                    <p>
+                        {{proyecto.descripcion}}
+                    </p>
+                    <span class="link-repo">
+                        <a [href]="proyecto.urlRepositorio" target="_blank">Ir a ropositorio</a>
+                    </span>
+                    <div class="container-edit">
+                      <i class="fa-solid fa-pencil" matTooltip="Editar" matTooltipPosition="below" (click)="openDialogEditarProyecto(indice)"></i>
+                      <i class="fa-regular fa-trash-can" matTooltip="Eliminar" matTooltipPosition="below" (click)="openDialogEliminarProyecto(indice)"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-edit">
+          <i class="fa-solid fa-plus" matTooltip="Agregar" matTooltipPosition="below" (click)="openDialogAgregarProyecto()"></i>
+        </div>
+  </section>
+
+</ng-template>
+

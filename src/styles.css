@@ -29,8 +29,8 @@ a{
 
 }
 
-/* CONTENEDOR DE ICONOS PARA EDITAR */
-.container-edit{
+/* CONTENEDOR DE ICONOS PARA EDITAR, CREAR y ELIMNAR */
+.container-edit, .container-crea, .container-elimina{
   display:flex;
   width: 100%;
   height:30px;
@@ -416,7 +416,7 @@ a{
   font-weight: lighter;
 }
 
-.experience-data .container-edit {
+.container-edit, .container-crea, .container-elimina {
   justify-content: right;
 }
 

@@ -23,8 +23,9 @@ export class InterceptorService implements HttpInterceptor {
     //Obtenemos el ultimo estado
     var currentUser=this.autenticacionServicio.UsuarioAutenticado;
     //Verifico si el currentUser tiene almacenado el token
+    //Si existe el currentUser, clonamos el request para setear en el encabezado el token
+
     if(currentUser && currentUser.accessToken){
-      //Si existe el currentUser, clonamos el request para setear en el encabezado el token
       req=req.clone({
         setHeaders:{
           Authorization: `Bearer ${currentUser.accessToken}`

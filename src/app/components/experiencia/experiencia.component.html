@@ -1,67 +1,67 @@
-<section id="experience" class="background-alt">
+<section id="experience" class="background-alt" *ngIf="miPortfolioExperiencia == null; else experiencia">
   <h2 class="heading">Experiencia</h2>
-  <div id="experience-timeline"  *ngFor="let experiencia of miExperiencia">
+  <div id="experience-timeline"  *ngFor="let experiencia of miPortfolioExperiencia">
 
       <div class="experience-job">
           <div class="experience-date">
-            <span>{{experiencia.fechaInicio}}&nbsp;-&nbsp;{{experiencia.fechaFin}}</span>
-            <!-- <div class="container-edit">
-              <i class="fa-solid fa-plus"></i>
-              <i class="fa-solid fa-pencil" matTooltip="Editar" matTooltipPosition="left"></i>
-              <i class="fa-regular fa-trash-can" matTooltip="Eliminar" matTooltipPosition="right"></i>
-            </div> -->
+            <span>Fecha inicio&nbsp;-&nbsp;Fecha fin</span>
+
           </div>
 
           <div class="experience-data">
-              <h3>{{experiencia.nombreEmpresa}}</h3>
-              <h4>{{experiencia.posicion}}</h4>
+              <h3>Empresa</h3>
+              <h4>Posición / Puesto</h4>
               <p>
-                  {{experiencia.descripcion}}
+                  Descripción de tareas realizadas
               </p>
-              <div class="container-edit">
-                <i class="fa-solid fa-plus" matTooltip="Agregar" matTooltipPosition="below"></i>
-                <i class="fa-solid fa-pencil" matTooltip="Editar" matTooltipPosition="below"></i>
-                <i class="fa-regular fa-trash-can" matTooltip="Eliminar" matTooltipPosition="below"></i>
-              </div>
-          </div>
 
-      </div>
-
-      <!-- <div class="experience-job">
-          <span>Enero 2018 - Junio 2019</span>
-          <div class="experience-data">
-
-              <h3>Trabajador Autónomo</h3>
-              <h4>Ingeniero civil</h4>
-              <p>
-                  Proyecto y dirección de obras residenciales.
-              </p>
           </div>
       </div>
-
-      <div class="experience-job">
-          <span>Agosto 2015 - Diciembre 2017</span>
-          <div class="experience-data">
-
-              <h3>Electroingenieria ICSSA</h3>
-              <h4>Responsable de proyectos de obras civiles</h4>
-              <p>
-                  Proyecto, cálculo y diseño de obras civiles para subestaciones de 132kv.Desempeño en obras
-                  electromecanicas. Cálculo de cantidades, solicitudes de presupuestos y prevision de materiales para ejecución de obras.
-                  Control de documentacion SGI de obra.
-              </p>
-          </div>
-      </div>
-
-      <div class="experience-job">
-          <span>Diciembre 2013 - Junio 2014</span>
-          <div class="experience-data">
-              <h3>Municipalidad de Córdoba-Dirección de Arquitectura</h3>
-              <h4>Pasante</h4>
-              <p>
-                  Relevamiento de obras. Informes técnicos, desarrollo de proyectos estructurales y digitalización de planos.
-              </p>
-          </div>
-      </div> -->
   </div>
+  <div class="container-crea">
+    <i class="fa-solid fa-plus" matTooltip="Agregar" matTooltipPosition="below" (click)="openDialogAgregarExperiencia()"></i>
+  </div>
+
+</section>
+
+<ng-template #experiencia>
+  <section id="experience" class="background-alt">
+    <h2 class="heading">Experiencia</h2>
+    <!-- <div id="experience-timeline"  *ngFor="let experiencia of miPortfolioExperiencia; let indice=index; trackBy: experienciaObj"> -->
+
+    <div id="experience-timeline"  *ngFor="let experiencia of miPortfolioExperiencia;let indice=index">
+
+        <div class="experience-job">
+            <div class="experience-date">
+              <span>{{experiencia.fechaInicio}}&nbsp;-&nbsp;{{experiencia.fechaFin}}</span>
+              <!-- <div class="container-edit">
+                <i class="fa-solid fa-plus"></i>
+                <i class="fa-solid fa-pencil" matTooltip="Editar" matTooltipPosition="left"></i>
+                <i class="fa-regular fa-trash-can" matTooltip="Eliminar" matTooltipPosition="right"></i>
+              </div> -->
+            </div>
+
+            <div class="experience-data">
+                <h3>{{experiencia.nombreEmpresa}}</h3>
+                <h4>{{experiencia.posicion}}</h4>
+                <p>
+                    {{experiencia.descripcion}}
+                </p>
+                <div class="container-edit">
+                  <i class="fa-solid fa-pencil" matTooltip="Editar" matTooltipPosition="below" (click)="openDialogEditarExperiencia(indice)"></i>
+                  <i class="fa-regular fa-trash-can" matTooltip="Eliminar" matTooltipPosition="below" (click)="openDialogEliminarExperiencia(indice)"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-crea">
+      <i class="fa-solid fa-plus" matTooltip="Agregar" matTooltipPosition="below" (click)="openDialogAgregarExperiencia()"></i>
+    </div>
+
+
+
+
   </section>
+
+</ng-template>
