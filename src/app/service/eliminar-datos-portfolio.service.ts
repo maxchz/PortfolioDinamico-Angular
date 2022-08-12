@@ -50,6 +50,30 @@ export class EliminarDatosPortfolioService {
 
   }
 
+  //Método para hacer la llamada a la API, elimina dato habilidad dura
+  EliminarHabilidadDura(idHabilidadDura: number): Observable<any>{
+    return this.http.delete<any>(`http://localhost:8080/borrar-habilidad/${idHabilidadDura}`,{observe: 'response'})
+
+    .pipe(
+      catchError((error)=>{
+      return this.errorHandler(error);
+      })
+    );
+
+  }
+
+  //Método para hacer la llamada a la API, elimina dato habilidad blanda
+  EliminarHabilidadBlanda(idHabilidadBlanda: number): Observable<any>{
+    return this.http.delete<any>(`http://localhost:8080/borrar-habilidad-blanda/${idHabilidadBlanda}`,{observe: 'response'})
+
+    .pipe(
+      catchError((error)=>{
+      return this.errorHandler(error);
+      })
+    );
+
+  }
+
   //Método para manejar los errores (falla en la conexion, no autorizado, etc)
 
 errorHandler(error: HttpErrorResponse): Observable<any>{

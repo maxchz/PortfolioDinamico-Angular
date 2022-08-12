@@ -14,7 +14,7 @@ import { IniciarSesionComponent } from './components/iniciar-sesion/iniciar-sesi
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { InterceptorService } from './service/interceptor.service';
 import { DatosPortfoliosService } from './service/datos-portfolios.service';
 import { HomeComponent } from './components/home/home.component';
@@ -26,6 +26,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { EditDialogComponent } from './components/meterial/edit-dialog/edit-dialog.component';
 import {MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -43,6 +44,12 @@ import { EliminaEducacionDialogComponent } from './components/meterial/elimina-e
 import { CreaProyectoDialogComponent } from './components/meterial/crea-proyecto-dialog/crea-proyecto-dialog.component';
 import { EditaProyectoDialogComponent } from './components/meterial/edita-proyecto-dialog/edita-proyecto-dialog.component';
 import { EliminaProyectoDialogComponent } from './components/meterial/elimina-proyecto-dialog/elimina-proyecto-dialog.component';
+import { CreaHabDuraDialogComponent } from './components/meterial/crea-hab-dura-dialog/crea-hab-dura-dialog.component';
+import { CreaHabBlandaDialogComponent } from './components/meterial/crea-hab-blanda-dialog/crea-hab-blanda-dialog.component';
+import { EditaHabBlandaDialogComponent } from './components/meterial/edita-hab-blanda-dialog/edita-hab-blanda-dialog.component';
+import { EditaHabDuraDialogComponent } from './components/meterial/edita-hab-dura-dialog/edita-hab-dura-dialog.component';
+import { EliminaHabDuraDialogComponent } from './components/meterial/elimina-hab-dura-dialog/elimina-hab-dura-dialog.component';
+import { EliminaHabBlandaDialogComponent } from './components/meterial/elimina-hab-blanda-dialog/elimina-hab-blanda-dialog.component';
 
 
 
@@ -76,7 +83,13 @@ import { EliminaProyectoDialogComponent } from './components/meterial/elimina-pr
     EliminaEducacionDialogComponent,
     CreaProyectoDialogComponent,
     EditaProyectoDialogComponent,
-    EliminaProyectoDialogComponent
+    EliminaProyectoDialogComponent,
+    CreaHabDuraDialogComponent,
+    CreaHabBlandaDialogComponent,
+    EditaHabBlandaDialogComponent,
+    EditaHabDuraDialogComponent,
+    EliminaHabDuraDialogComponent,
+    EliminaHabBlandaDialogComponent
 
   ],
   imports: [
@@ -84,6 +97,7 @@ import { EliminaProyectoDialogComponent } from './components/meterial/elimina-pr
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     MatSliderModule,
     MatTooltipModule,
     BrowserAnimationsModule,
@@ -93,6 +107,7 @@ import { EliminaProyectoDialogComponent } from './components/meterial/elimina-pr
     MatInputModule,
     ScrollingModule,
     MatProgressSpinnerModule,
+    MatSelectModule,
     ToastrModule.forRoot(),
 
 

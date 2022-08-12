@@ -1,0 +1,60 @@
+<div class="container-dialogCreaUsuario" *ngIf= "showSpinner != true; else spinner">
+  <h2>Eliminar datos de habilidades interpersonales</h2>
+  <!-- <p class="ref-aster">* El asterisco indica que es obligatorio</p> -->
+  <p>En la sigueinte lista seleccione la habilidad interpersonal que desea eliminar, luego pulse eliminar.</p>
+
+    <form  [formGroup]= "form" (ngSubmit)= "onEnviarEliminaHabilidadBlanda($event)" class="form-dialogCreaUsuario">
+
+        <mat-form-field appearance="fill">
+          <mat-label>Listado de habilidades</mat-label>
+          <mat-select [formControl] = "selected">
+            <mat-option *ngFor="let habilidades of listHabBlanda" [value]= "habilidades.habilidadBlanda">
+              {{habilidades.habilidadBlanda}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- <mat-dialog-content>
+          <p class="p-idUsuario">
+            <mat-form-field appearance="standard">
+              <mat-label>Id</mat-label>
+              <input matInput placeholder="Id" formControlName="id" type="number" required >
+              <mat-hint></mat-hint>
+            </mat-form-field>
+          </p>
+
+          <p class="p-idUsuario">
+            <mat-form-field appearance="standard">
+              <mat-label>Habilidad o competencia interpersonal</mat-label>
+              <input matInput placeholder="Modifique su habilidad o competencia" formControlName="habilidadBlanda" type="text" required>
+            </mat-form-field>
+          </p>
+
+          <p class="p-idUsuario">
+            <mat-form-field appearance="standard">
+              <mat-label>Persona Id</mat-label>
+              <input matInput placeholder="Id persona" formControlName="persona_id" type="number" required >
+              <mat-hint></mat-hint>
+            </mat-form-field>
+          </p>
+
+      </mat-dialog-content> -->
+
+      <mat-dialog-actions align= "end">
+        <section>
+          <div class="example-button-row">
+            <button mat-raised-button  mat-dialog-close color="warn">Cancelar</button>
+            <button mat-raised-button color="primary" type="submit" >Eliminar</button>
+          </div>
+        </section>
+      </mat-dialog-actions>
+
+    </form>
+</div>
+
+<ng-template #spinner>
+  <div class="container-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>
+

@@ -20,6 +20,12 @@ export class ModificaDataPersonaService {
 
   url_modProyecto="http://localhost:8080/editar/proyecto/";
 
+  url_modHabilidadDura="http://localhost:8080/editar/habilidad/";
+
+  url_modHabilidadBlanda="http://localhost:8080/editar/habilidad-blanda/";
+
+
+
 
   //El objeto observable BehaviorSubject guarda los estados
   currentUserSubject: BehaviorSubject<any>;
@@ -90,6 +96,32 @@ ModificarProyecto(datosProyecto: any): Observable<any>{
 
   return this.http
      .put<any>(this.url_modProyecto, datosProyecto,{'headers': headers, observe: 'response'})
+     .pipe(
+        catchError((error)=>{
+        return this.errorHandler(error);
+        })
+      );
+}
+
+//Método para hacer la llamada a la API, recibe los datos de habilidad dura y los modifíca en la BD
+ModificarHabilidadDura(datosHabilidad: any): Observable<any>{
+  const headers = {'content-type' : 'application/json'}
+
+  return this.http
+     .put<any>(this.url_modHabilidadDura, datosHabilidad,{'headers': headers, observe: 'response'})
+     .pipe(
+        catchError((error)=>{
+        return this.errorHandler(error);
+        })
+      );
+}
+
+//Método para hacer la llamada a la API, recibe los datos de habilidad blanda y los modifíca en la BD
+ModificarHabilidadBlanda(datosHabilidad: any): Observable<any>{
+  const headers = {'content-type' : 'application/json'}
+
+  return this.http
+     .put<any>(this.url_modHabilidadBlanda, datosHabilidad,{'headers': headers, observe: 'response'})
      .pipe(
         catchError((error)=>{
         return this.errorHandler(error);

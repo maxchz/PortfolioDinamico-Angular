@@ -1,0 +1,33 @@
+<div class="container-dialogCreaUsuario" *ngIf= "showSpinner != true; else spinner">
+  <h2>Eliminar registro de habilidad tecnológica</h2>
+    <mat-dialog-content class="mat-typography">
+      <p>Si esta seguro que desea eliminar el siguiente registro de habilidad tecnológica, pulse el botón eliminar.</p>
+      <ul>
+
+        <li>
+          Habilidad o tecnología usada: {{dataHabilidadDura?.tecnologia}}
+        </li>
+        <li>
+          Progreso expresado como porcentaje: {{dataHabilidadDura?.progreso}}%
+        </li>
+
+      </ul>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align= "end">
+      <section>
+        <div class="example-button-row">
+          <button mat-raised-button  mat-dialog-close color="warn">Cancelar</button>
+          <button mat-raised-button color="primary" type="button"  (click) = "onEnviarEliminarHabilidadDura()">Eliminar</button>
+        </div>
+      </section>
+    </mat-dialog-actions>
+
+</div>
+
+<ng-template #spinner>
+  <div class="container-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>
+

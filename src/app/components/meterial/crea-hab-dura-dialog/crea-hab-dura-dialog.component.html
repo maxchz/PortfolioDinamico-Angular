@@ -1,0 +1,60 @@
+<div class="container-dialogCreaUsuario" *ngIf= "showSpinner != true; else spinner">
+  <h2>Crear dato nueva habilidad tecnológica</h2>
+  <p class="ref-aster">* El asterisco indica que es obligatorio</p>
+  <form  [formGroup]= "form" (ngSubmit)= "onEnviarNuevaHabilidadDura($event)" class="form-dialogCreaUsuario">
+    <mat-dialog-content>
+
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Nombre del software/tecnología</mat-label>
+          <input matInput placeholder="Ingrese el nombre de la tecnología usada" formControlName="tecnologia" type="text" required>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Progreso </mat-label>
+          <input matInput placeholder="Ingrese su dominio con un número representativo" formControlName="progreso" type="number" required>
+          <mat-hint>Número entero desde 0 a 100, se expresará en porcentaje (Ej: 25 = 25%)</mat-hint>
+        </mat-form-field>
+      </p>
+
+
+
+      <p class="p-idUsuario">
+        <mat-form-field appearance="standard">
+          <mat-label>Logo de tech</mat-label>
+          <input matInput placeholder="Ingrese url" formControlName="urlTecLogo" type="text" required>
+        </mat-form-field>
+      </p>
+
+
+      <p class="p-idUsuario">
+        <mat-form-field appearance="standard">
+          <mat-label>Persona Id</mat-label>
+          <input matInput placeholder="Id persona" formControlName="persona_id" type="number" required >
+          <mat-hint></mat-hint>
+        </mat-form-field>
+      </p>
+
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions align= "end">
+    <section>
+      <div class="example-button-row">
+        <button mat-raised-button  mat-dialog-close color="warn">Cancelar</button>
+        <button mat-raised-button color="primary" type="submit" >Guardar</button>
+      </div>
+    </section>
+  </mat-dialog-actions>
+
+ </form>
+</div>
+
+<ng-template #spinner>
+  <div class="container-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>
+

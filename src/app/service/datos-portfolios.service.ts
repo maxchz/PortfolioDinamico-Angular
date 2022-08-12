@@ -38,11 +38,6 @@ export class DatosPortfoliosService {
     return this.http.get<any>(`http://localhost:8080/ver/persona-idUsuario/${id_usuario}`);
   }
 
-  //Método para obtener datos de experiencia según id de usuario
-  // obtenerDatosExperienciaPorIdPersona(id_persona: number): Observable<any>{
-  //   const headers = {'content-type' : 'application/json'}
-  //   return this.http.get<any>(`http://localhost:8080/ver/experiencia-usuario/${id_persona}`);
-  // }
 
   obtenerDatosExperienciaPorIdPersona(id_persona: number): Observable<any>{
     const headers = {'content-type' : 'application/json'}
@@ -59,26 +54,39 @@ export class DatosPortfoliosService {
     return this.http.get<any>(`http://localhost:8080/ver/proyecto-usuario/${id_persona}`,{observe: 'response'});
   }
 
-
-  //Método para obtener datos de educación según id de usuario
-  obtenerDatosEducacion(): Observable<any>{
-    return this.http.get<any>('http://localhost:8080/ver/educacion-usuario/6');
+  obtenerDatosHabilidadDuraPorIdPersona(id_persona: number): Observable<any>{
+    const headers = {'content-type' : 'application/json'}
+    return this.http.get<any>(`http://localhost:8080/ver/habilidad-usuario/${id_persona}`,{observe: 'response'});
   }
 
-  //Método para obtener datos de proyecto según id de usuario
-  obtenerDatosProyecto(): Observable<any>{
-    return this.http.get<any>('http://localhost:8080/ver/proyecto-usuario/6');
+  obtenerDatosHabilidadBlandaPorIdPersona(id_persona: number): Observable<any>{
+    const headers = {'content-type' : 'application/json'}
+    return this.http.get<any>(`http://localhost:8080/ver/habilidad-blanda/${id_persona}`,{observe: 'response'});
   }
 
-  //Método para obtener datos de habilidad según id de usuario
-  obtenerDatosHabilidadTech(): Observable<any>{
-    return this.http.get<any>('http://localhost:8080/ver/habilidad-usuario/6');
+  obtenerDatosHabilidadBlandaPorHabBlanda(habBlanda: String): Observable<any>{
+    const headers = {'content-type' : 'application/json'}
+    return this.http.get<any>(`http://localhost:8080/ver/habilidad-blanda/habBlanda/${habBlanda}`,{observe: 'response'});
   }
 
-  //Método para obtener datos de habilidad según id de usuario
-  obtenerDatosHabilidadBlanda(): Observable<any>{
-    return this.http.get<any>('http://localhost:8080/ver/habilidad-blanda/6');
-  }
+
+  // obtenerDatosEducacion(): Observable<any>{
+  //   return this.http.get<any>('http://localhost:8080/ver/educacion-usuario/6');
+  // }
+
+  // obtenerDatosProyecto(): Observable<any>{
+  //   return this.http.get<any>('http://localhost:8080/ver/proyecto-usuario/6');
+  // }
+
+  // obtenerDatosHabilidadTech(): Observable<any>{
+  //   return this.http.get<any>('http://localhost:8080/ver/habilidad-usuario/6');
+  // }
+
+  // obtenerDatosHabilidadBlanda(): Observable<any>{
+  //   return this.http.get<any>('http://localhost:8080/ver/habilidad-blanda/6');
+  // }
+
+
 
   ObtenerDatosUsuarioPorEmail(): Observable<any>{
     // console.log('El email usuario desde datos-portfolios service es:');

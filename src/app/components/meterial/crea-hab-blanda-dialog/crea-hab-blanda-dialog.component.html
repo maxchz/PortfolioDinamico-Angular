@@ -1,0 +1,42 @@
+<div class="container-dialogCreaUsuario" *ngIf= "showSpinner != true; else spinner">
+  <h2>Crear dato nueva habilidad blanda</h2>
+  <p class="ref-aster">* El asterisco indica que es obligatorio</p>
+  <form  [formGroup]= "form" (ngSubmit)= "onEnviarNuevaHabilidadBlanda($event)" class="form-dialogCreaUsuario">
+    <mat-dialog-content>
+
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Habilidad o competencias interpersonales</mat-label>
+          <input matInput placeholder="Ingrese su habilidad o competencia" formControlName="habilidadBlanda" type="text" required>
+        </mat-form-field>
+      </p>
+
+      <p class="p-idUsuario">
+        <mat-form-field appearance="standard">
+          <mat-label>Persona Id</mat-label>
+          <input matInput placeholder="Id persona" formControlName="persona_id" type="number" required >
+          <mat-hint></mat-hint>
+        </mat-form-field>
+      </p>
+
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions align= "end">
+    <section>
+      <div class="example-button-row">
+        <button mat-raised-button  mat-dialog-close color="warn">Cancelar</button>
+        <button mat-raised-button color="primary" type="submit" >Guardar</button>
+      </div>
+    </section>
+  </mat-dialog-actions>
+
+ </form>
+</div>
+
+<ng-template #spinner>
+  <div class="container-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>
+
