@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
 import { DatosPortfoliosService } from 'src/app/service/datos-portfolios.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CreaUsuarioDialogComponent } from '../meterial/crea-usuario-dialog/crea-usuario-dialog.component';
@@ -17,22 +17,15 @@ export class BannerComponent implements OnInit {
   miPortfolioEmit: EventEmitter<any> = new EventEmitter<any>();
 
   miPortfolio: any;
-
   datosUsuario: any;
-
   datosUsuarioLogin: any;
-
   emailUser: String ='';
 
 
   constructor(private datosPortafolio: DatosPortfoliosService,
               public dialog: MatDialog,
-              private autenticacionServicio: AutenticacionService
-              ) {
-
-    this.emailUser = this.autenticacionServicio.UsuarioAutenticado.email;
-
-   }
+              private autenticacionServicio: AutenticacionService,
+              ){}
 
   ngOnInit(): void {
 
@@ -42,11 +35,8 @@ export class BannerComponent implements OnInit {
       this.datosPortafolio.obtenerDatosPersonaPorIdUsuario(idUsuario).subscribe(data =>{
         this.miPortfolio=data;
         this.miPortfolioEmit.emit(data);
-
       });
-
     });
-
   }
 
   irASobreMi(){
@@ -55,56 +45,42 @@ export class BannerComponent implements OnInit {
 
   openDialogCreaPerfil(): void {
     let dialogRef = this.dialog.open(CreaUsuarioDialogComponent, {
-      width: '480px',
+      width: '450px',
       disableClose: true,
-
     }).afterClosed().subscribe(()=>{
-
       this.autenticacionServicio.DatosNuevoUsuario().subscribe(data =>{
+
         this.datosUsuario = data;
         var id_usuario = data.id;
 
         this.datosPortafolio.obtenerDatosPersonaPorIdUsuario(id_usuario).subscribe(data =>{
           this.miPortfolio=data;
           this.miPortfolioEmit.emit(data);
-          console.log("Los datos de la persona son: ");
-          console.log(this.miPortfolio);
         });
-        console.log("Id desde banner component:" + id_usuario);
       });
-
     });
-
   }
 
   openDialogEditaPerfil(): void {
     const dialogRef = this.dialog.open(EditarUsuarioDialogComponent, {
       width: '450px',
       disableClose: true,
-
     }).afterClosed().subscribe(()=>{
 
         this.autenticacionServicio.DatosNuevoUsuario().subscribe(data =>{
           this.datosUsuario = data;
           var id_usuario = data.id;
 
-
         this.datosPortafolio.obtenerDatosPersonaPorIdUsuario(id_usuario).subscribe(data =>{
           this.miPortfolio=data;
           this.miPortfolioEmit.emit(data);
-          console.log("Los datos de la persona son: ");
-          console.log(this.miPortfolio);
         });
       });
-
     });
-
   }
-
 
   get DatosUsuarioLogin(){
     return this.datosUsuarioLogin;
   }
-
 
 }

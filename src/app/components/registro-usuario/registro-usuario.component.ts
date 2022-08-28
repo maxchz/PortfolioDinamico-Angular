@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotificacionToastService } from 'src/app/service/alertas/notificacion-toast.service';
+import { DatosPortfoliosService } from 'src/app/service/datos-portfolios.service';
 import { RegistroUsuarioService } from 'src/app/service/registro-usuario.service';
 
 @Component({
@@ -10,35 +12,28 @@ import { RegistroUsuarioService } from 'src/app/service/registro-usuario.service
 })
 export class RegistroUsuarioComponent implements OnInit {
 
-  //La variable form se enlaza con el formulario en el template html
   form: FormGroup;
+  userEmail_db: string = '';
+  existing_user: boolean = false;
+  showSpinner: boolean = false;
 
-  //Variable para manejar errores
-  errorMessage: String = "";
-  errType: number = 0;
+  constructor( private formBuilder: FormBuilder,
+               private datosPortafolio: DatosPortfoliosService,
+               private registroUserService: RegistroUsuarioService,
+               private ruta: Router,
+               private notificationToast: NotificacionToastService) {
 
-  statusResponse: boolean=false;
-
-
-  constructor( private formBuilder: FormBuilder, private registroUserService: RegistroUsuarioService, private ruta: Router) {
-
-    this.form = this.formBuilder.group(
-      {
-        //Aquí especificamos el grupo de forms control que integran el formGroup, respetando el modelo de datos que espera recibir
-        //el backend para generar el usuario en la BBDD
-        // nombre: ['',[Validators.required]],
-        // apellido: ['',[Validators.required]],
-        email: ['', [Validators.required, Validators.email]],
-        password: ['',[Validators.required, Validators.minLength(5)]],
-
-      }
-    )
+                this.form = this.formBuilder.group(
+                  {
+                    email: ['', [Validators.required, Validators.email]],
+                    password: ['',[Validators.required, Validators.minLength(5)]],
+                  }
+                );
   }
 
   ngOnInit(): void {
   }
 
-  //Propiedad para acceder al valor del nombre, apellido, email y password
   get Nombre(){
     return this.form.get('nombre');
   }
@@ -52,48 +47,40 @@ export class RegistroUsuarioComponent implements OnInit {
     return this.form.get('password');
   }
 
-  //Método para enviar los datos a la API de la controladora
   onEnviarRegistro(event:Event){
-    //cancela el evento normal del formulario
     event.preventDefault;
-    //suscribimos al método registrar que proporciona el servicio de registrarService
-    //que recibe los datos del usuario que están definidas en el value del form, por que usamos formularios reactivos
-    // y estan asociados al modelo creados en el backend
+    this.showSpinner= true;
+    let userEmail_register= this.form.value.email;
 
-    this.registroUserService.RegistrarUsuario(this.form.value).subscribe(
-      (res: Response)=>{
-        this.statusResponse = res.ok;
-        if(this.statusResponse){
-          this.form.reset();
-        }
+    this.datosPortafolio.existeUsuarioRegistrado(userEmail_register).subscribe(data=>{
+      if(data){
+        setTimeout(() => {
+          this.showSpinner = false;
+          }, 1500);
+          this.notificationToast.showError("El email ya existe, intente con otro email de registro.", " ");
 
-        console.log(res);
-      },
-
-
-      (error)=>{
-
-        this.errType = this.registroUserService.ErrType;
-
-        console.log(error);
-
-
-          // Si backend responde un ok, mostrat tooltip de registro exitoso
-
-          //redirigimos al usuario a una nueva ruta, que es la de iniciar sesión, usando el servicio de Router
-          // this.ruta.navigate(['/iniciar-sesion']);
-
-
-
+      } else{
+        this.registroUserService.RegistrarUsuario(this.form.value).subscribe(
+          {next:(res: Response)=>{
+            if(res.ok){
+              this.form.reset();
+                setTimeout(() => {
+                  this.showSpinner = false;
+                  }, 1500);
+                  this.notificationToast.showSuccess("Usuario creado con éxito.", " ");
+            }
+          },
+          error: (e)=>{
+            if(e.ok !=true){
+              setTimeout(() => {
+                this.showSpinner = false;
+                }, 1500);
+              this.notificationToast.showError("Ha ocurrido un error, intenta luego.", " ");
+            }
+          }
+       });
       }
-
-    )
-
-
-
-
+    })
   }
-
-
 }
 

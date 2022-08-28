@@ -1,47 +1,34 @@
 body{
-  height: 100%;
-  background-image: radial-gradient(circle at 50% -18.7%, #ef53ff 0, #b549ff 25%, #783cf2 50%, #312ece 75%, #0023ac 100%);
-  /* background: url(./../../../assets/images/imgLogin1.jpg);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover; */
+  height: 100vh;
+  background: linear-gradient(9deg, rgb(236, 255, 160) 0%, rgba(230,239,255,0.99) 48%, rgba(239,255,190,1) 82%);
   display:flex;
   flex-direction: column;
-
 }
 
-
-
-body h2{
+body .tittle-inicioSesion{
   width:100%;
   margin:20px auto;
   color:white;
+  font-size: 24px;
+  font-weight:bold;
+  letter-spacing: 0.2rem;
   text-align: center;
-
-
-
 }
 
 .iconHome i{
   font-size: 25px;
-  color: white;
+  color: #00000099;
   margin-top:20px;
   margin-left: 20px;
   cursor: pointer;
 }
 .iconHome i:hover{
-  color: #d283f7;
-
+  color: rgb(135,135,135);
 }
-
-
-
 .m-4{
   width: 38%;
-  height:auto;
+  height:70%;
   border-radius: 15px;
-  /* border: 2px solid rgb(66, 66, 66); */
   align-items: center;
   margin-left:auto !important;
   margin-right:auto !important;
@@ -50,22 +37,17 @@ body h2{
   display:grid;
   background: #00000099;
 }
-
 .mb3, span,.form-label {
   width: 100%;
 }
-
 .form-label{
   color:#fff;
   font-size: 18px;
-
-
 }
-
 .form-control{
   width:100%;
   font-size: 16px;
-  border:1px solid #00000050;
+  border:1px rgb(135,135,135) solid;
   padding: 5px 10px;
   background:#ffffff00;
   color:#fff;
@@ -74,39 +56,46 @@ body h2{
   color:#ffffff99;
 }
 
-.form-control:hover{
-  border-bottom: 2px solid #fff;
-
-}
-
-
 .botonLogin{
   width:100%;
   height:40px;
   color:white;
-  border-radius:10px;
+  border-radius:5px;
   border:0;
-  background: #6e0c9c;
+  background: rgb(54, 130, 206);
   margin-top:30px;
 }
 .botonLogin:hover{
-  background: #8b0fc5;
-
+  background: rgba(54, 130, 206, 0.788);
 }
-
-
-form span{
-  color:#fff;
-
+.text-recupero, .text-registro{
+  color:white;
 }
-
-strong, .text-recupero{
+.sign-in, .text-recupero{
   cursor: pointer;
+}
+.sign-in{
+  color: rgb(89, 171, 253);
+  margin-left: 2%;
 }
 .text-danger{
   margin-bottom: 0;
 }
-
 .text-registro{
   margin-top:15px;
+}
+
+@media (max-width:725px){
+  body .tittle-inicioSesion{
+    font-size: 18px;
+    letter-spacing: 0.1rem;
+  }
+  .form-label, .text-recupero, .text-registro, .sign-in{
+    font-size: 16px;
+  }
+  .m-4{
+    width: 90%;
+    padding: 20px 20px;
+    margin-top: 25%!important;
+  }
 }

@@ -1,16 +1,27 @@
 <section id="contact">
-  <h2>Contáctame</h2>
+  <h2 class="heading">Contáctame</h2>
+  <p>Si deseas enviar alguna sugerencia para mejorar la experiencia de usuario, consulta o mensaje en particular, por favor escribe tu mensaje y te responderemos a la brevedad.</p>
   <div id="contact-form">
-      <form class="form-data">
-          <label for="_subject" class="form-input">
-              <input type="text"  name="_subject" placeholder="Nombre" required/>
-          </label>
-          <label for="_replyto" class="form-input">
-              <input type="email" name="_replyto" placeholder="Correo electrónico" required>
-          </label>
-          <textarea name="message" placeholder="Escribí tu mensaje..." required></textarea>
-          <button class="btn-form" type="submit">Enviar</button>
-      </form>
+    <form class="form-data" [formGroup]= "formContact" (ngSubmit)= "onEnviarNuevoMensajePortfolio($event)">
+      <label for="name" class="form-input">Nombre:
+        <input type="text"  name="name" formControlname="name" [formControl] = "selectedName" required/>
+      </label>
+      <label for="mail" class="form-input">Correo electrónico:
+        <input type="email" name="mail" formControlname="mail" [formControl] = "selectedMail" required>
+      </label>
+      <label for="subject" class="form-input">Asunto:
+        <input type="text"  name="subject" formControlName="subject"  required/>
+      </label>
+      <label for="body" class="form-input">Mensaje:</label>
+        <textarea name="body" formControlName="body" placeholder="Escribí tu mensaje..." required></textarea>
+      <button class="btn-form" type="submit" *ngIf= "showSpinner != true; else spinner">Enviar mensaje</button>
+      <ng-template #spinner>
+        <div>
+          <mat-spinner [diameter]= "35"></mat-spinner>
+        </div>
+      </ng-template>
+    </form>
   </div>
-  <!-- End #contact-form -->
 </section>
+
+

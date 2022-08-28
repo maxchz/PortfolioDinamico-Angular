@@ -76,7 +76,8 @@ export class CreaHabBlandaDialogComponent implements OnInit {
               this.showError();
           }
         }
-      })}
+      })
+  }
 
   showSuccess() {
     this.toastr.success('Se ha guardado con exito.', ' ', {

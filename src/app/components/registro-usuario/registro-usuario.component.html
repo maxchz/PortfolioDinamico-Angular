@@ -1,17 +1,10 @@
-<body>
+<body >
   <div class="iconHome">
     <i class="fa-solid fa-house-chimney" routerLink="/home"></i>
   </div>
-  <form  [formGroup]= "form" class="m-4" (ngSubmit)= "onEnviarRegistro($event)">
-    <h2>Registro de usuarios</h2>
-    <!-- <div class="mb-3">
-      <label for="nombre" class="form-label">Nombre</label>
-      <input type="text" class="form-control" formControlName="nombre" id="nombre" placeholder="Ingresa tu nombre" autocomplete="off" required>
-    </div>
-    <div class="mb-3">
-      <label for="apellido" class="form-label">Apellido</label>
-      <input type="text" class="form-control" formControlName="apellido" id="apellido" placeholder="Ingresa tu apellido" autocomplete="off" required>
-    </div> -->
+  <form  [formGroup]= "form" class="m-4" (ngSubmit)= "onEnviarRegistro($event)"  *ngIf= "showSpinner != true; else spinner">
+    <span class="tittle-inicioSesion">Crear cuenta</span>
+
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Email</label>
       <input type="email" formControlName="email" placeholder="Ingresá tu email" autocomplete="off"
@@ -23,9 +16,9 @@
         <p *ngIf = "Email?.hasError('email')" class="text-danger">
           El formato del email debe ser válido.
         </p>
-
       </div>
     </div>
+
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Contraseña</label>
       <input type="password" formControlName="password" placeholder="Ingresá tu contraseña"
@@ -37,22 +30,20 @@
         <p *ngIf= "Password?.errors?.['minlength']" class= "text-danger" >
           La contraseña debe ser de 5 caracteres de mínimo y máximo de 10 caracteres.
         </p>
-
       </div>
-
     </div>
 
-    <button type="submit" class="botonLogin">Registrar</button>
-    <span class="text-registro">¿Ya tenes una cuenta? <strong routerLink="/iniciar-sesion">Iniciar sesión</strong></span>
+    <button type="submit" class="botonLogin">Registrar usuario</button>
+    <div class="text-registro">¿Ya tenes una cuenta? <span class="sign-in" routerLink="/iniciar-sesion">Iniciar sesión</span></div>
 
   </form>
-  <!-- <span class="message-succes">Ocurrió un error en tú registro, inténtalo nuevamente.</span> -->
-  <span class="message-success" *ngIf="statusResponse" routerLink="/iniciar-sesion">Tú registro se realizó con éxito, ya puedes iniciar sesión.</span>
-  <div [ngSwitch]= "errType">
-    <span class="message-error" *ngSwitchCase= "'400'">Solicitud mal confeccionada, dirección URL no válida o problemas con la conexión de internet. Revisar si los datos proporcionados y conexión a internet, intentar nuevamente.</span>
-    <span class="message-error" *ngSwitchCase= "'401'">No autorizado, es necesario autentificarse para obtener respuesta a la solicitud enviada</span>
-    <span class="message-error" *ngSwitchCase= "'500'">El servidor no puede procesar su solicitud. Intente en otro momento.</span>
-    <span class="message-error" *ngSwitchCase= "'503'">El servidor no está listo para manejar la petición. Intente en otro momento.</span>
-  </div>
+
+  <ng-template #spinner>
+      <div class="container-spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+  </ng-template>
 </body>
+
+
 

@@ -88,12 +88,18 @@ export class DatosPortfoliosService {
 
 
 
+
   ObtenerDatosUsuarioPorEmail(): Observable<any>{
     // console.log('El email usuario desde datos-portfolios service es:');
     // console.log(email);
     return this.http.get<any>(`http://localhost:8080/ver/usuario/${this.emailUser}`);
 
   }
+
+   existeUsuarioRegistrado(email_registro: String) :Observable <any>{
+    return this.http.get<any>(`http://localhost:8080/ver/existe-usuario/${email_registro}`);
+  }
+
 
 
 

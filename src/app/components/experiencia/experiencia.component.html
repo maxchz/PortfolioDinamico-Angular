@@ -1,67 +1,53 @@
-<section id="experience" class="background-alt" *ngIf="miPortfolioExperiencia == null; else experiencia">
+<section id="experience" class="section-card" *ngIf="miPortfolioExperiencia == null; else experiencia">
   <h2 class="heading">Experiencia</h2>
-  <div id="experience-timeline"  *ngFor="let experiencia of miPortfolioExperiencia">
 
-      <div class="experience-job">
-          <div class="experience-date">
-            <span>Fecha inicio&nbsp;-&nbsp;Fecha fin</span>
-
-          </div>
-
-          <div class="experience-data">
-              <h3>Empresa</h3>
-              <h4>Posición / Puesto</h4>
-              <p>
-                  Descripción de tareas realizadas
-              </p>
-
-          </div>
+  <div id="experience-timeline" class="container-mainSection" >
+    <div class="experience-job container-cardSection">
+      <div class="experience-data container-dataSection">
+        <div class="experience-header container-headerSection">
+          <h3>Nombre de Empresa</h3>
+        </div>
+        <h4>Puesto - Cargo</h4>
+        <time>Fecha inicio - Fecha fin</time>
+        <div class="containerIconNoUser parrafo">
+          Para agregar información en esta sección pulse el botón <strong>+</strong>.
+        </div>
       </div>
+    </div>
   </div>
-  <div class="container-crea">
+  <div class="containerIconDialog">
     <i class="fa-solid fa-plus" matTooltip="Agregar" matTooltipPosition="below" (click)="openDialogAgregarExperiencia()"></i>
   </div>
-
 </section>
 
 <ng-template #experiencia>
-  <section id="experience" class="background-alt">
+  <section id="experience" class="section-card">
     <h2 class="heading">Experiencia</h2>
-    <!-- <div id="experience-timeline"  *ngFor="let experiencia of miPortfolioExperiencia; let indice=index; trackBy: experienciaObj"> -->
-
-    <div id="experience-timeline"  *ngFor="let experiencia of miPortfolioExperiencia;let indice=index">
-
-        <div class="experience-job">
-            <div class="experience-date">
-              <span>{{experiencia.fechaInicio}}&nbsp;-&nbsp;{{experiencia.fechaFin}}</span>
-              <!-- <div class="container-edit">
-                <i class="fa-solid fa-plus"></i>
-                <i class="fa-solid fa-pencil" matTooltip="Editar" matTooltipPosition="left"></i>
-                <i class="fa-regular fa-trash-can" matTooltip="Eliminar" matTooltipPosition="right"></i>
-              </div> -->
+    <div id="experience-timeline"  class="container-mainSection"  *ngFor="let experiencia of miPortfolioExperiencia;let indice=index">
+      <div class="experience-job container-cardSection">
+        <div class="experience-data container-dataSection">
+          <div class="experience-header container-headerSection">
+            <h3>{{experiencia.nombreEmpresa}}</h3>
+            <div class="containerIconDialog">
+              <i class="fa-solid fa-pencil" matTooltip="Editar" matTooltipPosition="below" (click)="openDialogEditarExperiencia(indice)"></i>
+              <i class="fa-regular fa-trash-can" matTooltip="Eliminar" matTooltipPosition="below" (click)="openDialogEliminarExperiencia(indice)"></i>
             </div>
+          </div>
 
-            <div class="experience-data">
-                <h3>{{experiencia.nombreEmpresa}}</h3>
-                <h4>{{experiencia.posicion}}</h4>
-                <p>
-                    {{experiencia.descripcion}}
-                </p>
-                <div class="container-edit">
-                  <i class="fa-solid fa-pencil" matTooltip="Editar" matTooltipPosition="below" (click)="openDialogEditarExperiencia(indice)"></i>
-                  <i class="fa-regular fa-trash-can" matTooltip="Eliminar" matTooltipPosition="below" (click)="openDialogEliminarExperiencia(indice)"></i>
-                </div>
-            </div>
+          <h4>{{experiencia.posicion}}</h4>
+          <time>{{experiencia.fechaInicio}}&nbsp;-&nbsp;{{experiencia.fechaFin}}</time>
+          <p>
+            {{experiencia.descripcion}}
+          </p>
         </div>
+      </div>
     </div>
-
-    <div class="container-crea">
+    <div class="containerIconDialog">
       <i class="fa-solid fa-plus" matTooltip="Agregar" matTooltipPosition="below" (click)="openDialogAgregarExperiencia()"></i>
     </div>
-
-
-
-
   </section>
-
 </ng-template>
+
+
+
+

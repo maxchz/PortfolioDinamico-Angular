@@ -10,7 +10,9 @@ import { DatosPortfoliosService } from 'src/app/service/datos-portfolios.service
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private datosPortafolio: DatosPortfoliosService, private cerrarSesion: AutenticacionService, private router: Router) { }
+  constructor(private datosPortafolio: DatosPortfoliosService,
+              private cerrarSesion: AutenticacionService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.datosPortafolio.obtenerDatos();
@@ -44,6 +46,18 @@ export class NavbarComponent implements OnInit {
   irAContacto(){
     document.getElementById("contact")?.scrollIntoView();
   }
+
+  toggleMenu() {
+    const toggle: any = document.querySelector('.toggle');
+    const menu: any = document.querySelector('.menu');
+      if (menu.classList.contains("active")) {
+        menu.classList.remove("active");
+        toggle.querySelector("a").innerHTML = "<i class='fas fa-bars'></i>";
+      } else {
+        menu.classList.add("active");
+        toggle.querySelector("a").innerHTML = "<i class='fas fa-times'></i>";
+      }
+    };
 
 }
 

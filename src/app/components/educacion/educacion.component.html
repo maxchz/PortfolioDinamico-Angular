@@ -1,61 +1,49 @@
-<section id="education" *ngIf="miPortfolioEducacion == null; else educacion">
-  <h2 class="heading">Educación</h2>
-  <div id="education-timeline">
-
-      <div class="education-block">
-            <div class="education-date">
-              <span><time>Fecha inicio</time> - <time>Fecha fin</time></span>
-            </div>
-            <!-- <div class="img-logo">
-              <img [src]="educacion.url_logo" alt="logo de institución">
-            </div> -->
-
-          <div class="education-data">
-              <h3>Institución educativa</h3>
-              <h4>Título</h4>
-              <p>
-                Descripción
-              </p>
-          </div>
-      </div>
-  </div>
-
-  <div class="container-edit">
-    <i class="fa-solid fa-plus" matTooltip="Agregar" matTooltipPosition="below" (click)="openDialogAgregarEducacion()"></i>
-  </div>
-
-</section>
-
-<ng-template #educacion>
-  <section id="education">
-    <h2 class="heading">Educación</h2>
-    <div id="education-timeline">
-
-        <div class="education-block" *ngFor="let educacion of miPortfolioEducacion;let indice=index">
-              <div class="education-date">
-                <span><time>{{educacion.fechaInicio}}</time> - <time>{{educacion.fechaFin}}</time></span>
+<section id="education" class="section-card" *ngIf="miPortfolioEducacion == null; else educacion">
+  <h2 class="heading">Formación Académica</h2>
+    <div id="education-timeline" class="container-mainSection">
+        <div class="container-cardSection">
+            <div class="container-dataSection">
+              <div class="container-headerSection">
+                <h3>Institución Educativa</h3>
               </div>
-              <!-- <div class="img-logo">
-                <img [src]="educacion.url_logo" alt="logo de institución">
-              </div> -->
-
-            <div class="education-data">
-                <h3>{{educacion.institucion}}</h3>
-                <h4>{{educacion.titulo}}</h4>
-                <p>
-                  {{educacion.descripcion}}
-                </p>
-                <div class="container-edit">
-                  <i class="fa-solid fa-pencil" matTooltip="Editar" matTooltipPosition="below" (click)="openDialogEditarEducacion(indice)"></i>
-                  <i class="fa-regular fa-trash-can" matTooltip="Eliminar" matTooltipPosition="below" (click)="openDialogEliminarEducacion(indice)"></i>
+              <h4>Título - Grado - Licenciatura</h4>
+              <time>Fecha inicio - Fecha fin</time>
+              <div class="containerIconNoUser parrafo">
+                Para agregar información en esta sección pulse el botón <strong>+</strong>.
                 </div>
             </div>
         </div>
     </div>
+    <div class="containerIconDialog">
+      <i class="fa-solid fa-plus" matTooltip="Agregar" matTooltipPosition="below" (click)="openDialogAgregarEducacion()"></i>
+    </div>
+</section>
 
-    <div class="container-edit">
+<ng-template #educacion>
+  <section id="education" class="section-card">
+    <h2 class="heading">Formación Académica</h2>
+    <div id="education-timeline" class="container-mainSection" *ngFor="let educacion of miPortfolioEducacion;let indice=index">
+        <div class="experience-job container-cardSection">
+            <div class="experience-data container-dataSection">
+              <div class="experience-header container-headerSection">
+                <h3>{{educacion.institucion}}</h3>
+                <div class="containerIconDialog">
+                  <i class="fa-solid fa-pencil" matTooltip="Editar" matTooltipPosition="below" (click)="openDialogEditarEducacion(indice)"></i>
+                  <i class="fa-regular fa-trash-can" matTooltip="Eliminar" matTooltipPosition="below" (click)="openDialogEliminarEducacion(indice)"></i>
+                </div>
+              </div>
+              <h4>{{educacion.titulo}}</h4>
+              <time>{{educacion.fechaInicio}}&nbsp;-&nbsp;{{educacion.fechaFin}}</time>
+              <p>
+                {{educacion.descripcion}}
+              </p>
+            </div>
+        </div>
+    </div>
+    <div class="containerIconDialog">
       <i class="fa-solid fa-plus" matTooltip="Agregar" matTooltipPosition="below" (click)="openDialogAgregarEducacion()"></i>
     </div>
   </section>
-
 </ng-template>
+
+

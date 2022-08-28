@@ -3,11 +3,17 @@
     <i class="fa-solid fa-house-chimney" routerLink="/home"></i>
   </div>
   <form  [formGroup]= "form" class="m-4" (ngSubmit)= "onEnviar($event)">
-    <h2>Iniciar Sesión</h2>
+    <span class="tittle-inicioSesion">Iniciar Sesión</span>
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Email</label>
-      <input type="email" formControlName="email" placeholder="Ingresá tu email" autocomplete="off"
-      [ngClass]= "{'is-invalid' : Email?.errors && Email?.touched, 'is-valid' : !Email?.errors && Email?.touched} " class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <input id="exampleInputEmail1"
+             class="form-control"
+             aria-describedby="emailHelp"
+             type="email"
+             formControlName="email"
+             placeholder="Ingresá tu email"
+             autocomplete="off"
+             [ngClass]= "{'is-invalid' : Email?.errors && Email?.touched, 'is-valid' : !Email?.errors && Email?.touched} ">
       <div *ngIf= "Email?.errors && Email?.touched">
         <p *ngIf= "Email?.hasError('required')" class="text-danger">
           El email es requerido.
@@ -15,13 +21,16 @@
         <p *ngIf = "Email?.hasError('email')" class="text-danger">
           El formato del email debe ser válido.
         </p>
-
       </div>
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-      <input type="password" formControlName="password" placeholder="Ingresá tu contraseña"
-      [ngClass]= "{'is-invalid' : Password?.errors && Password?.touched, 'is-valid' : !Password?.errors && Password?.touched} " class="form-control" id="exampleInputPassword1">
+      <input class="form-control"
+             id="exampleInputPassword1"
+             type="password"
+             formControlName="password"
+             placeholder="Ingresá tu contraseña"
+             [ngClass]= "{'is-invalid' : Password?.errors && Password?.touched, 'is-valid' : !Password?.errors && Password?.touched} ">
       <div *ngIf= "Password?.errors && Password?.touched" >
         <p *ngIf= "Password?.hasError('required')" class= "text-danger" >
           La contraseña es requerida.
@@ -29,14 +38,17 @@
         <p *ngIf= "Password?.errors?.['minlength']" class= "text-danger" >
           La contraseña debe ser de 5 caracteres de mínimo y máximo de 10 caracteres.
         </p>
-
       </div>
-
     </div>
 
-    <button type="submit" class="botonLogin">Enviar</button>
-    <span class="text-registro">¿No tenes una cuenta? <strong routerLink="/registrar-usuario">Registrate</strong></span>
-    <span class="text-recupero">¿Olvidaste tu contraseña?</span>
+    <button type="submit" class="botonLogin" *ngIf= "showSpinner != true; else spinner">Iniciar sesión</button>
+    <ng-template #spinner>
+      <div class="inicioSesion-spinner">
+        <mat-spinner [diameter]= "35"></mat-spinner>
+      </div>
+    </ng-template>
+    <div class="text-registro">¿No tenes una cuenta? <span class="sign-in" routerLink="/registrar-usuario">Registrate</span></div>
+    <div class="text-recupero">¿Olvidaste tu contraseña?</div>
 
   </form>
 </body>

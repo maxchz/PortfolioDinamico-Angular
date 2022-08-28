@@ -1,87 +1,85 @@
-<section id="skill" *ngIf="miPortfolioHabilidadDura == null; else habilidad">
+<section id="skill" class="section-card" *ngIf= "miPortfolioHabilidadDura == null; else habilidad">
   <h2 class="heading">Habilidades</h2>
-
-  <div >
-      <h3>Habilidades Duras/Tecnologías usadas</h3>
-      <div class="container" >
-              <div class="card">
-                  <div class="box-logo">
-                    <i class="fa-solid fa-chalkboard-user"></i>
-                  </div>
-                  <div class="box-text">
-                      <div class="text"><span >Tecnología</span></div>
-                      <div class="number"><span>%</span></div>
-                  </div>
-              </div>
+    <h3>Tecnologías usadas</h3>
+      <div class="skill-timeline-hard container-mainSection">
+          <div class="skill-card container-cardSection">
+            <div class="box-logo">
+              <i class="fa-solid fa-circle-notch iconNoUser"></i>
+              <span class="number parrafo">
+                %
+              </span>
+            </div>
+          </div>
+          <div class="containerIconNoUser parrafo">
+            Para agregar información en esta sección pulse el botón <strong>+</strong>.
+          </div>
       </div>
-      <div class="container-edit">
+      <div class="containerIconDialog">
         <i class="fa-solid fa-plus" matTooltip="Agregar" matTooltipPosition="below" (click)="openDialogAgregarHabilidadDura()"></i>
       </div>
 
-      <div class="skill-soft">
-          <h3>Habilidades Blandas</h3>
-          <div class="skills">
-            Habilidad blanda
-          </div>
+    <h3>Habilidades Interpersonales</h3>
+      <div class="skill-timeline-soft container-mainSection">
+        <div class="containerIconNoUser parrafo">
+            Para agregar información en esta sección pulse el botón <strong>+</strong>.
+        </div>
       </div>
-      <div class="container-edit">
+      <div class="containerIconDialog">
         <i class="fa-solid fa-plus" matTooltip="Agregar" matTooltipPosition="below" (click)="openDialogAgregarHabilidadBlanda()"></i>
       </div>
-  </div>
 </section>
 
 
 
 <ng-template #habilidad>
-  <section id="skill">
+  <section id="skill" class="section-card">
     <h2 class="heading">Habilidades</h2>
-
-    <div >
-        <h3>Habilidades Duras/Tecnologías usadas</h3>
-        <div class="container" >
-                <div class="card" *ngFor="let habilidades of miPortfolioHabilidadDura; let indice=index">
-                    <div class="box-logo">
-                      <mat-progress-spinner
-                         class="example-margin"
-                         [color]="color"
-                         [mode]="mode"
-                         [value]= "habilidades.progreso">
-                      </mat-progress-spinner>
-                        <!-- <img [src]="habilidades.urlTecLogo" alt="logo de tecnología usada"/> -->
-                    </div>
-                    <div class="box-text">
-                        <div class="text"><span >{{habilidades.tecnologia}}</span></div>
-                        <div class="number"><span >{{habilidades.progreso}}%</span></div>
-
-                        <!-- <div class="number"><span >{{habilidades.progreso | percent}}</span></div> -->
-                    </div>
-                    <div class="container-edit">
-                      <i class="fa-solid fa-pencil" matTooltip="Editar" matTooltipPosition="below" (click)="openDialogEditarHabilidadDura(indice)"></i>
-                      <i class="fa-regular fa-trash-can" matTooltip="Eliminar" matTooltipPosition="below" (click)="openDialogEliminarHabilidadDura(indice)"></i>
-                    </div>
-                </div>
-
+      <h3>Tecnologías usadas</h3>
+        <div class="skill-timeline-hard container-mainSection" >
+          <div class="skill-card container-cardSection" *ngFor="let habilidades of miPortfolioHabilidadDura; let indice=index">
+            <div class="box-logo">
+               <mat-progress-spinner
+                class="example-margin"
+                [color]="color"
+                [mode]="mode"
+                [value]= "habilidades.progreso">
+              </mat-progress-spinner>
+              <span class="number">
+                {{habilidades.progreso}}%
+              </span>
+            </div>
+            <div class="box-text">
+              <span class="text">
+                {{habilidades.tecnologia}}
+              </span>
+            </div>
+            <div class="containerIconDialog">
+              <i class="fa-solid fa-pencil" matTooltip="Editar" matTooltipPosition="below" (click)="openDialogEditarHabilidadDura(indice)"></i>
+              <i class="fa-regular fa-trash-can" matTooltip="Eliminar" matTooltipPosition="below" (click)="openDialogEliminarHabilidadDura(indice)"></i>
+            </div>
+          </div>
         </div>
-        <div class="container-edit">
+
+        <div class="containerIconDialog">
           <i class="fa-solid fa-plus" matTooltip="Agregar" matTooltipPosition="below" (click)="openDialogAgregarHabilidadDura()"></i>
         </div>
 
-
-        <div class="skill-soft">
-            <h3>Habilidades Interpersonales</h3>
-            <div class="skills">
-              <ul *ngFor="let habilidades of miPortfolioHabilidadBlanda; let i=index">
-                <li>{{habilidades.habilidadBlanda}}</li>
-              </ul>
-            </div>
+      <h3>Habilidades Interpersonales</h3>
+        <div class="skill-timeline-soft container-mainSection">
+          <div class="skills-soft container-cardSection">
+            <ul >
+              <li *ngFor="let habilidades of miPortfolioHabilidadBlanda; let i=index">{{habilidades.habilidadBlanda}}</li>
+            </ul>
+          </div>
         </div>
-        <div class="container-edit">
-          <i class="fa-solid fa-plus" matTooltip="Agregar" matTooltipPosition="below" (click)="openDialogAgregarHabilidadBlanda()"></i>
+        <div class="containerIconDialog">
           <i class="fa-solid fa-pencil" matTooltip="Editar" matTooltipPosition="below" (click)="openDialogEditarHabilidadBlanda()"></i>
           <i class="fa-regular fa-trash-can" matTooltip="Eliminar" matTooltipPosition="below" (click)="openDialogEliminarHabilidadBlanda()"></i>
+          <i class="fa-solid fa-plus" matTooltip="Agregar" matTooltipPosition="below" (click)="openDialogAgregarHabilidadBlanda()"></i>
         </div>
-    </div>
   </section>
-
 </ng-template>
+
+
+
 

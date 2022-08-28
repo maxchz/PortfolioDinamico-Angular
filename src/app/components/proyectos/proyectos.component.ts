@@ -14,16 +14,12 @@ import { EliminaProyectoDialogComponent } from '../meterial/elimina-proyecto-dia
 export class ProyectosComponent implements OnInit {
 
   datosUsuario: any;
-
   miPortfolioProyecto: any;
-
   idPersona: number = 0;
-
-
 
   constructor(private datosPortafolio: DatosPortfoliosService,
               public dialog: MatDialog,
-              private autenticacionServicio: AutenticacionService) { }
+              private autenticacionServicio: AutenticacionService) {}
 
   ngOnInit(): void {
     this.autenticacionServicio.DatosNuevoUsuario().subscribe(data =>{
@@ -43,15 +39,11 @@ export class ProyectosComponent implements OnInit {
       width: '450px',
       disableClose: true,
     }).afterClosed().subscribe(()=>{
-
       this.datosPortafolio.obtenerDatosProyectoPorIdPersona(this.idPersona).subscribe(data =>{
         this.miPortfolioProyecto = data.body;
-
       })
     });
   }
-
-
 
   openDialogEditarProyecto(indice: number): void {
     const dialogRef = this.dialog.open(EditaProyectoDialogComponent, {
@@ -64,7 +56,6 @@ export class ProyectosComponent implements OnInit {
         });
       });
   }
-
 
   openDialogEliminarProyecto(indice:number): void {
     const dialogRef = this.dialog.open(EliminaProyectoDialogComponent, {

@@ -15,18 +15,15 @@ import { EliminaEducacionDialogComponent } from '../meterial/elimina-educacion-d
 export class EducacionComponent implements OnInit {
 
   datosUsuario: any;
-
   miPortfolioEducacion: any;
-
   idPersona: number = 0;
 
 
   constructor(private datosPortafolio: DatosPortfoliosService,
               public dialog: MatDialog,
-              private autenticacionServicio: AutenticacionService) { }
+              private autenticacionServicio: AutenticacionService) {}
 
   ngOnInit(): void {
-
     this.autenticacionServicio.DatosNuevoUsuario().subscribe(data =>{
       this.datosUsuario = data;
       var idUsuario = data.id;
@@ -37,7 +34,6 @@ export class EducacionComponent implements OnInit {
         })
       });
     });
-
   }
 
   openDialogAgregarEducacion(): void {
@@ -45,15 +41,11 @@ export class EducacionComponent implements OnInit {
       width: '450px',
       disableClose: true,
     }).afterClosed().subscribe(()=>{
-
       this.datosPortafolio.obtenerDatosEducacionPorIdPersona(this.idPersona).subscribe(data =>{
         this.miPortfolioEducacion = data.body;
-
       })
     });
   }
-
-
 
   openDialogEditarEducacion(indice: number): void {
     const dialogRef = this.dialog.open(EditaEducacionDialogComponent, {
@@ -67,7 +59,6 @@ export class EducacionComponent implements OnInit {
       });
   }
 
-
   openDialogEliminarEducacion(indice:number): void {
     const dialogRef = this.dialog.open(EliminaEducacionDialogComponent, {
       width: '450px',
@@ -79,7 +70,5 @@ export class EducacionComponent implements OnInit {
       });
     });
   }
-
-
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AutenticacionService } from 'src/app/service/autenticacion.service';
 import { DatosPortfoliosService } from 'src/app/service/datos-portfolios.service';
@@ -12,27 +12,19 @@ import { EliminaExperienciaDialogComponent } from '../meterial/elimina-experienc
   styleUrls: ['./experiencia.component.css']
 })
 export class ExperienciaComponent implements OnInit {
+  @Output()
+  miPortfolioExpEmit: EventEmitter<any> = new EventEmitter<any>();
 
   datosUsuario: any;
-
   miPortfolioExperiencia: any;
-
   emailUser: String ='';
-
   idPersona: number = 0;
-
-
 
   constructor(private datosPortafolio: DatosPortfoliosService,
               public dialog: MatDialog,
-              private autenticacionServicio: AutenticacionService) {
-
-    // this.emailUser = this.autenticacionServicio.UsuarioAutenticado.email;
-
-  }
+              private autenticacionServicio: AutenticacionService) {}
 
   ngOnInit(): void {
-
 
     this.autenticacionServicio.DatosNuevoUsuario().subscribe(data =>{
       this.datosUsuario = data;
@@ -41,14 +33,9 @@ export class ExperienciaComponent implements OnInit {
         this.idPersona = data.id;
         this.datosPortafolio.obtenerDatosExperienciaPorIdPersona(this.idPersona).subscribe(data =>{
           this.miPortfolioExperiencia = data.body;
-
-        })
-
+          this.miPortfolioExpEmit.emit(data.body)});
       });
-
     });
-
-
   }
 
   openDialogAgregarExperiencia(): void {
@@ -59,12 +46,10 @@ export class ExperienciaComponent implements OnInit {
 
       this.datosPortafolio.obtenerDatosExperienciaPorIdPersona(this.idPersona).subscribe(data =>{
         this.miPortfolioExperiencia = data.body;
-
+        this.miPortfolioExpEmit.emit(data.body);
       })
     });
   }
-
-
 
   openDialogEditarExperiencia(indice: number): void {
     const dialogRef = this.dialog.open(EditaExperienciaDialogComponent, {
@@ -74,10 +59,10 @@ export class ExperienciaComponent implements OnInit {
     }).afterClosed().subscribe(()=>{
         this.datosPortafolio.obtenerDatosExperienciaPorIdPersona(this.idPersona).subscribe(data =>{
           this.miPortfolioExperiencia = data.body;
+          this.miPortfolioExpEmit.emit(data.body);
         });
       });
   }
-
 
   openDialogEliminarExperiencia(indice:number): void {
     const dialogRef = this.dialog.open(EliminaExperienciaDialogComponent, {
@@ -87,11 +72,14 @@ export class ExperienciaComponent implements OnInit {
     }).afterClosed().subscribe(()=>{
       this.datosPortafolio.obtenerDatosExperienciaPorIdPersona(this.idPersona).subscribe(data =>{
         this.miPortfolioExperiencia = data.body;
+        this.miPortfolioExpEmit.emit(data.body);
       });
     });
   }
 
-
+  get dataExperiencia(){
+    return this.miPortfolioExperiencia;
+  }
 
 
 }

@@ -1,34 +1,27 @@
-<section id="lead">
-  <div id="lead-content" *ngIf="miPortfolio == null; else bannerConEdit">
-    <div class="container-editonly">
-      <span>Bienvenido, pulsa el siguiente botón para empezar a crear tu perfil.</span>
-      <i class="fa-solid fa-plus" matTooltip="Agregar" matTooltipPosition="below" (click)="openDialogCreaPerfil()"></i>
-    </div>
+<section id="lead" class="section-card" *ngIf="miPortfolio == null; else bannerConEdit">
+  <div id="lead-content">
+    <span class="lead-name">Mi Portfolio</span>
+    <span class="lead-position">Pulsa en el botón de abajo para agregar tu información.</span>
   </div>
-  <ng-template #bannerConEdit>
-    <div id="lead-content">
-        <h1>{{miPortfolio.nombre}}&nbsp;{{miPortfolio.apellido}}</h1>
-        <h2>{{miPortfolio.posicionDev}}</h2>
-        <div class="container-edit">
-          <i class="fa-solid fa-pencil" matTooltip="Editar" matTooltipPosition="below" (click)="openDialogEditaPerfil()"></i>
-          <!-- <i class="fa-regular fa-trash-can" matTooltip="Eliminar" matTooltipPosition="below"></i> -->
-        </div>
-      <a href="#" >
-        <button class="btn-descarga-cv" type="button">Descargar CV</button>
-      </a>
-    </div>
-  </ng-template>
-
-  <!-- Fin #lead-content -->
-
-  <div id="lead-overlay"></div>
-
-  <div id="lead-down">
-
-      <span (click)= "irASobreMi()">
-          <i class="fa fa-chevron-down fa-1.5x"></i>
-      </span>
-
+  <div class="containerIconDialog">
+    <i class="fa-solid fa-plus" matTooltip="Agregar" matTooltipPosition="below" (click)="openDialogCreaPerfil()"></i>
   </div>
-  <!-- End #lead-down -->
 </section>
+
+<ng-template #bannerConEdit>
+    <section id="lead" class="section-card">
+      <div class="containerIconDialog edit">
+        <i class="fa-solid fa-pencil" matTooltip="Editar" matTooltipPosition="below" (click)="openDialogEditaPerfil()"></i>
+      </div>
+      <div id="lead-content">
+        <span class="lead-name">{{miPortfolio.nombre}}&nbsp;{{miPortfolio.apellido}}</span>
+        <span class="lead-position">{{miPortfolio.posicionDev}}</span>
+        <span class="lead-phone">Tel.:&nbsp;{{miPortfolio.telefono}}</span>
+        <span class="lead-email"> Correo:&nbsp;{{miPortfolio.correo}}</span>
+      </div>
+
+      <div class="download">
+        <app-download-pdf></app-download-pdf>
+      </div>
+    </section>
+</ng-template>

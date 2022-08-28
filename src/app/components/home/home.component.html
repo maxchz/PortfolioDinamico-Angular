@@ -1,25 +1,87 @@
-<body id="home">
-  <nav>
-    <input type="checkbox" id="check">
-    <label for="check" class="menu-btn">
-      <i class="fa-solid fa-bars" id="menu"></i>
-      <i class="fa-solid fa-times" id="cancel"></i>
-    </label>
-    <img src="./../assets/images/LogoArgPro.png" alt= "Logo Argentina programa">
+<nav id="navbar-home">
+  <ul class="menu">
+    <li class="logo"><a href="https://argentinaprograma.inti.gob.ar/" target="_blank"><img src="../../../assets/images/LogoArgPro9.png" alt= "Logo Argentina programa"></a></li>
+    <li class="item" (click) = "irAInicio()">Inicio</li>
+    <li class="item" (click) = "irASobreMi()">Sobre mí</li>
+    <li class="item">Proyectos</li>
+    <li class="item">Blog</li>
+    <li class="item" (click) = "irAContacto()">Contacto</li>
+    <li class="item button secondary"><a routerLink="/registrar-usuario">Registrarse</a></li>
+    <li class="item button primary"><a routerLink="/iniciar-sesion">Iniciar sesión</a></li>
+    <li class="toggle"><a (click)= "toggleMenu()"><i class="fa-solid fa-bars"></i></a></li>
+  </ul>
+</nav>
+<body>
+  <section id="main-imgHome" class="secMain">
+    <div class="img-portail">
+      <img src="../../../assets/images/imgHome12.jpg" alt= "Fondo de pantalla">
+    </div>
+    <div class="principal-text">
+      <p>¡Bienvenido! completa tu CV y únete a la comunidad profesional.</p>
+    </div>
+  </section>
+
+  <section id="about-home">
+    <div class="secundary-text">
+      <p>
+        Hola! Soy Max,  en esta sección pretendo presentarme y contarte resumidamente en lo que me he
+        involucrado a lo largo de estos años. Soy ingeniero civil graduado en la Facultad de ciencias exactas,
+        físicas y naturales de la Universidad Nacional de Córdoba desde el año 2014. Desde entonces me desempeñe
+        satisfactoriamente en proyectos relacionado a mi área de estudios, pero el año 2020 fue un punto de inflexión,
+        la pandemia nos imposibilito seguir con proyectos laborales y personales, pero también fue una oportunidad y
+        para nada fue un año perdido, al menos para mí. En ese momento dispuse del activo más importante que posee una
+        persona, su tiempo. Empecé a realizar aquello que me interesaba y no puede desarrollar en mis años de estudiante.
+        Siempre sentí curiosidad por las finanzas y tecnología, puede estudiar ambos campos y sumergirme de manera practica
+        en ellos, en los cuales le dedico tiempo completo al día de hoy, operar en el mercado financiero e implementar
+        pequeñas aplicaciones que me ayudan a tal fin. Aquí fue donde una necesidad me ayudo a descubrir el desarrollo de
+        aplicaciones,  ver que era posible construir una herramienta hecha a medida para satisfacer necesidades personales
+        y colectivas.
+      </p>
+    </div>
+  </section>
+  <section id="contact-home">
+    <h2>Contáctame</h2>
+    <p>Si deseas enviar alguna sugerencia para mejorar la experiencia de usuario, consulta o mensaje en particular, por favor escribe tu mensaje y te responderemos a la brevedad.</p>
+    <div id="contact-form">
+      <form class="form-data" [formGroup]= "formContact" (ngSubmit)= "onEnviarNuevoMensajeHome($event)">
+        <label for="name" class="form-input">Nombre:
+          <input class="inputHome" type="text"  formControlname="name" [formControl] = "selectedName" required/>
+        </label>
+        <label for="mail" class="form-input">Correo electrónico:
+          <input class="inputHome" type="text"  formControlname="mail" [formControl] = "selectedMail"  required/>
+        </label>
+        <label for="subject" class="form-input">Asunto:
+          <input class="inputHome" type="text"  formControlname="subject" [formControl] = "selectedSubject" required/>
+        </label>
+        <label for="body" class="form-input">Mensaje:</label>
+        <textarea class="textareaHome"  formControlname="body" [formControl] = "selectedBody" placeholder="Escribí tu mensaje..." required></textarea>
+        <button class="btnHome-form" type="submit" *ngIf= "showSpinner != true; else spinner">Enviar mensaje</button>
+        <ng-template #spinner>
+          <div>
+            <mat-spinner [diameter]= "35"></mat-spinner>
+          </div>
+        </ng-template>
+      </form>
+    </div>
+  </section>
+</body>
+
+<footer>
+  <div class="copyright">
+    <p>
+      Copyright &copy; <span id="current-year">2022</span> Choquevilca Max.
+    </p>
+  </div>
+
+  <div class="social">
     <ul>
-      <li><a>Inicio</a></li>
-      <li><a>Sobre Mí</a></li>
-      <li><a>Contacto</a></li>
       <li>
-        <button class="btnLog" type="button" routerLink="/iniciar-sesion">Iniciar Sesión</button>
+        <a href="https://github.com/maxchz" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
       </li>
       <li>
-        <button class="btnLog" type="button" routerLink="/registrar-usuario">Registrarse</button>
+        <a href="https://www.linkedin.com/in/maxchz/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
       </li>
     </ul>
+  </div>
+</footer>
 
-  </nav>
-
-
-
-</body>

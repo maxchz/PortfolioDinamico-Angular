@@ -20,24 +20,16 @@ import { EliminaHabBlandaDialogComponent } from '../meterial/elimina-hab-blanda-
 export class HabilidadesComponent implements OnInit {
 
   color: ThemePalette = 'primary';
-
   mode: ProgressSpinnerMode = 'determinate';
 
-  // value:number = 0;
-
   datosUsuario: any;
-
   miPortfolioHabilidadDura: any;
-
   miPortfolioHabilidadBlanda: any;
-
   idPersona: number = 0;
-
-
 
   constructor(private datosPortafolio: DatosPortfoliosService,
               public dialog: MatDialog,
-              private autenticacionServicio: AutenticacionService) { }
+              private autenticacionServicio: AutenticacionService) {}
 
   ngOnInit(): void {
     this.autenticacionServicio.DatosNuevoUsuario().subscribe(data =>{
@@ -53,25 +45,20 @@ export class HabilidadesComponent implements OnInit {
         })
       });
     });
-
-
-
   }
 
-  //HABILIDADES DURAS
+  //HABILIDADES - TECNOLOGIA
 
   openDialogAgregarHabilidadDura(): void {
     const dialogRef = this.dialog.open(CreaHabDuraDialogComponent, {
       width: '450px',
       disableClose: true,
     }).afterClosed().subscribe(()=>{
-
       this.datosPortafolio.obtenerDatosHabilidadDuraPorIdPersona(this.idPersona).subscribe(data =>{
         this.miPortfolioHabilidadDura = data.body;
       })
     });
   }
-
 
   openDialogEditarHabilidadDura(indice: number): void {
     const dialogRef = this.dialog.open(EditaHabDuraDialogComponent, {
@@ -85,7 +72,6 @@ export class HabilidadesComponent implements OnInit {
       });
   }
 
-
   openDialogEliminarHabilidadDura(indice:number): void {
     const dialogRef = this.dialog.open(EliminaHabDuraDialogComponent, {
       width: '450px',
@@ -98,17 +84,15 @@ export class HabilidadesComponent implements OnInit {
     });
   }
 
-  //HABILIDADES BLANDAS
+  //HABILIDADES INTERPERSONALES
 
   openDialogAgregarHabilidadBlanda(): void {
     const dialogRef = this.dialog.open(CreaHabBlandaDialogComponent, {
       width: '450px',
       disableClose: true,
     }).afterClosed().subscribe(()=>{
-
       this.datosPortafolio.obtenerDatosHabilidadBlandaPorIdPersona(this.idPersona).subscribe(data =>{
         this.miPortfolioHabilidadBlanda = data.body;
-
       })
     });
   }
@@ -117,7 +101,6 @@ export class HabilidadesComponent implements OnInit {
     const dialogRef = this.dialog.open(EditaHabBlandaDialogComponent, {
       width: '450px',
       disableClose: true,
-      // data: indice,
     }).afterClosed().subscribe(()=>{
         this.datosPortafolio.obtenerDatosHabilidadBlandaPorIdPersona(this.idPersona).subscribe(data =>{
           this.miPortfolioHabilidadBlanda = data.body;
@@ -125,12 +108,10 @@ export class HabilidadesComponent implements OnInit {
       });
   }
 
-
   openDialogEliminarHabilidadBlanda(): void {
     const dialogRef = this.dialog.open(EliminaHabBlandaDialogComponent, {
       width: '450px',
       disableClose: true,
-      // data: indice,
     }).afterClosed().subscribe(()=>{
       this.datosPortafolio.obtenerDatosHabilidadBlandaPorIdPersona(this.idPersona).subscribe(data =>{
         this.miPortfolioHabilidadBlanda = data.body;

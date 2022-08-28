@@ -34,7 +34,6 @@ import { CreaUsuarioDialogComponent } from './components/meterial/crea-usuario-d
 import { ToastrModule } from 'ngx-toastr';
 import { EditarUsuarioDialogComponent } from './components/meterial/editar-usuario-dialog/editar-usuario-dialog.component';
 import { CreaSobreMiDialogComponent } from './components/meterial/crea-sobre-mi-dialog/crea-sobre-mi-dialog.component';
-import { MensajePantallaComponent } from './components/mensaje-pantalla/mensaje-pantalla.component';
 import { CreaExperienciaDialogComponent } from './components/meterial/crea-experiencia-dialog/crea-experiencia-dialog.component';
 import { EditaExperienciaDialogComponent } from './components/meterial/edita-experiencia-dialog/edita-experiencia-dialog.component';
 import { EliminaExperienciaDialogComponent } from './components/meterial/elimina-experiencia-dialog/elimina-experiencia-dialog.component';
@@ -50,6 +49,7 @@ import { EditaHabBlandaDialogComponent } from './components/meterial/edita-hab-b
 import { EditaHabDuraDialogComponent } from './components/meterial/edita-hab-dura-dialog/edita-hab-dura-dialog.component';
 import { EliminaHabDuraDialogComponent } from './components/meterial/elimina-hab-dura-dialog/elimina-hab-dura-dialog.component';
 import { EliminaHabBlandaDialogComponent } from './components/meterial/elimina-hab-blanda-dialog/elimina-hab-blanda-dialog.component';
+import { DownloadPdfComponent } from './components/download-pdf/download-pdf.component';
 
 
 
@@ -74,7 +74,6 @@ import { EliminaHabBlandaDialogComponent } from './components/meterial/elimina-h
     CreaUsuarioDialogComponent,
     EditarUsuarioDialogComponent,
     CreaSobreMiDialogComponent,
-    MensajePantallaComponent,
     CreaExperienciaDialogComponent,
     EditaExperienciaDialogComponent,
     EliminaExperienciaDialogComponent,
@@ -89,7 +88,8 @@ import { EliminaHabBlandaDialogComponent } from './components/meterial/elimina-h
     EditaHabBlandaDialogComponent,
     EditaHabDuraDialogComponent,
     EliminaHabDuraDialogComponent,
-    EliminaHabBlandaDialogComponent
+    EliminaHabBlandaDialogComponent,
+    DownloadPdfComponent
 
   ],
   imports: [

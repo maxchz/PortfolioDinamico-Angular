@@ -1,51 +1,38 @@
 body{
-  height: 100%;
-  background-image: radial-gradient(circle at 50% 5.69%, #003362 0, #003164 7.14%, #002f65 14.29%, #002d65 21.43%, #002a63 28.57%, #0c2761 35.71%, #24235d 42.86%, #321f59 50%, #3d1a54 57.14%, #46154e 64.29%, #4d1047 71.43%, #520a40 78.57%, #560439 85.71%, #590131 92.86%, #5b002a 100%);
-  /* background: url(./../../../assets/images/imgLogin1.jpg);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover; */
+  height: 100vh;
+  background-image: radial-gradient(circle at 50% -20.71%, #e4ffff 0, #daffff 25%, #cde5f2 50%, #bdc4c8 75%, #aca6a1 100%);
   display:flex;
   flex-direction: column;
-
 }
 
-
-
-body h2{
+body .tittle-inicioSesion{
   width:100%;
   margin:20px auto;
   color:white;
+  font-size: 24px;
+  font-weight:bold;
+  letter-spacing: 0.2rem;
   text-align: center;
-
-
-
 }
-
 .iconHome i{
   font-size: 25px;
-  color: white;
+  color: #00000099;
   margin-top:20px;
   margin-left: 20px;
   cursor: pointer;
 }
 .iconHome i:hover{
-  color: #d283f7;
-
+  color: rgb(135,135,135);
 }
-
-
 
 .m-4{
   width: 38%;
-  height:auto;
+  height: 70%;
   border-radius: 15px;
-  /* border: 2px solid rgb(66, 66, 66); */
   align-items: center;
   margin-left:auto !important;
   margin-right:auto !important;
-  margin-top:2% !important;
+  margin-top:8% !important;
   padding: 20px 50px;
   display:grid;
   background: #00000099;
@@ -58,14 +45,12 @@ body h2{
 .form-label{
   color:#fff;
   font-size: 18px;
-
-
 }
 
 .form-control{
   width:100%;
   font-size: 16px;
-  border:1px solid #57565685;
+  border:1px rgb(135,135,135) solid;
   padding: 5px 10px;
   background:#ffffff00;
   color:#fff;
@@ -74,44 +59,34 @@ body h2{
   color:#ffffff99;
 }
 
-.form-control:hover{
-  border-bottom: 2px solid #fff;
-
-}
-
-
 .botonLogin{
   width:100%;
   height:40px;
   color:white;
-  border-radius:10px;
+  border-radius:5px;
   border:0;
-  background: #6e0c9c;
+  background: rgb(54, 130, 206);
   margin-top:30px;
 }
 .botonLogin:hover{
-  background: #8b0fc5;
-
+  background: rgba(54, 130, 206, 0.788);
 }
-
-
-form span{
-  color:#fff;
-
-}
-
-strong, .text-recupero{
+.sign-in, .text-registro{
+  color:white;
   cursor: pointer;
 }
 .text-danger{
   margin-bottom: 0;
 }
-
 .text-registro{
   margin-top:15px;
 }
+.sign-in{
+  color: rgb(89, 171, 253);
+  margin-left: 2%;
+}
 
-.message-err{
+/* .message-err{
   color:red;
   font-weight: bold;
 
@@ -159,6 +134,22 @@ strong, .text-recupero{
   border-radius: 10px;
   color:white;
   font-weight: bold;
+} */
+
+@media (max-width:725px){
+  body .tittle-inicioSesion{
+    font-size: 18px;
+    letter-spacing: 0.1rem;
+  }
+  .form-label, .text-recupero, .text-registro, .sign-in{
+    font-size: 16px;
+  }
+  .m-4{
+    width: 90%;
+    padding: 20px 20px;
+    margin-top: 25%!important;
+
+  }
 }
 
 
