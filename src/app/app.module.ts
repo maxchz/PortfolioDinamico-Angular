@@ -24,8 +24,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { EditDialogComponent } from './components/meterial/edit-dialog/edit-dialog.component';
-import {MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { ScrollingModule } from '@angular/cdk/scrolling';
@@ -33,7 +32,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CreaUsuarioDialogComponent } from './components/meterial/crea-usuario-dialog/crea-usuario-dialog.component';
 import { ToastrModule } from 'ngx-toastr';
 import { EditarUsuarioDialogComponent } from './components/meterial/editar-usuario-dialog/editar-usuario-dialog.component';
-import { CreaSobreMiDialogComponent } from './components/meterial/crea-sobre-mi-dialog/crea-sobre-mi-dialog.component';
 import { CreaExperienciaDialogComponent } from './components/meterial/crea-experiencia-dialog/crea-experiencia-dialog.component';
 import { EditaExperienciaDialogComponent } from './components/meterial/edita-experiencia-dialog/edita-experiencia-dialog.component';
 import { EliminaExperienciaDialogComponent } from './components/meterial/elimina-experiencia-dialog/elimina-experiencia-dialog.component';
@@ -51,9 +49,6 @@ import { EliminaHabDuraDialogComponent } from './components/meterial/elimina-hab
 import { EliminaHabBlandaDialogComponent } from './components/meterial/elimina-hab-blanda-dialog/elimina-hab-blanda-dialog.component';
 import { DownloadPdfComponent } from './components/download-pdf/download-pdf.component';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,10 +65,8 @@ import { DownloadPdfComponent } from './components/download-pdf/download-pdf.com
     FooterComponent,
     HomeComponent,
     RegistroUsuarioComponent,
-    EditDialogComponent,
     CreaUsuarioDialogComponent,
     EditarUsuarioDialogComponent,
-    CreaSobreMiDialogComponent,
     CreaExperienciaDialogComponent,
     EditaExperienciaDialogComponent,
     EliminaExperienciaDialogComponent,
@@ -90,7 +83,6 @@ import { DownloadPdfComponent } from './components/download-pdf/download-pdf.com
     EliminaHabDuraDialogComponent,
     EliminaHabBlandaDialogComponent,
     DownloadPdfComponent
-
   ],
   imports: [
     BrowserModule,
@@ -109,15 +101,11 @@ import { DownloadPdfComponent } from './components/download-pdf/download-pdf.com
     MatProgressSpinnerModule,
     MatSelectModule,
     ToastrModule.forRoot(),
-
-
-
   ],
   providers: [DatosPortfoliosService,
    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true},
    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}},
   ],
-
   bootstrap: [AppComponent]
 })
 export class AppModule { }

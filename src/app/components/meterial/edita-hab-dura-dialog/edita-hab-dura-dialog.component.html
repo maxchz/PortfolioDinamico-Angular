@@ -3,7 +3,6 @@
   <p class="ref-aster">* El asterisco indica que es obligatorio</p>
   <form  [formGroup]= "form" (ngSubmit)= "onEnviarEditaHabilidadDura($event)" class="form-dialogCreaUsuario">
     <mat-dialog-content>
-
       <p class="p-idUsuario">
         <mat-form-field appearance="standard">
           <mat-label>Id</mat-label>
@@ -11,14 +10,12 @@
           <mat-hint></mat-hint>
         </mat-form-field>
       </p>
-
       <p>
         <mat-form-field appearance="standard">
           <mat-label>Nombre del software/tecnología</mat-label>
           <input matInput placeholder="Ingrese el nombre de la tecnología usada" formControlName="tecnologia" type="text" required>
         </mat-form-field>
       </p>
-
       <p>
         <mat-form-field appearance="standard">
           <mat-label>Progreso </mat-label>
@@ -26,17 +23,12 @@
           <mat-hint>Número entero desde 0 a 100, se expresará en porcentaje (Ej: 25 = 25%)</mat-hint>
         </mat-form-field>
       </p>
-
-
-
       <p class="p-idUsuario">
         <mat-form-field appearance="standard">
           <mat-label>Logo de tech</mat-label>
           <input matInput placeholder="Ingrese url" formControlName="urlTecLogo" type="text" required>
         </mat-form-field>
       </p>
-
-
       <p class="p-idUsuario">
         <mat-form-field appearance="standard">
           <mat-label>Persona Id</mat-label>
@@ -44,8 +36,6 @@
           <mat-hint></mat-hint>
         </mat-form-field>
       </p>
-
-
   </mat-dialog-content>
 
   <mat-dialog-actions align= "end">
@@ -61,7 +51,7 @@
 </div>
 
 <ng-template #spinner>
-  <div class="container-spinner">
+  <div class="container-spinnerPortfolio">
     <mat-spinner></mat-spinner>
   </div>
 </ng-template>

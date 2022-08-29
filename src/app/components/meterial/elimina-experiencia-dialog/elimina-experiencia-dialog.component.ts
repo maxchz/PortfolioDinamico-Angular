@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ToastrService } from 'ngx-toastr';
+import { NotificacionToastService } from 'src/app/service/alertas/notificacion-toast.service';
 import { DatosPortfoliosService } from 'src/app/service/datos-portfolios.service';
 import { EliminarDatosPortfolioService } from 'src/app/service/eliminar-datos-portfolio.service';
 
@@ -11,85 +11,57 @@ import { EliminarDatosPortfolioService } from 'src/app/service/eliminar-datos-po
   styleUrls: ['./elimina-experiencia-dialog.component.css']
 })
 export class EliminaExperienciaDialogComponent implements OnInit {
-
-
   dataExperiencia: any;
-
   id_usuario: number = 0;
-
   id_persona: number = 0;
-
   id_experiencia: number = 0;
-
   showSpinner: boolean = false;
 
   constructor(private formBuilder: FormBuilder,
               public dialog: MatDialog,
               private eliminaExpe: EliminarDatosPortfolioService,
               private datosPortafolio: DatosPortfoliosService,
-              private toastr: ToastrService,
+              private notificationToast: NotificacionToastService,
               @Inject(MAT_DIALOG_DATA) public data: any) {
 
                 this.datosPortafolio.ObtenerDatosUsuarioPorEmail().subscribe(data =>{
                   this.id_usuario = data.id;
-
                   this.datosPortafolio.obtenerDatosPersonaPorIdUsuario(this.id_usuario).subscribe(data =>{
                     this.id_persona = data.id;
-
                     this.datosPortafolio.obtenerDatosExperienciaPorIdPersona(this.id_persona).subscribe((data) =>{
                       this.dataExperiencia = data.body[this.data];
                       this.id_experiencia = data.body[this.data].id;
-                      console.log("Datos para eliminar experiencia" + JSON.stringify(this.dataExperiencia));
-
                     });
                   });
                 });
-
   }
 
   onEnviarEliminarExperiencia(){
     this.showSpinner= true;
-
-    this.eliminaExpe.EliminarExperiencia(this.id_experiencia).subscribe(response=>{
-
-
+    this.eliminaExpe.EliminarExperiencia(this.id_experiencia).subscribe({next: (response)=>{
       if(response.ok){
         setTimeout(() => {
           this.showSpinner = false;
           this.dialog.closeAll();
-
         }, 1500);
-
-        this.showSuccess();
-
+        this.notificationToast.showSuccess('Se ha eliminado con exito.', ' ');
       } else {
-        this.dialog.closeAll();
-        this.showError();
-      };
+        setTimeout(() => {
+          this.showSpinner = false;
+          this.dialog.closeAll();
+        }, 1500);
+        this.notificationToast.showError('Ha ocurrido un error, intenta luego',' ');
+        }
+    }, error: (e)=>{
+        if(e.ok !=true){
+          setTimeout(() => {
+          this.showSpinner = false;
+          }, 1500);
+          this.notificationToast.showError('Ha ocurrido un error, intenta luego.', ' ');}
+        }
     })
   }
 
-  showSuccess() {
-    this.toastr.success('Se elimino con exito.', ' ', {
-      tapToDismiss: true,
-      disableTimeOut: true,
-      positionClass: 'toast-bottom-left',
-      onActivateTick: true,
-    });
-  }
-
-  showError() {
-    this.toastr.error('Ha ocurrido un error, intenta luego.', ' ', {
-      tapToDismiss: true,
-      disableTimeOut: true,
-      positionClass: 'toast-bottom-left',
-      onActivateTick: true,
-    });
-  }
-
-
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

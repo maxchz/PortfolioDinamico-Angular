@@ -3,7 +3,6 @@
   <p class="ref-aster">* El asterisco indica que es obligatorio</p>
   <form  [formGroup]= "form" (ngSubmit)= "onEnviarModificaExperiencia($event)" class="form-dialogCreaUsuario">
     <mat-dialog-content>
-
       <p class="p-id">
         <mat-form-field appearance="standard">
           <mat-label>Id</mat-label>
@@ -11,21 +10,18 @@
           <mat-hint></mat-hint>
         </mat-form-field>
       </p>
-
       <p>
         <mat-form-field appearance="standard">
           <mat-label>Empresa</mat-label>
           <input matInput placeholder="Ingrese el nombre de la empresa" formControlName="nombreEmpresa" type="text" required>
         </mat-form-field>
       </p>
-
       <p>
         <mat-form-field appearance="standard">
           <mat-label>Posición</mat-label>
           <input matInput placeholder="Ingese su posición o puesto" formControlName="posicion" type="text" required>
         </mat-form-field>
       </p>
-
       <p>
         <mat-form-field appearance="standard">
           <mat-label>Fecha Inicio</mat-label>
@@ -40,7 +36,6 @@
           <mat-hint>Ingrese fecha de finalización</mat-hint>
         </mat-form-field>
       </p>
-
       <p>
         <mat-form-field appearance="fill">
           <mat-label>Descripción</mat-label>
@@ -48,7 +43,6 @@
           <mat-hint>Agrege descripción de tareas realizadas - Hasta 800 caracteres</mat-hint>
         </mat-form-field>
       </p>
-
       <p class="p-idUsuario">
         <mat-form-field appearance="standard">
           <mat-label>Persona Id</mat-label>
@@ -56,8 +50,6 @@
           <mat-hint></mat-hint>
         </mat-form-field>
       </p>
-
-
   </mat-dialog-content>
 
   <mat-dialog-actions align= "end">
@@ -68,12 +60,11 @@
       </div>
     </section>
   </mat-dialog-actions>
-
  </form>
 </div>
 
 <ng-template #spinner>
-  <div class="container-spinner">
+  <div class="container-spinnerPortfolio">
     <mat-spinner></mat-spinner>
   </div>
 </ng-template>

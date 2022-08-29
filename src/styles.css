@@ -78,9 +78,6 @@ background: #e9e6d4;
   border-radius: 8px;
 }
 
-
-
-
 /* CONTENEDOR DE ICONOS PARA EDITAR, CREAR y ELIMNAR */
 .containerIconDialog{
   display:flex;
@@ -110,15 +107,13 @@ background: #e9e6d4;
   flex-direction: column;
   justify-content:center;
   align-items: center;
-  /* width:100%; */
-
 }
 
 form, .mat-dialog-content, .mat-form-field{
   width: 100%;
 }
 
-.mat-dialog-content, .container-spinner, .inicioSesion-spinner, .mat-spinner{
+.mat-dialog-content, .container-spinner, .container-spinnerPortfolio, .inicioSesion-spinner, .mat-spinner{
   margin:auto;
   padding:auto;
 }
@@ -127,18 +122,15 @@ form, .mat-dialog-content, .mat-form-field{
   border-radius: 10px;
   width: 50%;
   height: 70%;
-  /* width:fit-content; */
-  /* height:fit-content; */
+}
+.container-spinnerPortfolio{
+  height:450px;
 }
 .inicioSesion-spinner .mat-spinner circle{
   stroke: white!important;
 }
 
-
-/* .container-spinner.inicioSesion .mat-spinner{
-  diameter: 20px;
-} */
-.p-emailUsuario, .p-idUsuario, .p-url_logo {
+.p-id, .p-emailUsuario, .p-idUsuario, .p-url_logo, .p-idPersona{
   display: none;
 }
 
@@ -151,7 +143,7 @@ form, .mat-dialog-content, .mat-form-field{
   padding-left: 24px;
 }
 
-.container-spinner, .inicioSesion-spinner{
+.container-spinner,.container-spinnerPortfolio, .inicioSesion-spinner{
   display:flex;
   align-items: center;
   justify-content:center;
@@ -159,14 +151,9 @@ form, .mat-dialog-content, .mat-form-field{
   padding: auto;
 }
 
-section{
+.mat-dialog-actions section{
   margin:20px auto;
 }
-/* button{
-  margin: 0 10px;
-} */
-
-
 
 /* HEADER */
 nav{

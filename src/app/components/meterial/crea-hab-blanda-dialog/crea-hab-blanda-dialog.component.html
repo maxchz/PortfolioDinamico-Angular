@@ -3,14 +3,12 @@
   <p class="ref-aster">* El asterisco indica que es obligatorio</p>
   <form  [formGroup]= "form" (ngSubmit)= "onEnviarNuevaHabilidadBlanda($event)" class="form-dialogCreaUsuario">
     <mat-dialog-content>
-
       <p>
         <mat-form-field appearance="standard">
           <mat-label>Habilidad o competencias interpersonales</mat-label>
           <input matInput placeholder="Ingrese su habilidad o competencia" formControlName="habilidadBlanda" type="text" required>
         </mat-form-field>
       </p>
-
       <p class="p-idUsuario">
         <mat-form-field appearance="standard">
           <mat-label>Persona Id</mat-label>
@@ -18,8 +16,6 @@
           <mat-hint></mat-hint>
         </mat-form-field>
       </p>
-
-
   </mat-dialog-content>
 
   <mat-dialog-actions align= "end">
@@ -30,12 +26,11 @@
       </div>
     </section>
   </mat-dialog-actions>
-
  </form>
 </div>
 
 <ng-template #spinner>
-  <div class="container-spinner">
+  <div class="container-spinnerPortfolio">
     <mat-spinner></mat-spinner>
   </div>
 </ng-template>

@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ToastrService } from 'ngx-toastr';
+import { NotificacionToastService } from 'src/app/service/alertas/notificacion-toast.service';
 import { DatosPortfoliosService } from 'src/app/service/datos-portfolios.service';
 import { ModificaDataPersonaService } from 'src/app/service/modifica-data-persona.service';
 
@@ -24,7 +24,7 @@ export class EditaProyectoDialogComponent implements OnInit {
               public dialog: MatDialog,
               private modificaPerson: ModificaDataPersonaService,
               private datosPortafolio: DatosPortfoliosService,
-              private toastr: ToastrService,
+              private notificationToast: NotificacionToastService,
               @Inject(MAT_DIALOG_DATA) public data: any) {
                 this.datosPortafolio.ObtenerDatosUsuarioPorEmail().subscribe(data =>{
                   this.id_usuario = data.id;
@@ -32,7 +32,6 @@ export class EditaProyectoDialogComponent implements OnInit {
                     this.id_persona = data.id;
                     this.datosPortafolio.obtenerDatosProyectoPorIdPersona(this.id_persona).subscribe(data =>{
                       this.form.patchValue({
-
                         id: data.body[this.data].id,
                         nombre: data.body[this.data].nombre,
                         fechaInicio: data.body[this.data].fechaInicio,
@@ -41,13 +40,10 @@ export class EditaProyectoDialogComponent implements OnInit {
                         urlProyecto: data.body[this.data].urlProyecto,
                         urlRepositorio: data.body[this.data].urlRepositorio,
                         persona_id: data.body[this.data].persona_id,
-                        }
-                      );
-
+                        });
                     });
                   });
                 });
-
 
                 this.form = this.formBuilder.group({
                   id: [null,[Validators.required]],
@@ -63,45 +59,27 @@ export class EditaProyectoDialogComponent implements OnInit {
 
   onEnviarModificaProyecto(event:Event){
     event.preventDefault;
-
     this.showSpinner= true;
-
-    this.modificaPerson.ModificarProyecto(this.form.value).subscribe(data=>{
-
+    this.modificaPerson.ModificarProyecto(this.form.value).subscribe({next: (data)=>{
       if(data.ok){
         setTimeout(() => {
           this.showSpinner = false;
           this.dialog.closeAll();
-
         }, 1500);
-
-        this.showSuccess();
-
+        this.notificationToast.showSuccess('Se actualizó con exito.', ' ');
       } else {
         this.dialog.closeAll();
-        this.showError();
+        this.notificationToast.showError('Ha ocurrido un error, intenta luego.', ' ');
       };
+    },  error: (e)=>{
+          if(e.ok !=true){
+            setTimeout(() => {
+              this.showSpinner = false;
+            }, 1500);
+        this.notificationToast.showError("Ha ocurrido un error, intenta luego.", " ");
+      }}
     })
   }
-
-  showSuccess() {
-    this.toastr.success('Se actualizo con exito.', ' ', {
-      tapToDismiss: true,
-      disableTimeOut: true,
-      positionClass: 'toast-bottom-left',
-      onActivateTick: true,
-    });
-  }
-
-  showError() {
-    this.toastr.error('Ha ocurrido un error, intenta luego.', ' ', {
-      tapToDismiss: true,
-      disableTimeOut: true,
-      positionClass: 'toast-bottom-left',
-      onActivateTick: true,
-    });
-  }
-
 
   ngOnInit(): void {
   }

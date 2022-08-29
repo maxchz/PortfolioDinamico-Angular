@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ToastrService } from 'ngx-toastr';
+import { NotificacionToastService } from 'src/app/service/alertas/notificacion-toast.service';
 import { DatosPortfoliosService } from 'src/app/service/datos-portfolios.service';
 import { ModificaDataPersonaService } from 'src/app/service/modifica-data-persona.service';
 
@@ -11,20 +11,16 @@ import { ModificaDataPersonaService } from 'src/app/service/modifica-data-person
   styleUrls: ['./edita-experiencia-dialog.component.css']
 })
 export class EditaExperienciaDialogComponent implements OnInit {
-
   form: FormGroup;
-
   id_usuario: number = 0;
-
   id_persona: number = 0;
-
   showSpinner: boolean = false;
 
   constructor(private formBuilder: FormBuilder,
               public dialog: MatDialog,
               private modificaPerson: ModificaDataPersonaService,
               private datosPortafolio: DatosPortfoliosService,
-              private toastr: ToastrService,
+              private notificationToast: NotificacionToastService,
               @Inject(MAT_DIALOG_DATA) public data: any) {
 
                 this.datosPortafolio.ObtenerDatosUsuarioPorEmail().subscribe(data =>{
@@ -32,7 +28,6 @@ export class EditaExperienciaDialogComponent implements OnInit {
                   this.datosPortafolio.obtenerDatosPersonaPorIdUsuario(this.id_usuario).subscribe(data =>{
                     this.id_persona = data.id;
                     this.datosPortafolio.obtenerDatosExperienciaPorIdPersona(this.id_persona).subscribe(data =>{
-                      // console.log("Datos de la persona "+ JSON.stringify(data));
                       this.form.patchValue({
                         id: data.body[this.data].id,
                         nombreEmpresa: data.body[this.data].nombreEmpresa,
@@ -41,9 +36,7 @@ export class EditaExperienciaDialogComponent implements OnInit {
                         fechaFin: data.body[this.data].fechaFin,
                         descripcion: data.body[this.data].descripcion,
                         persona_id: data.body[this.data].persona_id,
-                        }
-                      );
-
+                        });
                     });
                   });
                 });
@@ -58,53 +51,34 @@ export class EditaExperienciaDialogComponent implements OnInit {
       descripcion: [' ', [Validators.required]],
       persona_id: [null,[Validators.required]],
       });
-
   }
 
   onEnviarModificaExperiencia(event:Event){
     event.preventDefault;
-
     this.showSpinner= true;
-
-    this.modificaPerson.ModificarExperiencia(this.form.value).subscribe(data=>{
+    this.modificaPerson.ModificarExperiencia(this.form.value).subscribe({next: (data)=>{
 
       if(data.ok){
         setTimeout(() => {
           this.showSpinner = false;
           this.dialog.closeAll();
-
         }, 1500);
-
-        this.showSuccess();
-
+        this.notificationToast.showSuccess('Se actualizó con exito.', ' ');
       } else {
         this.dialog.closeAll();
-        this.showError();
+        this.notificationToast.showError('Ha ocurrido un error, intenta luego.', ' ');
       };
+    }, error: (e)=>{
+        if(e.ok !=true){
+        setTimeout(() => {
+          this.showSpinner = false;
+        }, 1500);
+        this.notificationToast.showError("Ha ocurrido un error, intenta luego.", " ");
+      }
+     }
     })
-  }
-
-  showSuccess() {
-    this.toastr.success('Se actualizo con exito.', ' ', {
-      tapToDismiss: true,
-      disableTimeOut: true,
-      positionClass: 'toast-bottom-left',
-      onActivateTick: true,
-    });
-  }
-
-  showError() {
-    this.toastr.error('Ha ocurrido un error, intenta luego.', ' ', {
-      tapToDismiss: true,
-      disableTimeOut: true,
-      positionClass: 'toast-bottom-left',
-      onActivateTick: true,
-    });
   }
 
   ngOnInit(): void {
   }
-
-
-
 }

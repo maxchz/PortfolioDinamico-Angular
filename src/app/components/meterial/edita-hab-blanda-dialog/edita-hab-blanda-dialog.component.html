@@ -1,10 +1,8 @@
 <div class="container-dialogCreaUsuario" *ngIf= "showSpinner != true; else spinner">
   <h2>Modificar datos de habilidades interpersonales</h2>
   <p class="ref-aster">* El asterisco indica que es obligatorio</p>
-  <p>En la sigueinte lista seleccione la habilidad interpersonal que desea modificar, luego en ingrese el nuevo valor para el mismo y pulse modificar.</p>
-
+  <p>En la siguiente lista seleccione la habilidad interpersonal que desea modificar, luego en ingrese el nuevo valor para el mismo y pulse modificar.</p>
     <form  [formGroup]= "form" (ngSubmit)= "onEnviarEditaHabilidadBlanda($event)" class="form-dialogCreaUsuario">
-
         <mat-form-field appearance="fill">
           <mat-label>Listado de habilidades</mat-label>
           <mat-select [formControl] = "selected">
@@ -13,7 +11,6 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-
         <mat-dialog-content>
           <p class="p-idUsuario">
             <mat-form-field appearance="standard">
@@ -22,14 +19,12 @@
               <mat-hint></mat-hint>
             </mat-form-field>
           </p>
-
           <p>
             <mat-form-field appearance="standard">
               <mat-label>Habilidad o competencia interpersonal</mat-label>
               <input matInput placeholder="Modifique su habilidad o competencia" formControlName="habilidadBlanda" type="text" required>
             </mat-form-field>
           </p>
-
           <p class="p-idUsuario">
             <mat-form-field appearance="standard">
               <mat-label>Persona Id</mat-label>
@@ -37,7 +32,6 @@
               <mat-hint></mat-hint>
             </mat-form-field>
           </p>
-
       </mat-dialog-content>
 
       <mat-dialog-actions align= "end">
@@ -48,12 +42,11 @@
           </div>
         </section>
       </mat-dialog-actions>
-
     </form>
 </div>
 
 <ng-template #spinner>
-  <div class="container-spinner">
+  <div class="container-spinnerPortfolio">
     <mat-spinner></mat-spinner>
   </div>
 </ng-template>
