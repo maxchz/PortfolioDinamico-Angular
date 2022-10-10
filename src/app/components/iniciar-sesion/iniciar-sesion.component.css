@@ -1,8 +1,22 @@
 body{
-  height: 100vh;
-  background: linear-gradient(9deg, rgb(236, 255, 160) 0%, rgba(230,239,255,0.99) 48%, rgba(239,255,190,1) 82%);
   display:flex;
   flex-direction: column;
+  height: 100vh;
+  background: linear-gradient(-45deg,rgba(130,255,189,1) 0%, rgba(201,205,255,1) 49%, rgba(246,255,95,1) 100%);
+  background-size: 250% 250%;
+  animation: gradientInicio 15s ease infinite;
+}
+
+@keyframes gradientInicio {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 body .tittle-inicioSesion{
@@ -11,13 +25,13 @@ body .tittle-inicioSesion{
   color:white;
   font-size: 24px;
   font-weight:bold;
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.1rem;
   text-align: center;
 }
 
 .iconHome i{
   font-size: 25px;
-  color: #00000099;
+  color: #000000;
   margin-top:20px;
   margin-left: 20px;
   cursor: pointer;
@@ -26,7 +40,7 @@ body .tittle-inicioSesion{
   color: rgb(135,135,135);
 }
 .m-4{
-  width: 38%;
+  width: 30%;
   height:70%;
   border-radius: 15px;
   align-items: center;
@@ -35,7 +49,7 @@ body .tittle-inicioSesion{
   margin-top:8% !important;
   padding: 20px 50px;
   display:grid;
-  background: #00000099;
+  background: #000000;
 }
 .mb3, span,.form-label {
   width: 100%;
@@ -46,14 +60,31 @@ body .tittle-inicioSesion{
 }
 .form-control{
   width:100%;
-  font-size: 16px;
+  font-size: 13px;
   border:1px rgb(135,135,135) solid;
-  padding: 5px 10px;
+  padding: 5px 30px 5px 10px;
   background:#ffffff00;
   color:#fff;
 }
 ::placeholder {
   color:#ffffff99;
+}
+
+.input-pass-eye{
+  display:flex;
+  align-items: center;
+  padding: 2px;
+  position: relative;
+  width:101%;
+}
+
+.container-eye{
+  margin-left:2%;
+  position:absolute;
+  right:10px;
+  top:5px;
+  left:unset;
+  color:white;
 }
 
 .botonLogin{
@@ -80,6 +111,7 @@ body .tittle-inicioSesion{
 }
 .text-danger{
   margin-bottom: 0;
+  font-size:13px;
 }
 .text-registro{
   margin-top:15px;
@@ -96,6 +128,6 @@ body .tittle-inicioSesion{
   .m-4{
     width: 90%;
     padding: 20px 20px;
-    margin-top: 25%!important;
+    /* margin-top: 25%!important; */
   }
 }

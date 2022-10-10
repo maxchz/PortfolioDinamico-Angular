@@ -52,7 +52,7 @@ export class RegistroUsuarioComponent implements OnInit {
     this.showSpinner= true;
     let userEmail_register= this.form.value.email;
 
-    this.datosPortafolio.existeUsuarioRegistrado(userEmail_register).subscribe(data=>{
+    this.datosPortafolio.existeUsuarioRegistrado(userEmail_register).subscribe({next: (data)=>{
       if(data){
         setTimeout(() => {
           this.showSpinner = false;
@@ -80,7 +80,16 @@ export class RegistroUsuarioComponent implements OnInit {
           }
        });
       }
-    })
-  }
+    }, error: (e)=>{
+      if(e.ok !=true){
+        setTimeout(() => {
+          this.showSpinner = false;
+          }, 1500);
+        this.notificationToast.showError("Ha ocurrido un error, intenta luego.", " ");
+      }
+    }
+  })
+}
+
 }
 

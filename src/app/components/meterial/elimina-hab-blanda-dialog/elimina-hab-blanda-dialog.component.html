@@ -5,8 +5,8 @@
         <mat-form-field appearance="fill">
           <mat-label>Listado de habilidades</mat-label>
           <mat-select [formControl] = "selected">
-            <mat-option *ngFor="let habilidades of listHabBlanda" [value]= "habilidades.habilidadBlanda">
-              {{habilidades.habilidadBlanda}}
+            <mat-option *ngFor="let habilidades of listHabBlanda" [value]= "habilidades.hab_blanda">
+              {{habilidades.hab_blanda}}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -15,7 +15,7 @@
         <section>
           <div class="example-button-row">
             <button mat-raised-button  mat-dialog-close color="warn">Cancelar</button>
-            <button mat-raised-button color="primary" type="submit" >Eliminar</button>
+            <button mat-raised-button color="primary" type="submit" [disabled]= "!selected.value" >Eliminar</button>
           </div>
         </section>
       </mat-dialog-actions>

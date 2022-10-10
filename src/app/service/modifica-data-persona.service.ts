@@ -10,12 +10,12 @@ import { AutenticacionService } from './autenticacion.service';
 })
 export class ModificaDataPersonaService {
   errorType: number = 0;
-  url_modPersona="http://localhost:8080/editar/persona/";
-  url_modExperiencia="http://localhost:8080/editar/experiencia/";
-  url_modEducacion="http://localhost:8080/editar/educacion/";
-  url_modProyecto="http://localhost:8080/editar/proyecto/";
-  url_modHabilidadDura="http://localhost:8080/editar/habilidad/";
-  url_modHabilidadBlanda="http://localhost:8080/editar/habilidad-blanda/";
+  url_modPersona="https://app-portfolio-backend-argpro.herokuapp.com/editar/persona/";
+  url_modExperiencia="https://app-portfolio-backend-argpro.herokuapp.com/editar/experiencia/";
+  url_modEducacion="https://app-portfolio-backend-argpro.herokuapp.com/editar/educacion/";
+  url_modProyecto="https://app-portfolio-backend-argpro.herokuapp.com/editar/proyecto/";
+  url_modHabilidadDura="https://app-portfolio-backend-argpro.herokuapp.com/editar/habilidad/";
+  url_modHabilidadBlanda="https://app-portfolio-backend-argpro.herokuapp.com/editar/habilidad-blanda/";
   //El objeto observable BehaviorSubject guarda los estados
   currentUserSubject: BehaviorSubject<any>;
 

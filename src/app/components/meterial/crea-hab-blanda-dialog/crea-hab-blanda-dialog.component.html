@@ -1,18 +1,21 @@
 <div class="container-dialogCreaUsuario" *ngIf= "showSpinner != true; else spinner">
-  <h2>Crear dato nueva habilidad blanda</h2>
+  <h2>Crear registro habilidad blanda</h2>
   <p class="ref-aster">* El asterisco indica que es obligatorio</p>
-  <form  [formGroup]= "form" (ngSubmit)= "onEnviarNuevaHabilidadBlanda($event)" class="form-dialogCreaUsuario">
+  <form  [formGroup]= "formSoftCrea" (ngSubmit)= "onEnviarNuevaHabilidadBlanda($event)" class="form-dialogCreaUsuario">
     <mat-dialog-content>
       <p>
         <mat-form-field appearance="standard">
           <mat-label>Habilidad o competencias interpersonales</mat-label>
-          <input matInput placeholder="Ingrese su habilidad o competencia" formControlName="habilidadBlanda" type="text" required>
+          <input matInput placeholder="Ingrese su habilidad o competencia" formControlName="hab_blanda" type="text" required>
         </mat-form-field>
+        <span class="warning-dialog-date" *ngIf= "!isValidSkillSoft" >
+          *La habilidad interpersonal ya existe, ingrese otro distinto.
+        </span>
       </p>
       <p class="p-idUsuario">
         <mat-form-field appearance="standard">
           <mat-label>Persona Id</mat-label>
-          <input matInput placeholder="Id persona" formControlName="persona_id" type="number" required >
+          <input matInput placeholder="Id persona" formControlName="persona_id" type="number" required>
           <mat-hint></mat-hint>
         </mat-form-field>
       </p>
@@ -22,7 +25,7 @@
     <section>
       <div class="example-button-row">
         <button mat-raised-button  mat-dialog-close color="warn">Cancelar</button>
-        <button mat-raised-button color="primary" type="submit" >Guardar</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]= "formSoftCrea.invalid">Guardar</button>
       </div>
     </section>
   </mat-dialog-actions>

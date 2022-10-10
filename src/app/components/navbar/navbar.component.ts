@@ -9,6 +9,7 @@ import { DatosPortfoliosService } from 'src/app/service/datos-portfolios.service
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  clickToggle: boolean = false;
 
   constructor(private datosPortafolio: DatosPortfoliosService,
               private cerrarSesion: AutenticacionService,
@@ -25,26 +26,50 @@ export class NavbarComponent implements OnInit {
 
   irASobreMi(){
     document.getElementById("about")?.scrollIntoView();
+    if(this.clickToggle){
+      let el: HTMLElement  = document.getElementById("toggleNavBar");
+      el.click();
+    }
   }
 
   irAExperiencia(){
     document.getElementById("experience")?.scrollIntoView();
+    if(this.clickToggle){
+      let el: HTMLElement  = document.getElementById("toggleNavBar");
+      el.click();
+    }
   }
 
   irAEducacion(){
     document.getElementById("education")?.scrollIntoView();
+    if(this.clickToggle){
+      let el: HTMLElement  = document.getElementById("toggleNavBar");
+      el.click();
+    }
   }
 
   irAProyecto(){
     document.getElementById("projects")?.scrollIntoView();
+    if(this.clickToggle){
+      let el: HTMLElement  = document.getElementById("toggleNavBar");
+      el.click();
+    }
   }
 
   irAHabilidad(){
     document.getElementById("skill")?.scrollIntoView();
+    if(this.clickToggle){
+      let el: HTMLElement  = document.getElementById("toggleNavBar");
+      el.click();
+    }
   }
 
   irAContacto(){
     document.getElementById("contact")?.scrollIntoView();
+    if(this.clickToggle){
+      let el: HTMLElement  = document.getElementById("toggleNavBar");
+      el.click();
+    }
   }
 
   toggleMenu() {
@@ -53,9 +78,11 @@ export class NavbarComponent implements OnInit {
       if (menu.classList.contains("active")) {
         menu.classList.remove("active");
         toggle.querySelector("a").innerHTML = "<i class='fas fa-bars'></i>";
+        this.clickToggle=false;
       } else {
         menu.classList.add("active");
         toggle.querySelector("a").innerHTML = "<i class='fas fa-times'></i>";
+        this.clickToggle=true;
       }
     };
 

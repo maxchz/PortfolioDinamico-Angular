@@ -62,4 +62,20 @@ export class IniciarSesionComponent implements OnInit {
       }
     }
   })}
+
+  seeEye() {
+    const containerLead: any = document.querySelector('.input-pass-eye');
+    const containerChild: any = document.querySelector('.container-eye');
+    const inputLogin: any = document.getElementById('exampleInputPassword1');
+      if (containerLead.classList.contains("active")) {
+        containerLead.classList.remove("active");
+        containerChild.innerHTML = "<i class='fa-regular fa-eye'></i>";
+        inputLogin.type= 'password';
+
+      } else {
+        containerLead.classList.add("active");
+        containerChild.innerHTML = "<i class='fa-regular fa-eye-slash'></i>";
+        inputLogin.type= 'text';
+      }
+    };
 }

@@ -2,7 +2,7 @@
   <div class="iconHome">
     <i class="fa-solid fa-house-chimney" routerLink="/home"></i>
   </div>
-  <form  [formGroup]= "form" class="m-4" (ngSubmit)= "onEnviarRegistro($event)"  *ngIf= "showSpinner != true; else spinner">
+  <form  [formGroup]= "form" class="m-4" (ngSubmit)= "onEnviarRegistro($event)">
     <span class="tittle-inicioSesion">Crear cuenta</span>
 
     <div class="mb-3">
@@ -11,38 +11,38 @@
       [ngClass]= "{'is-invalid' : Email?.errors && Email?.touched, 'is-valid' : !Email?.errors && Email?.touched} " class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
       <div *ngIf= "Email?.errors && Email?.touched">
         <p *ngIf= "Email?.hasError('required')" class="text-danger">
-          El email es requerido.
+          *El email es requerido.
         </p>
         <p *ngIf = "Email?.hasError('email')" class="text-danger">
-          El formato del email debe ser válido.
+          *El formato del email debe ser válido.
         </p>
       </div>
     </div>
 
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-      <input type="password" formControlName="password" placeholder="Ingresá tu contraseña"
+      <input type="text" formControlName="password" placeholder="Ingresá tu contraseña"
       [ngClass]= "{'is-invalid' : Password?.errors && Password?.touched, 'is-valid' : !Password?.errors && Password?.touched} " class="form-control" id="exampleInputPassword1">
       <div *ngIf= "Password?.errors && Password?.touched" >
         <p *ngIf= "Password?.hasError('required')" class= "text-danger" >
-          La contraseña es requerida.
+          *La contraseña es requerida.
         </p>
         <p *ngIf= "Password?.errors?.['minlength']" class= "text-danger" >
-          La contraseña debe ser de 5 caracteres de mínimo y máximo de 10 caracteres.
+          *La contraseña debe ser de 5 caracteres de mínimo y máximo de 10 caracteres.
         </p>
       </div>
     </div>
 
-    <button type="submit" class="botonLogin">Registrar usuario</button>
+    <button type="submit" class="botonLogin" *ngIf= "showSpinner != true; else spinner">Registrar usuario</button>
+    <ng-template #spinner>
+      <div class="inicioSesion-spinner">
+        <mat-spinner [diameter]= "35"></mat-spinner>
+      </div>
+    </ng-template>
+
     <div class="text-registro">¿Ya tenes una cuenta? <span class="sign-in" routerLink="/iniciar-sesion">Iniciar sesión</span></div>
 
   </form>
-
-  <ng-template #spinner>
-      <div class="container-spinner">
-        <mat-spinner></mat-spinner>
-      </div>
-  </ng-template>
 </body>
 
 

@@ -1,5 +1,5 @@
 <div class="container-dialogCreaUsuario" *ngIf= "showSpinner != true; else spinner">
-  <h2>Crear nuevo Perfil</h2>
+  <h2>Crear nuevo perfil</h2>
   <p class="ref-aster">* El asterisco indica que es obligatorio</p>
   <form  [formGroup]= "form" (ngSubmit)= "onEnviarNuevoUsuario($event)" class="form-dialogCreaUsuario">
     <mat-dialog-content>
@@ -17,7 +17,7 @@
       </p>
       <p>
         <mat-form-field appearance="standard">
-          <mat-label>Domicilio</mat-label>
+          <mat-label>Ciudad - País</mat-label>
           <input matInput placeholder="ciudad, Provincia - País" formControlName="domicilio" type="text" required>
           <mat-hint>Agrege una nueva ciudad - país</mat-hint>
         </mat-form-field>
@@ -76,7 +76,7 @@
     <section>
       <div class="example-button-row">
         <button mat-raised-button  mat-dialog-close color="warn">Cancelar</button>
-        <button mat-raised-button color="primary" type="submit" >Guardar</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]= "form.invalid">Guardar</button>
       </div>
     </section>
   </mat-dialog-actions>
@@ -84,7 +84,7 @@
 </div>
 
 <ng-template #spinner>
-  <div class="container-spinner">
+  <div class="container-spinnerPortfolio">
     <mat-spinner></mat-spinner>
   </div>
 </ng-template>

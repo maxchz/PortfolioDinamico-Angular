@@ -6,7 +6,8 @@ import { catchError, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class EnviarMensajeContactoService {
-  url_msjPortfolio="http://localhost:8080/enviar-mensaje-desde-portfolio";
+  url_msjPortfolio="https://app-portfolio-backend-argpro.herokuapp.com/enviar-mensaje-desde-portfolio";
+  url_msjHome="https://app-portfolio-backend-argpro.herokuapp.com/enviar-mensaje-desde-home";
   errorType: number = 0;
 
   constructor(private http: HttpClient) {
@@ -16,6 +17,17 @@ export class EnviarMensajeContactoService {
     const headers = {'content-type' : 'application/json'}
     return this.http
                .post<any>(this.url_msjPortfolio, datosMensaje,{'headers': headers, observe: 'response'})
+               .pipe(
+                  catchError((error)=>{
+                  return this.errorHandler(error);
+                  })
+                );
+  }
+
+  EnviarMensajeHome(datosMensaje: any): Observable<any>{
+    const headers = {'content-type' : 'application/json'}
+    return this.http
+               .post<any>(this.url_msjHome, datosMensaje,{'headers': headers, observe: 'response'})
                .pipe(
                   catchError((error)=>{
                   return this.errorHandler(error);

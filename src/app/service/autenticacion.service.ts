@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 })
 export class AutenticacionService {
 
-  url="http://localhost:8080/auth/login";
+  url="https://app-portfolio-backend-argpro.herokuapp.com/auth/login";
   id_usuario: number = 0;
 
   //El objeto observable BehaviorSubject guarda los estados
@@ -37,7 +37,7 @@ export class AutenticacionService {
    }
 
    DatosNuevoUsuario(): Observable<any>{
-    return this.http.get<any>(`http://localhost:8080/ver/usuario/${this.UsuarioAutenticado.email}`);
+    return this.http.get<any>(`https://app-portfolio-backend-argpro.herokuapp.com/ver/usuario/${this.UsuarioAutenticado.email}`);
    }
 
    //Método para cerrar sesión desde la página de portfolio, limpia el sesión storage

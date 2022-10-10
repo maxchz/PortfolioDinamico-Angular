@@ -36,11 +36,11 @@ export class CreaUsuarioDialogComponent implements OnInit {
             domicilio:[' ',[Validators.required]],
             fechaNac: [' ', [Validators.required]],
             telefono: [' ', [Validators.required]],
-            correo: [null,[Validators.required]],
+            correo: [' ',[Validators.required]],
             sobreMi: [' ',[Validators.required]],
             posicionDev: ['',[Validators.required]],
             imagenPerfil: ['',[Validators.required]],
-            usuario_id: [null,[Validators.required]],
+            usuario_id: [' ',[Validators.required]],
           });
   }
 

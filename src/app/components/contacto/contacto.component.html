@@ -1,27 +1,43 @@
 <section id="contact">
-  <h2 class="heading">Contáctame</h2>
-  <p>Si deseas enviar alguna sugerencia para mejorar la experiencia de usuario, consulta o mensaje en particular, por favor escribe tu mensaje y te responderemos a la brevedad.</p>
-  <div id="contact-form">
-    <form class="form-data" [formGroup]= "formContact" (ngSubmit)= "onEnviarNuevoMensajePortfolio($event)">
-      <label for="name" class="form-input">Nombre:
-        <input type="text"  name="name" formControlname="name" [formControl] = "selectedName" required/>
-      </label>
-      <label for="mail" class="form-input">Correo electrónico:
-        <input type="email" name="mail" formControlname="mail" [formControl] = "selectedMail" required>
-      </label>
-      <label for="subject" class="form-input">Asunto:
+  <details>
+    <summary>
+      <h2 class="heading">Contáctame</h2>
+      <p class="parrafo-contact-heading">Si deseas enviar alguna sugerencia para mejorar la experiencia de usuario, consulta o mensaje en particular, por favor escribe tu mensaje y te responderé a la brevedad.</p>
+    </summary>
+    <div id="contact-form">
+      <form class="form-data" [formGroup]= "formContactPortfolio" (ngSubmit)= "onEnviarNuevoMensajePortfolio($event)">
+        <label for="name" class="form-input">Nombre:</label>
+        <input type="text"  name="name" formControlname="name" [formControl] = "selectedName"  required/>
+
+        <label for="email" class="form-input">Correo electrónico:
+          <input type="email" name="email" formControlname="email" [formControl] = "selectedMail" (click)= "touchedInput($event)" required>
+          <div *ngIf= "!isValidEmail || (Email||isTouched)">
+            <span class="warning-dialog-date" *ngIf= "!isValidEmail" >
+              *El formato de email debe ser válido.
+            </span><br>
+            <span class="warning-dialog-date" *ngIf= "!Email && isTouched" >
+              *El email es requerido.
+            </span>
+          </div>
+        </label>
+
+        <label for="subject" class="form-input">Asunto:</label>
         <input type="text"  name="subject" formControlName="subject"  required/>
-      </label>
-      <label for="body" class="form-input">Mensaje:</label>
+
+        <label for="body" class="form-input">Mensaje:</label>
         <textarea name="body" formControlName="body" placeholder="Escribí tu mensaje..." required></textarea>
-      <button class="btn-form" type="submit" *ngIf= "showSpinner != true; else spinner">Enviar mensaje</button>
-      <ng-template #spinner>
-        <div>
-          <mat-spinner [diameter]= "35"></mat-spinner>
-        </div>
-      </ng-template>
-    </form>
-  </div>
+
+        <button class="btn-form" type="submit" *ngIf= "showSpinner != true; else spinner" [disabled]= "!isValidEmail || !Name || !Subject || !Body">Enviar mensaje</button>
+
+        <ng-template #spinner>
+          <div>
+            <mat-spinner [diameter]= "35"></mat-spinner>
+          </div>
+        </ng-template>
+
+      </form>
+    </div>
+  </details>
 </section>
 
 

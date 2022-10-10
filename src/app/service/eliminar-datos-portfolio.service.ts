@@ -13,7 +13,7 @@ export class EliminarDatosPortfolioService {
   constructor(private http: HttpClient) { }
 
   EliminarExperiencia(idExperiencia: number): Observable<any>{
-    return this.http.delete<any>(`http://localhost:8080/borrar-experiencia/${idExperiencia}`,{observe: 'response'})
+    return this.http.delete<any>(`https://app-portfolio-backend-argpro.herokuapp.com/borrar-experiencia/${idExperiencia}`,{observe: 'response'})
     .pipe(
       catchError((error)=>{
       return this.errorHandler(error);
@@ -22,7 +22,7 @@ export class EliminarDatosPortfolioService {
   }
 
   EliminarEducacion(idEducacion: number): Observable<any>{
-    return this.http.delete<any>(`http://localhost:8080/borrar-educacion/${idEducacion}`,{observe: 'response'})
+    return this.http.delete<any>(`https://app-portfolio-backend-argpro.herokuapp.com/borrar-educacion/${idEducacion}`,{observe: 'response'})
     .pipe(
       catchError((error)=>{
       return this.errorHandler(error);
@@ -31,7 +31,7 @@ export class EliminarDatosPortfolioService {
   }
 
   EliminarProyecto(idProyecto: number): Observable<any>{
-    return this.http.delete<any>(`http://localhost:8080/borrar-proyecto/${idProyecto}`,{observe: 'response'})
+    return this.http.delete<any>(`https://app-portfolio-backend-argpro.herokuapp.com/borrar-proyecto/${idProyecto}`,{observe: 'response'})
     .pipe(
       catchError((error)=>{
       return this.errorHandler(error);
@@ -40,7 +40,7 @@ export class EliminarDatosPortfolioService {
   }
 
   EliminarHabilidadDura(idHabilidadDura: number): Observable<any>{
-    return this.http.delete<any>(`http://localhost:8080/borrar-habilidad/${idHabilidadDura}`,{observe: 'response'})
+    return this.http.delete<any>(`https://app-portfolio-backend-argpro.herokuapp.com/borrar-habilidad/${idHabilidadDura}`,{observe: 'response'})
     .pipe(
       catchError((error)=>{
       return this.errorHandler(error);
@@ -49,7 +49,7 @@ export class EliminarDatosPortfolioService {
   }
 
   EliminarHabilidadBlanda(idHabilidadBlanda: number): Observable<any>{
-    return this.http.delete<any>(`http://localhost:8080/borrar-habilidad-blanda/${idHabilidadBlanda}`,{observe: 'response'})
+    return this.http.delete<any>(`https://app-portfolio-backend-argpro.herokuapp.com/borrar-habilidad-blanda/${idHabilidadBlanda}`,{observe: 'response'})
     .pipe(
       catchError((error)=>{
       return this.errorHandler(error);

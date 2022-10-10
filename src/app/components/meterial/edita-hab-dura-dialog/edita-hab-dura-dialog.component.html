@@ -1,7 +1,7 @@
 <div class="container-dialogCreaUsuario" *ngIf= "showSpinner != true; else spinner">
   <h2>Modificar dato de habilidad tecnológica</h2>
   <p class="ref-aster">* El asterisco indica que es obligatorio</p>
-  <form  [formGroup]= "form" (ngSubmit)= "onEnviarEditaHabilidadDura($event)" class="form-dialogCreaUsuario">
+  <form  [formGroup]= "formHardEdita" (ngSubmit)= "onEnviarEditaHabilidadDura($event)" class="form-dialogCreaUsuario">
     <mat-dialog-content>
       <p class="p-idUsuario">
         <mat-form-field appearance="standard">
@@ -15,6 +15,9 @@
           <mat-label>Nombre del software/tecnología</mat-label>
           <input matInput placeholder="Ingrese el nombre de la tecnología usada" formControlName="tecnologia" type="text" required>
         </mat-form-field>
+        <span class="warning-dialog-date" *ngIf= "!isValidSkillHard" >
+          *El nombre de tecnología ingresado ya existe, ingrese otro distinto.
+        </span>
       </p>
       <p>
         <mat-form-field appearance="standard">
@@ -22,6 +25,9 @@
           <input matInput placeholder="Ingrese su dominio con un número representativo" formControlName="progreso" type="number" required>
           <mat-hint>Número entero desde 0 a 100, se expresará en porcentaje (Ej: 25 = 25%)</mat-hint>
         </mat-form-field>
+        <span class="warning-dialog-date" *ngIf= "!isValidSkillNumber" >
+          *El valor de progreso debe ser mayor igual a 0 y menor igual a 100.
+        </span>
       </p>
       <p class="p-idUsuario">
         <mat-form-field appearance="standard">
@@ -42,7 +48,7 @@
     <section>
       <div class="example-button-row">
         <button mat-raised-button  mat-dialog-close color="warn">Cancelar</button>
-        <button mat-raised-button color="primary" type="submit" >Modificar</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]= "formHardEdita.invalid" >Modificar</button>
       </div>
     </section>
   </mat-dialog-actions>

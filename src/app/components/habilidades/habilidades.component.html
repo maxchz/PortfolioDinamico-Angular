@@ -1,4 +1,4 @@
-<section id="skill" class="section-card" *ngIf= "miPortfolioHabilidadDura == null; else habilidad">
+<section id="skill" class="section-card" *ngIf= "miPortfolioHabilidadDura == null && miPortfolioHabilidadBlanda == null; else habilidad">
   <h2 class="heading">Habilidades</h2>
     <h3>Tecnologías usadas</h3>
       <div class="skill-timeline-hard container-mainSection">
@@ -11,7 +11,7 @@
             </div>
           </div>
           <div class="containerIconNoUser parrafo">
-            Para agregar información en esta sección pulse el botón <strong>+</strong>.
+            Para agregar información en esta sección pulse el botón +.
           </div>
       </div>
       <div class="containerIconDialog">
@@ -21,7 +21,7 @@
     <h3>Habilidades Interpersonales</h3>
       <div class="skill-timeline-soft container-mainSection">
         <div class="containerIconNoUser parrafo">
-            Para agregar información en esta sección pulse el botón <strong>+</strong>.
+            Para agregar información en esta sección pulse el botón +.
         </div>
       </div>
       <div class="containerIconDialog">
@@ -68,7 +68,7 @@
         <div class="skill-timeline-soft container-mainSection">
           <div class="skills-soft container-cardSection">
             <ul >
-              <li *ngFor="let habilidades of miPortfolioHabilidadBlanda; let i=index">{{habilidades.habilidadBlanda}}</li>
+              <li *ngFor="let habilidades of miPortfolioHabilidadBlanda; let i=index">{{habilidades.hab_blanda}}</li>
             </ul>
           </div>
         </div>

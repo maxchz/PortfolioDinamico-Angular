@@ -10,10 +10,13 @@ import { EnviarMensajeContactoService } from 'src/app/service/enviar-mensaje-con
   styleUrls: ['./contacto.component.css']
 })
 export class ContactoComponent implements OnInit {
-  formContact: FormGroup;
+  formContactPortfolio: FormGroup;
   showSpinner: boolean = false;
   selectedName: FormControl = new FormControl();
   selectedMail: FormControl = new FormControl();
+  correoElect: string= '';
+  isValidEmail: boolean = true;
+  isTouched: boolean  = false;
 
 
   constructor(private formBuilder: FormBuilder,
@@ -21,41 +24,49 @@ export class ContactoComponent implements OnInit {
               private enviarMensaje: EnviarMensajeContactoService,
               private notificationToast: NotificacionToastService) {
 
-                this.formContact = this.formBuilder.group(
+                this.formContactPortfolio = this.formBuilder.group(
                   {
                   name: [' ', [Validators.required]],
-                  mail: [' ', [Validators.required]],
+                  email: [' ', [Validators.required]],
                   subject:[' ', [Validators.required]],
                   body: [' ', [Validators.required]],
                   });
+
+
   }
 
   ngOnInit(): void {
+    this.selectedMail.valueChanges.subscribe(data=>{
+      this.correoElect = data;
+      this.isValidEmail = this.validarEmail(this.correoElect);
+    });
   }
 
   onEnviarNuevoMensajePortfolio(event:Event){
     event.preventDefault;
     this.showSpinner= true;
-    this.formContact.patchValue({
+    this.formContactPortfolio.patchValue({
       name: this.selectedName.value,
-      mail: this.selectedMail.value,
+      email: this.selectedMail.value,
     });
 
-    this.enviarMensaje.EnviarMensajePorfolio(this.formContact.value).subscribe({next:(data)=>{
+    this.enviarMensaje.EnviarMensajePorfolio(this.formContactPortfolio.value).subscribe({next:(data)=>{
 
       if(data.ok){
+        this.isValidEmail = true;
+        this.isTouched = false;
         setTimeout(() => {
           this.showSpinner = false;
           }, 1500);
           this.notificationToast.showSuccess("Mensaje enviado con exito, aguarde respuesta.", " ");
-          this.formContact.reset();
+          this.formContactPortfolio.reset();
           this.selectedName.reset();
           this.selectedMail.reset();
       } else {
         setTimeout(() => {
           this.showSpinner = false;
           }, 1500);
-          this.formContact.reset();
+          this.formContactPortfolio.reset();
           this.selectedName.reset();
           this.selectedMail.reset();
           this.notificationToast.showError("Mensaje no enviado, intente luego.", " ");
@@ -66,5 +77,33 @@ export class ContactoComponent implements OnInit {
             }
           }
     });
+  }
+
+  validarEmail(correo: string): boolean {
+    if (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(correo)){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  touchedInput(event:any){
+    this.isTouched= event.isTrusted;
+  }
+
+  get Email(){
+    return this.selectedMail.valid;
+  }
+
+  get Name(){
+    return this.selectedName.valid;
+  }
+
+  get Subject(){
+    return this.formContactPortfolio.get("subject").valid;
+  }
+
+  get Body(){
+    return this.formContactPortfolio.get("body").valid;
   }
 }

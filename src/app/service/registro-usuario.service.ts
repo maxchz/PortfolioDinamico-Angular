@@ -10,7 +10,7 @@ import { throwError as observableThrowError } from 'rxjs';
 })
 export class RegistroUsuarioService {
   errorType: number = 0;
-  url="http://localhost:8080/nuevo/usuario";
+  url="https://app-portfolio-backend-argpro.herokuapp.com/nuevo/usuario";
   //El objeto observable BehaviorSubject guarda los estados
   currentUserSubject: BehaviorSubject<any>;
 
@@ -19,7 +19,7 @@ export class RegistroUsuarioService {
   }
 
   RegistrarUsuario(datosUsuario: any): Observable<any>{
-    const headers = {'content-type' : 'application/json'}
+    const headers = {'content-type' : 'application/json', 'Access-Control-Allow-Origin':'*'}
     return this.http
       .post<any>(this.url, datosUsuario,{'headers': headers, observe: 'response'})
       .pipe(catchError((error)=>{

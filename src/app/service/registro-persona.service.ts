@@ -9,12 +9,12 @@ import { throwError as observableThrowError } from 'rxjs';
 })
 export class RegistroPersonaService {
   errorType: number = 0;
-  url_creaPersona="http://localhost:8080/nueva/persona";
-  url_creaExperiencia="http://localhost:8080/nueva/experiencia";
-  url_creaEducacion="http://localhost:8080/nueva/educacion";
-  url_creaProyecto="http://localhost:8080/nuevo/proyecto";
-  url_creaHabilidadDura="http://localhost:8080/nueva/habilidad";
-  url_creaHabilidadBlanda="http://localhost:8080/nueva/habilidad-blanda";
+  url_creaPersona="https://app-portfolio-backend-argpro.herokuapp.com/nueva/persona";
+  url_creaExperiencia="https://app-portfolio-backend-argpro.herokuapp.com/nueva/experiencia";
+  url_creaEducacion="https://app-portfolio-backend-argpro.herokuapp.com/nueva/educacion";
+  url_creaProyecto="https://app-portfolio-backend-argpro.herokuapp.com/nuevo/proyecto";
+  url_creaHabilidadDura="https://app-portfolio-backend-argpro.herokuapp.com/nueva/habilidad";
+  url_creaHabilidadBlanda="https://app-portfolio-backend-argpro.herokuapp.com/nueva/habilidad-blanda";
   //El objeto observable BehaviorSubject guarda los estados
   currentUserSubject: BehaviorSubject<any>;
 

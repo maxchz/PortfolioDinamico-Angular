@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NotificacionToastService } from 'src/app/service/alertas/notificacion-toast.service';
 import { DatosPortfoliosService } from 'src/app/service/datos-portfolios.service';
 import { RegistroPersonaService } from 'src/app/service/registro-persona.service';
@@ -11,39 +11,72 @@ import { RegistroPersonaService } from 'src/app/service/registro-persona.service
   styleUrls: ['./crea-hab-dura-dialog.component.css']
 })
 export class CreaHabDuraDialogComponent implements OnInit {
-  form: FormGroup;
+  formHardCrea: FormGroup;
   id_usuario: number = 0;
   personaId: number = 0;
   showSpinner: boolean = false;
+  isValidSkillHard: boolean = true;
+  isValidSkillNumber: boolean = true;
+  skillHard: String = '';
+  listSkillHard: any;
 
   constructor(private formBuilder: FormBuilder,
               public dialog: MatDialog,
               private registerPerson: RegistroPersonaService,
               private datosPortafolio: DatosPortfoliosService,
-              private notificationToast: NotificacionToastService) {
+              private notificationToast: NotificacionToastService,
+              @Inject(MAT_DIALOG_DATA) public data: any) {
+                this.listSkillHard = data;
                 this.datosPortafolio.ObtenerDatosUsuarioPorEmail().subscribe(data =>{
                   this.id_usuario = data.id;
                   this.datosPortafolio.obtenerDatosPersonaPorIdUsuario(this.id_usuario).subscribe(data=>{
                     this.personaId = data.id;
-                    this.form.patchValue({
-                       persona_id: this.personaId});
+                    this.formHardCrea.patchValue({
+                       persona_id: this.personaId,
+                       urlTecLogo: 'null'});
                     });
                 });
-                this.form = this.formBuilder.group(
+                this.formHardCrea = this.formBuilder.group(
                   {
-                    tecnologia: ['', [Validators.required]],
-                    progreso:[' ',[Validators.required]],
-                    urlTecLogo: [null, [Validators.required]],
-                    persona_id: [null,[Validators.required]],
+                    tecnologia: ['',[Validators.required]],
+                    progreso:['',[Validators.required]],
+                    urlTecLogo: ['',[Validators.required]],
+                    persona_id: ['',[Validators.required]],
                   });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    if(this.listSkillHard.length > 0 && this.listSkillHard !=null){
+      this.formHardCrea.valueChanges.subscribe(data=>{
+        this.skillHard = data.tecnologia;
+        for (let i =0; i<this.listSkillHard.length; i++){
+          const element = this.listSkillHard[i];
+          if(element.tecnologia.toUpperCase().trim() === this.skillHard.toUpperCase().trim()){
+            this.isValidSkillHard= false;
+          break;
+          }else {
+            this.isValidSkillHard = true;
+          }
+        }
+      })
+    }
+
+    this.formHardCrea.valueChanges.subscribe(data=>{
+      if(data.progreso >100 || data.progreso<0){
+        this.isValidSkillNumber = false;
+      }else {
+        this.isValidSkillNumber = true;
+      }
+    })
+
+  }
 
   onEnviarNuevaHabilidadDura(event:Event){
     event.preventDefault;
     this.showSpinner= true;
-    this.registerPerson.CrearHabilidadDura(this.form.value).subscribe({next: (data)=>{
+    if(this.isValidSkillHard && this.isValidSkillNumber){
+    this.registerPerson.CrearHabilidadDura(this.formHardCrea.value).subscribe({next: (data)=>{
       if(data.ok){
         setTimeout(() => {
           this.showSpinner = false;
@@ -64,5 +97,10 @@ export class CreaHabDuraDialogComponent implements OnInit {
             this.notificationToast.showError('Ha ocurrido un error, intenta luego.', ' ');}
           }
     })
+  }else{
+    this.showSpinner = false;
+    this.notificationToast.showError("El nombre de tecnología o número de progreso ingresado es incorrecto.", "");
   }
+  }
+
 }

@@ -23,7 +23,8 @@ export class EditarUsuarioDialogComponent implements OnInit {
               private datosPortafolio: DatosPortfoliosService,
               private notificationToast: NotificacionToastService) {
     this.datosPortafolio.ObtenerDatosUsuarioPorEmail().subscribe(data =>{
-        this.datosPortafolio.obtenerDatosPersonaPorIdUsuario(data.id).subscribe(data =>{
+        this.datosPortafolio.obtenerDatosPersonaPorIdUsuario(data.id).subscribe({next: (data) =>{
+          this.showSpinner = true;
           this.form.patchValue({
             id: data.id,
             nombre: data.nombre,
@@ -37,22 +38,32 @@ export class EditarUsuarioDialogComponent implements OnInit {
             imagenPerfil: data.imagenPerfil,
             usuario_id: data.usuario_id
           });
+
+          this.showSpinner = false;
+
+        }, error: (e)=>{
+          if(e.ok !=true){
+            setTimeout(() => {
+              this.showSpinner = false;
+            }, 1000);
+            this.notificationToast.showError("Ha ocurrido un error, recarga la página e intenta nuevamente.", " ");
+          }}
         });
     });
 
     this.form = this.formBuilder.group(
           {
-          id: [null, [Validators.required]],
+          id: [' ', [Validators.required]],
           nombre: ['', [Validators.required]],
           apellido: ['',[Validators.required]],
           domicilio:[' ',[Validators.required]],
           fechaNac: [' ', [Validators.required]],
           telefono: [' ', [Validators.required]],
-          correo: [null,[Validators.required]],
+          correo: [' ',[Validators.required]],
           sobreMi: [' ',[Validators.required]],
           posicionDev: ['',[Validators.required]],
           imagenPerfil: ['',[Validators.required]],
-          usuario_id: [null,[Validators.required]],
+          usuario_id: [' ',[Validators.required]],
           });
   }
 

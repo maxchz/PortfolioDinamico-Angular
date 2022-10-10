@@ -1,4 +1,11 @@
-<div class="download">
+<div class="download" *ngIf= "showSpinner != true; else spinner">
   <i class="fa-solid fa-file-arrow-down" matTooltip="Descargar CV" matTooltipPosition="below" (click)= "downloadPDF()"></i>
 </div>
+
+<ng-template #spinner>
+  <div class="inicioSesion-spinner">
+    <mat-spinner [diameter]= "35"></mat-spinner>
+  </div>
+</ng-template>
+
 

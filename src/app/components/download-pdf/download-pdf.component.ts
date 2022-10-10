@@ -1,7 +1,7 @@
-import { Component, OnInit, ElementRef, ViewChild, Input } from '@angular/core';
-import jsPDF from 'jspdf';
+import { Component, OnInit } from '@angular/core';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdffonts from 'pdfmake/build/vfs_fonts';
+import { NotificacionToastService } from 'src/app/service/alertas/notificacion-toast.service';
 import { AutenticacionService } from 'src/app/service/autenticacion.service';
 import { DatosPortfoliosService } from 'src/app/service/datos-portfolios.service';
 pdfMake.vfs = pdffonts.pdfMake.vfs;
@@ -26,12 +26,17 @@ export class DownloadPdfComponent implements OnInit {
 
   idUsuario: number = 0;
   idPersona: number = 0;
+  showSpinner: boolean = false;
 
 
 
-  constructor(private datosPortafolio: DatosPortfoliosService, private autenticacionServicio: AutenticacionService) { }
+
+  constructor(private datosPortafolio: DatosPortfoliosService,
+              private autenticacionServicio: AutenticacionService,
+              private notificationToast: NotificacionToastService) { }
 
   ngOnInit(): void {
+
     this.autenticacionServicio.DatosNuevoUsuario().subscribe(data =>{
       this.idUsuario = data.id;
       this.datosPortafolio.obtenerDatosPersonaPorIdUsuario(this.idUsuario).subscribe(data =>{
@@ -60,6 +65,8 @@ export class DownloadPdfComponent implements OnInit {
 
 
   public downloadPDF():void {
+    this.showSpinner = true;
+
 
     this.autenticacionServicio.DatosNuevoUsuario().subscribe(data =>{
       this.idUsuario = data.id;
@@ -181,12 +188,22 @@ export class DownloadPdfComponent implements OnInit {
 
     this.dd.content.push({text: 'Habilidades Interpersonales', style: 'normal', alignment: 'left', margin:[0, 0, 0, 10]});
     for(var i=0; i<this.miPortfolioHabilidadBlanda.length; i++){
-      this.habilidadBlandaList.push(this.miPortfolioHabilidadBlanda[i].habilidadBlanda);
+      this.habilidadBlandaList.push(this.miPortfolioHabilidadBlanda[i].hab_blanda);
     }
     this.dd.content.push({ul: this.habilidadBlandaList, style: 'normal', alignment: 'left'});
 
     const pdf = pdfMake.createPdf(this.dd);
-    pdf.download();
+    if(this.miPortfolioExperiencia.length > 0 && this.miPortfolioEducacion.length > 0 && this.miPortfolioProyecto.length > 0 && this.miPortfolioHabilidadDura.length > 0 && this.miPortfolioHabilidadBlanda.length > 0){
+      setTimeout(() => {
+        this.showSpinner = false;
+        }, 2000);
+        pdf.download(this.miPortfolio.nombre.toUpperCase()+ " " +this.miPortfolio.apellido.toUpperCase() + "-CV");
+    }else {
+      setTimeout(() => {
+        this.showSpinner = false;
+        }, 1500);
+        this.notificationToast.showError('Para descargar su CV debe completar todas las secciones',' ');
+    }
   }
 }
 

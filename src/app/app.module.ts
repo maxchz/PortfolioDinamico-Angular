@@ -27,6 +27,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CreaUsuarioDialogComponent } from './components/meterial/crea-usuario-dialog/crea-usuario-dialog.component';
@@ -100,6 +101,7 @@ import { DownloadPdfComponent } from './components/download-pdf/download-pdf.com
     ScrollingModule,
     MatProgressSpinnerModule,
     MatSelectModule,
+    MatCheckboxModule,
     ToastrModule.forRoot(),
   ],
   providers: [DatosPortfoliosService,

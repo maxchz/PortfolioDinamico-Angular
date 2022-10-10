@@ -28,13 +28,26 @@
           <input matInput placeholder="dd-mm-aa" formControlName="fechaInicio" type="date" required>
           <mat-hint>Ingrese fecha de inicio</mat-hint>
         </mat-form-field>
+        <span class="warning-dialog-date" *ngIf= "FechaFin <= FechaInicio">
+          *La fecha de inicio debe ser menor a la fecha de finalización.
+        </span><br>
+        <span class="warning-dialog-date" *ngIf= "!isValiDateInicio" >
+          *El año ingresado es incorrecto.
+        </span>
       </p>
       <p>
         <mat-form-field appearance="standard">
           <mat-label>Fecha Fin</mat-label>
-          <input matInput placeholder="dd-mm-aa" formControlName="fechaFin" type="date" required>
+          <input matInput placeholder="dd-mm-aa" formControlName="fechaFin" id="fechaFin" [type]= "varType" required>
           <mat-hint>Ingrese fecha de finalización</mat-hint>
         </mat-form-field>
+        <span class="warning-dialog-date" *ngIf= "FechaFin <= FechaInicio">
+          *La fecha de finalización debe ser mayor a la fecha de inicio.
+        </span><br>
+        <span class="warning-dialog-date" *ngIf= "!isValiDateFin" >
+          *El año ingresado es incorrecto.
+        </span><br>
+        <mat-checkbox [formControl] ="actualidadEduEdita">Actualmente en curso</mat-checkbox>
       </p>
       <p>
         <mat-form-field appearance="fill">
@@ -62,7 +75,7 @@
     <section>
       <div class="example-button-row">
         <button mat-raised-button  mat-dialog-close color="warn">Cancelar</button>
-        <button mat-raised-button color="primary" type="submit" >Modificar</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]= "form.invalid" >Modificar</button>
       </div>
     </section>
   </mat-dialog-actions>

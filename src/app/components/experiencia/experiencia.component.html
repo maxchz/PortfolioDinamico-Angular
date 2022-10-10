@@ -1,5 +1,5 @@
-<section id="experience" class="section-card" *ngIf="miPortfolioExperiencia == null; else experiencia">
-  <h2 class="heading">Experiencia</h2>
+<section id="experience" class="section-card" *ngIf= "miPortfolioExperiencia == null; else experiencia">
+  <h2 class="heading">Experiencia Laboral</h2>
 
   <div id="experience-timeline" class="container-mainSection" >
     <div class="experience-job container-cardSection">
@@ -10,7 +10,7 @@
         <h4>Puesto - Cargo</h4>
         <time>Fecha inicio - Fecha fin</time>
         <div class="containerIconNoUser parrafo">
-          Para agregar información en esta sección pulse el botón <strong>+</strong>.
+          Para agregar información en esta sección pulse el botón +.
         </div>
       </div>
     </div>
@@ -22,7 +22,7 @@
 
 <ng-template #experiencia>
   <section id="experience" class="section-card">
-    <h2 class="heading">Experiencia</h2>
+    <h2 class="heading">Experiencia Laboral</h2>
     <div id="experience-timeline"  class="container-mainSection"  *ngFor="let experiencia of miPortfolioExperiencia;let indice=index">
       <div class="experience-job container-cardSection">
         <div class="experience-data container-dataSection">
