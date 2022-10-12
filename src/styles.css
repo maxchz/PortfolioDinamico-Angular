@@ -88,7 +88,6 @@ background: #e9e6d4;
   align-items: center;
 }
 .containerIconDialog i, .fa-plus{
-  background: #ebf4eb;
   margin: 0 2%;
   padding: 1.5%;
   border-radius: 50%;
@@ -97,12 +96,14 @@ background: #e9e6d4;
 }
 .containerIconDialog.fa-plus{
   padding: 1.1%;
+}
+.fa-solid.fa-pencil:hover {
+  color: blue;
+}
+.fa-regular.fa-trash-can:hover {
+  color:red;
+}
 
-}
-.containerIconDialog i:hover{
-  border-radius: 50%;
-  background: rgb(215, 215, 215);
-}
 
 /* CONTENEDOR DIALOGS - SPINNER */
 
@@ -214,7 +215,6 @@ li:hover {
   color:rgb(111,149,186);
 }
 .toggle.navbar a {
-  /* color: #626943; */
   margin-left:auto;
 }
 
@@ -802,8 +802,6 @@ details[open] summary{
     color: white;
   }
   .button.navbar a {
-    /* background: #626943; */
-    /* border: 1px #626943 solid; */
     color: #f4fef5;
     cursor: pointer;
   }
@@ -813,25 +811,14 @@ details[open] summary{
     color:black;
   }
   .button.secondary.navbar.icon a{
-    /* color: #626943; */
     border:none;
   }
-  /*.button a:hover {
-    text-decoration: none;
-  }*/
-  /*.button:not(.secondary) a:hover {
-    background: transparent;
-    color: black;
-  }*/
+
   .button.navbar a:active {
     background: #626943ce;
     font-weight: bold;
   }
-  /*.button.secondary a:hover {
-    color:white;
-    border: 1px black solid;
-    background: black;
-  }*/
+
   .button:not(.secondary) a:active {
     background: rgba(0, 0, 0, 0.6);
     font-weight: bold;
@@ -841,10 +828,7 @@ details[open] summary{
     font-weight: bold;
 
   }
-  /* .button.secondary.navbar.icon a:hover{
-    background: transparent;
-    color: #626943ce;
-  } */
+
 }
 
 

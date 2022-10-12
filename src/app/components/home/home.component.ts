@@ -27,6 +27,9 @@ export class HomeComponent implements OnInit {
   total_length: number = 0;
   current_length: number = 0;
 
+  aboutMe: string = "Hola! Soy Max,  en esta sección pretendo presentarme y contarte resumidamente en lo que me he involucrado a lo largo de estos años. Soy ingeniero civil graduado en la Facultad de Ciencias Exactas, Físicas y Naturales de la Universidad Nacional de Córdoba desde el año 2014. Desde entonces me desempeñe satisfactoriamente en proyectos relacionado a mi área de estudios, pero el año 2020 fue un punto de inflexión, la pandemia nos imposibilito seguir con proyectos laborales y personales, pero también fue una oportunidad y para nada fue un año perdido, al menos para mí. En ese momento dispuse del activo más importante que posee una persona, su tiempo. Empecé a realizar algo que siempreme llamo la atención y no puede desarrollar en mis años de estudiante. Siempre sentí curiosidad por las finanzas y tecnología, puede estudiar ambos campos y sumergirme de manera practica en ellos, en los cuales le dedico tiempo completo al día de hoy, operar en el mercado financiero e implementar pequeñas aplicaciones que me ayudan a tal fin. Aquí fue donde una necesidad me ayudo a descubrir el desarrollo de aplicaciones,  ver que era posible construir una herramienta hecha a medida para satisfacer necesidades personales y colectivas.";
+  messageContacto: string = "Si deseas enviar alguna sugerencia para mejorar la experiencia de usuario, consulta o mensaje en particular, por favor escribe tu mensaje y te responderé a la brevedad.";
+
   constructor(private formBuilder: FormBuilder,
               public dialog: MatDialog,
               private enviarMensaje: EnviarMensajeContactoService,

@@ -99,11 +99,6 @@ letter-spacing: 5px;
 font-size:50px;
 font-weight: bold;
 line-height:1.1;
-/* padding-top: 13%;
-padding-left: 10%;
-padding-right: 8%; */
-/* text-shadow: 0 8px 9px #c4b59d, 0px -2px 1px #fff; */
-
 }
 .console-underscore {
   display:inline-block;
@@ -381,10 +376,8 @@ display: none;
 
 .img-portail  {
   align-items: center;
-
   width:100%;
   height:50%;
-
 }
 
 #about-home .secundary-text p{
